@@ -1,0 +1,65 @@
+{
+    "dataFormat": "DRIVER",
+    "correntistas": [
+        {
+            "cpf": 1,
+            "agencia": 466,
+            "contaCorrente": 101063599,
+            "senha": "teste123",
+            "transferencias": [
+                {
+                    "id": "ObjectId(123456)",
+                    "valor": 123,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                },
+                {
+                    "id": "ObjectId(123456)",
+                    "valor": 1243.2,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                },
+                {
+                    "id": "ObjectId(12456)",
+                    "valor": 5123.5,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                }
+            ]
+        },
+        {
+            "cpf": 2,
+            "agencia": 466,
+            "contaCorrente": 101063599,
+            "senha": "teste123",
+            "transferencias": [
+                {
+                    "id": "ObjectId(12336)",
+                    "valor": 123,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                },
+                {
+                    "id": "ObjectId(12f56)",
+                    "valor": 123,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                }
+            ]
+        },
+        {
+            "cpf": 3,
+            "agencia": 466,
+            "contaCorrente": 101063599,
+            "senha": "teste123",
+            "transferencias": [
+                {
+                    "id": "ObjectId(12f456)",
+                    "valor": 123,
+                    "descricao": "Compra Supermercado Extra",
+                    "data": "2018-01-20T20:02:10.604Z"
+                }
+            ]
+        }
+    ]
+}

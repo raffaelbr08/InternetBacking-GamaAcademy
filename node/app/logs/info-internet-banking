@@ -1,0 +1,13 @@
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-21T14:54:30.399Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:54:46 +0000] \"GET / HTTP/1.1\" 404 117\n","timestamp":"2018-01-21T14:54:46.265Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:54:57 +0000] \"GET /v1/correntista HTTP/1.1\" 200 1069\n","timestamp":"2018-01-21T14:54:57.502Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-21T14:55:16.857Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-21T14:55:19.999Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:55:21 +0000] \"GET /v1/correntistas HTTP/1.1\" 200 1069\n","timestamp":"2018-01-21T14:55:21.301Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:55:30 +0000] \"GET /v1/correntistas/33528763809 HTTP/1.1\" 404 1069\n","timestamp":"2018-01-21T14:55:30.715Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-21T14:55:54.881Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-21T14:57:07.979Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:57:11 +0000] \"GET /v1/correntistas/33528763809 HTTP/1.1\" 404 2\n","timestamp":"2018-01-21T14:57:11.110Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:57:13 +0000] \"GET /v1/correntistas/1 HTTP/1.1\" 404 463\n","timestamp":"2018-01-21T14:57:13.706Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:57:17 +0000] \"GET /v1/correntistas/ HTTP/1.1\" 200 1039\n","timestamp":"2018-01-21T14:57:17.368Z"}
+{"level":"info","message":"::1 - - [21/Jan/2018:14:57:20 +0000] \"GET /v1/correntistas/1 HTTP/1.1\" 404 463\n","timestamp":"2018-01-21T14:57:20.496Z"}
