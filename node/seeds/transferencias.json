@@ -2,39 +2,37 @@
     "dataFormat": "DRIVER",
     "transferencias": [
         {
-            "id": "ObjectId(123456)",
             "valor": 123,
-            "descricao": "Compra Supermercado Extra",
+            "descricao": "Saldo Inicial",
             "data": "2018-01-20T20:02:10.604Z",
             "origem": {
-                "cpf": 33528763809,
+                "cpf": 1,
                 "agencia": 466,
                 "contaCorrente": 101063599
             },
             "destino": {
-                "cpf": 33528763809,
+                "cpf": 2,
                 "agencia": 466,
                 "contaCorrente": 101063599
             }
         },
         {
-            "id": "ObjectId(123456)",
             "valor": 1243.2,
             "descricao": "Compra Supermercado Extra",
             "data": "2018-01-20T20:02:10.604Z",
+            "credito": true,
             "origem": {
-                "cpf": 33528763809,
+                "cpf": 2,
                 "agencia": 466,
                 "contaCorrente": 101063599
             },
             "destino": {
-                "cpf": 33528763809,
+                "cpf": 1,
                 "agencia": 466,
                 "contaCorrente": 101063599
             }
         },
         {
-            "id": "ObjectId(12456)",
             "valor": 5123.5,
             "descricao": "Compra Supermercado Extra",
             "data": "2018-01-20T20:02:10.604Z",

@@ -27,6 +27,10 @@ var schema = mongoose.Schema({
 			type: Number,
 			required: false
 		},
+		debito: {
+			type: Boolean,
+			required: true
+		},
 		descricao: {
 			type: String,
 			required: false

@@ -2,15 +2,19 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema({
     valor: {
         type: Number,
-        required: false
+        required: true
     },
     descricao: {
         type: String,
-        required: false
+        required: true
+    },
+    debito: {
+        type: Boolean,
+        required: true
     },
     data: {
         type: Date,
-        required: false
+        required: true
     },
     origem: [{
         cpf:Number,

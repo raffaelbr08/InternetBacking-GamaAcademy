@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var  model = mongoose.model('Correntista');
+var model = mongoose.model('Correntista');
 var logger = require('../services/logger');
 var api = {};
 

@@ -32,6 +32,7 @@ module.exports = function(){
 		.include('models')
         .then('api')
 		.then('services')
+		.then('routes/login.js')
 		.then('routes')
         .into(app);
 
