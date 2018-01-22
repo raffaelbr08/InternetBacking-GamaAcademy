@@ -1,10 +1,9 @@
-# ava-gama-banking
+# Internet Banking
 
 ## Tópicos
 * [Requerimentos](#requerimentos)
 * [Instalação](#instalacao)
 * [Pastas do projeto](#pastas-do-projeto)
-* [Iniciando os containers](#iniciando-os-containers)
 * [Api](#api)
     * [Consultando](#consultando-a-api)
 * [Banco de dados](#banco-de-dados)
