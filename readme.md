@@ -80,13 +80,24 @@ Cada pasta representa um "módulo" do projeto, onde:
    Para iniciar a api no Pompt rodar dentro da pasta Node: npm run build
    Usar Postman para testar a aplicação
    
-   * Rotas:
-     * /v1/login : primeira rota para logar e conseguir o token
-     >method: post
-     
-     >Headers:
-     
-     >Body: {cpf: <Number>, senha: <String> }
+### Rotas:
+
+   #### __/v1/login__ : primeira rota para logar e conseguir o token
+  >method: post
+  >Headers: "content-type" : "application/json"
+  >Body: {cpf: <Number>, senha: <String> }
+   
+   #### __/v1/*__ : qualquer rota pra frente você precisa inserir um header com o nome de "x-access-token" e no conteudo você passa o valor do token devolvido.
+
+   #### __/v1/correntistas/__ : rota para acessar os correntistas correntistas
+   > method: get
+   > Headers: "content-type" : "application/json"
+
+   #### __/v1/correntistas/:cpf__
+    > method: post
+    > Headers: "content-type" : "application/json"
+      
+      
     
 ## Banco de dados
     TODO:
