@@ -1,0 +1,89 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/background-login.jpg");
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: #fff;
+    width: 85%;
+    border-radius: 6px;
+}
+
+.content {
+    padding: 30px 30px;
+}
+  
+.login-header h2 {
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    background: #0d0630;
+    margin: 0;
+    padding: 30px 40px;
+    border-radius: 5px 5px 0 0;
+    font-weight: normal;
+}
+  
+.placeholder-wrap {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.placeholder-label {
+    position: absolute;
+    top: 50%;
+    margin: -5px 0;
+    color: #696869;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+  
+.placeholder-input {
+    width: 100%;
+    border: 0;
+    font-size: 1em;
+    padding: 25px 0 5px;
+}
+
+.placeholder-input:focus {
+    outline: none;
+}
+
+.placeholder-input:valid ~ .placeholder-label, .placeholder-input:focus ~ .placeholder-label {
+    top: 20%;
+    color: #0d0630;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+  
+/* estilo padrão para os buttons */
+.btn {
+    border: 1px solid #0d0630;
+    background: transparent;
+    padding: 12px;
+    width: 100%;
+    font-size: 1em;
+    font-weight: lighter;
+    text-align: center;
+    border-radius: 6px;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+@media (min-width:600px) {
+    .login-box {
+        width: 350px;
+    }
+
+    .btn:hover {
+        background: #0d0630;
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+}
