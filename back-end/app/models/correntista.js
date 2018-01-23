@@ -19,7 +19,8 @@ var schema = mongoose.Schema({
 	},
 	senha:{
 		type: String,
-		required:true
+		required:true,
+		select: false
 	},
 	transferencias:[{
 		id: String,
