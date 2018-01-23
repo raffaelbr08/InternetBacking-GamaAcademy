@@ -1,6 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
+<<<<<<< HEAD
 }
 
 nav {
@@ -91,4 +92,6 @@ nav {
     border-radius: 6px;
     margin: 15px 0;
     cursor: pointer;
+=======
+>>>>>>> 11215e5eb602fe7bb73789fde8ffd66cd752c179
 }
