@@ -31,7 +31,6 @@
   
 .placeholder-wrap {
     position: relative;
-    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 30px;
 }
 
@@ -49,10 +48,12 @@
     border: 0;
     font-size: 1em;
     padding: 25px 0 5px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .placeholder-input:focus {
     outline: none;
+    border-bottom: 1px solid #0d0630;
 }
 
 .placeholder-input:valid ~ .placeholder-label, .placeholder-input:focus ~ .placeholder-label {
