@@ -90,27 +90,36 @@ Cada pasta representa um "módulo" do projeto, onde:
    
 ### Rotas:
 
-   #### __/v1/login__ : primeira rota para logar e conseguir o token
+   #### localhost/v1/login
+   
+   primeira rota para logar e conseguir o token
+   
   ```
   method: post
   Headers: "content-type" : "application/json"
   Body: {cpf: <Number>, senha: <String> }
   ```
    
-   #### __/v1/*__ : qualquer rota pra frente você precisa inserir um header com o nome de "x-access-token" e no conteudo você passa o valor do token devolvido.
+   #### localhost/v1/*
+   qualquer rota pra frente você precisa inserir um header com o nome de "x-access-token" e no conteudo você passa o valor do token devolvido.
+   ```
+   Headers: "x-access-token" : "token"
+   ```
 
-   #### __/v1/correntistas/__ : rota para acessar os correntistas correntistas
+   #### localhost/v1/correntistas/ 
+   rota para acessar os correntistas correntistas
    ```
    method: get.
    Headers: "content-type" : "application/json"
    ```
 
-   #### __/v1/correntistas/:cpf__
-    ```
-    method: post.
-    Headers: "content-type" : "application/json"
-    ```
-      
+   #### localhost/v1/correntistas/:cpf
+   ```
+   method: post.
+   Headers: "content-type" : "application/json"
+   ```
+    
+    
       
     
 ## Banco de dados
