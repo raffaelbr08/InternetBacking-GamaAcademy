@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transferencias.css">
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <div class="wrap">
+                <h2 id="logo">Internet Banking</h2>
+                <div class="info">
+                    Olá, Felipe!
+                    Sair
+                </div>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1 class="title">Transferência</h1>
+        </div>
+        <div class="content">
+            <form>
+                <div class="placeholder-wrap">
+                    <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
+                    <span class="placeholder-label">selecione a conta</span>
+                </div>
+                <div class="placeholder-wrap">
+                    <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
+                    <span class="placeholder-label">R$</span>
+                </div>
+                <div class="placeholder-wrap">
+                    <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
+                    <span class="placeholder-label">descrição da transação</span>
+                </div>
+                <button type="submit" class="btn btn-submit">Realizar transferência</button>
+            </form>
+        </div>
+    </header>
 </body>
 </html>

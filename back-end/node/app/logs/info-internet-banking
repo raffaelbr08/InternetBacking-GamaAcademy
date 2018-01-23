@@ -199,3 +199,25 @@
 {"level":"info","message":"item incluido na collection Fornecedores: ","timestamp":"2018-01-22T02:38:06.788Z"}
 {"level":"info","message":"::1 - - [22/Jan/2018:02:38:06 +0000] \"POST /v1/transferencias HTTP/1.1\" 200 294\n","timestamp":"2018-01-22T02:38:06.794Z"}
 {"level":"info","message":"::1 - - [22/Jan/2018:02:38:54 +0000] \"GET /v1/transferencias HTTP/1.1\" 200 3529\n","timestamp":"2018-01-22T02:38:54.905Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T22:17:03.694Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T22:42:55.008Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:49:33 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:49:33.841Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:51:43 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:51:43.365Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:53:06 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:53:06.167Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:53:32 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:53:32.886Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:54:58 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:54:58.153Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:55:13 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:55:13.084Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:55:14 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:55:14.606Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:55:55 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:55:55.509Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:56:23 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:56:23.055Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T22:56:45.001Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T22:58:00.220Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:58:09 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:58:09.323Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:58:36 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:58:36.048Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T22:58:45.726Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:22:58:49 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T22:58:49.493Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T23:11:01.787Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T23:14:24.672Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:23:14:29 +0000] \"POST /v1/login HTTP/1.1\" 401 12\n","timestamp":"2018-01-22T23:14:29.596Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-22T23:18:11.814Z"}
+{"level":"info","message":"::1 - - [22/Jan/2018:23:18:15 +0000] \"POST /v1/login HTTP/1.1\" 200 233\n","timestamp":"2018-01-22T23:18:15.116Z"}

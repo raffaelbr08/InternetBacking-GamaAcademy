@@ -1,6 +1,4 @@
-{
-    "dataFormat": "DRIVER",
-    "correntistas": [
+     [
         {
             "cpf": 1,
             "nome": "Everton Gil",
@@ -45,4 +43,3 @@
             ]
         }
     ]
-}

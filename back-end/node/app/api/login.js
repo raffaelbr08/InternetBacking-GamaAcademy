@@ -16,11 +16,16 @@ module.exports = function(app) {
 		}
 		//console.log("Body2:", req.body);
 
-		//Procura pelo usuario no banco
+		// //Procura pelo usuario no banco
 		return model
+		//remover senha da consulta
 		.findOne({cpf: req.body.cpf, senha: req.body.senha})
 		.then(function(user){
-			//console.log(user);
+			//compara a senha com bcrypt
+			//var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+    		//if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+
+			
 			if(!user){
 				console.log("Login e senha são invalidos");
 				
@@ -71,6 +76,14 @@ module.exports = function(app) {
 			})
 		}
 		
+	}
+
+	api.logout = function(req, res){
+		res.status(200).send({
+			success: true,
+			message: 'Token Removido!',
+			token: null 
+		});
 	}
 
 	return api;
