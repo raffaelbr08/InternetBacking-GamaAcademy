@@ -48,7 +48,18 @@
 
     Npm já vem instalado com o nodejs. Caso não esteja instalado acessar: [NPM](https://www.npmjs.com/get-npm)
     
-    
+* MongoDB
+   Fazer download
+   https://www.mongodb.com/download-center?jmp=nav#community
+   
+   Abrir Painel de controles >> sistema >> Variaveis de ambiente
+   Editar a variavel: Path
+   Clicar em novo e adicionar o caminho do mongo/bin
+   
+   Iniciar o banco no prompt: mongod
+   Abrir o banco no prompt: mongo
+  
+
 * @angular/cli
 
     Acessar o link e seguir os passos:
@@ -66,7 +77,15 @@ Cada pasta representa um "módulo" do projeto, onde:
 
 ## Api
 ### Consultando a api
-    TODO:
+   Para iniciar a api no Pompt rodar dentro da pasta Node: npm run build
+   Usar Postman para testar a aplicação
+   
+   * Rotas:
+     * /v1/login : primeira rota para logar e conseguir o token
+     method: post
+     Headers:
+     Body: {cpf: <Number>, senha: <String> }
+    
 ## Banco de dados
     TODO:
 ### Consultando os dados
