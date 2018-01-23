@@ -59,7 +59,15 @@
    Iniciar o banco no prompt: mongod
    Abrir o banco no prompt: mongo
   
-
+* node-mongo-seeds
+   Necessário para população de dados no banco
+   
+   Run ```$ npm install -g node-mongo-seeds```
+   
+   Altere os arquivos .json na pasta seed
+   
+   Run ```$seed```
+   
 * @angular/cli
 
     Acessar o link e seguir os passos:
