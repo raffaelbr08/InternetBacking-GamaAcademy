@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Internet Banking - Transferência</title>
+    <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/transferencias.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="container wrap">
+                <h2 id="logo">Internet Banking</h2>
+                <div class="info">
+                    Olá, Felipe!
+                    Sair
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="jumbotron hero">
+        <h1 class="title">Transferência</h1>
+    </div>
+    <div class="container">
+        <form style="display: inherit">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="placeholder-wrap">
+                        <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
+                        <span class="placeholder-label">selecione a conta</span>
+                    </div>
+                </div>    
+                <div class="col-sm">
+                    <div class="placeholder-wrap">
+                        <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
+                        <span class="placeholder-label">R$</span>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="placeholder-wrap">
+                        <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
+                        <span class="placeholder-label">descrição da transação</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-submit">Realizar transferência</button>
+        </form>
+    </div>
     
 </body>
 </html>

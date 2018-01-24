@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Internet Banking - Extrato</title>
+    <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extrato.css">
+
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="container wrap">
+                <h2 id="logo">Internet Banking</h2>
+                <div class="info">
+                    Olá, Felipe!
+                    Sair
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="jumbotron hero">
+        <h1 class="title">Saldo</h1>
+        <h1 id="saldo">R$ 5200.00</h1>
+        <hr class="divider">
+        <p id="conta">Ag 0765 CC 765872-1<br>Felipe Belinassi</p>
+    </div>
+    <a href="transferencias.html">
+            <button type="submit" class="btn btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
+        </a>
+    <div class="container">
     
+        <div class="tabelaExtrato">
+            <div class="row">
+                    <div class="col-12 th">Ultimas transações</div>
+                </div>
+                <div class="row">
+                <div class="col-12 col-md-2 tab-data">27/01</div>
+                <div class="col-8 col-md-6 tab-transacao">
+                    <span><h6>Transferência</h6>
+                    <h5>033.0123.12345-6 - Everton Gil</h5></span>
+                </div>
+                <div class="col-4 col-md-4 tab-valor"><h5>R$ -350,00</h5></div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-2 tab-data">27/01</div>
+                <div class="col-8 col-md-6 tab-transacao">
+                    <span><h6>Transferência</h6>
+                    <h5>033.0123.12345-6 - Everton Gil</h5></span>
+                </div>
+                <div class="col-4 col-md-4 tab-valor"><h5>R$ -350,00</h5></div>
+            </div>
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-submit" style="margin-top: 2rem;">Conferir extrato completo</button>
 </body>
 </html>
