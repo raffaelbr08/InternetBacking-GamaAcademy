@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Saldo/Extrato</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extrato.css">
+
 </head>
+
 <body>
     <header>
         <nav>
-            <h2>Internet Banking</h2>
+            <div class="wrap">
+                <h2 id="logo">Internet Banking</h2>
+                <div class="info">
+                    Olá, Felipe! Sair
+                </div>
+            </div>
         </nav>
+
+        <div class="hero">
+            <h4 class="title">Saldo</h4>
+            <h1 class="title title-extrato">R$5.200,00</h1>
+        </div>
+        <div class="content">
+            <button type="submit" class="btn btn-submit">Realizar transferência</button>
+        </div>
+        <div class="content">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Transações</th>
+                        <th scope="col">R$</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>21/01</td>
+                        <td>033.0123.12345-6 - Everton</td>
+                        <td>-350</td>
+                    </tr>
+                    <tr>
+                        <td>21/01</td>
+                        <td>033.0123.12345-6 - Vivo</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>21/01</td>
+                        <td>033.0123.12345-6 - Fabiano</td>
+                        <td>150</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-submit">Conferir extrato completo</button>
+        </div>
     </header>
 </body>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
 </html>

@@ -227,3 +227,4 @@
 {"level":"info","message":"::1 - - [23/Jan/2018:23:30:27 +0000] \"POST /v1/login HTTP/1.1\" 200 237\n","timestamp":"2018-01-23T23:30:27.623Z"}
 {"level":"info","message":"::1 - - [23/Jan/2018:23:31:03 +0000] \"POST /v1/correntistas/ HTTP/1.1\" 404 117\n","timestamp":"2018-01-23T23:31:03.640Z"}
 {"level":"info","message":"::1 - - [23/Jan/2018:23:31:27 +0000] \"GET /v1/correntistas/ HTTP/1.1\" 200 1273\n","timestamp":"2018-01-23T23:31:27.414Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T00:48:00.754Z"}
