@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <div class="container wrap">
+            <div class="container nav-bar">
                 <h2 id="logo">Internet Banking</h2>
                 <div class="info">
                     Olá, Felipe!
@@ -24,27 +24,21 @@
     <div class="jumbotron hero">
         <h1 class="title">Transferência</h1>
     </div>
-    <div class="container">
+    <div class="container wrap">
+        <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
+
         <form style="display: inherit">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="placeholder-wrap">
-                        <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
-                        <span class="placeholder-label">selecione a conta</span>
-                    </div>
-                </div>    
-                <div class="col-sm">
-                    <div class="placeholder-wrap">
-                        <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
-                        <span class="placeholder-label">R$</span>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="placeholder-wrap">
-                        <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
-                        <span class="placeholder-label">descrição da transação</span>
-                    </div>
-                </div>
+            <div class="placeholder-wrap">
+                <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
+                <span class="placeholder-label">seleciona a conta para transferir</span>
+            </div>
+            <div class="placeholder-wrap">
+                <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
+                <span class="placeholder-label">valor a transferir (R$)</span>
+            </div>
+            <div class="placeholder-wrap">
+                <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
+                <span class="placeholder-label">descrição da transação</span>
             </div>
             <button type="submit" class="btn btn-submit">Realizar transferência</button>
         </form>

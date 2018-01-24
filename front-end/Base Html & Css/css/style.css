@@ -13,12 +13,13 @@ nav {
     height: 70px;
 }
 
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
 .wrap {
-    display: flex;
-    justify-content:  space-between;
     width: 85%;
-    display: flex;
-    justify-content:  space-between;
     margin: 0 auto;
 }
 
@@ -31,8 +32,8 @@ nav {
 .title {
     font-size: 1.5em;
     text-align: center;
-    font-size: 1.5em;
     color: #fff;
+    font-weight: bold;
 }
 
 .info {
@@ -51,7 +52,7 @@ nav {
     padding: 30px 30px;
 }
 
-/* estilo padrão dos inputs + animação */
+/* estilo padrÃ£o dos inputs + animaÃ§Ã£o */
 .placeholder-wrap {
     position: relative;
     margin-bottom: 30px;
@@ -89,7 +90,7 @@ nav {
     transition: all 0.3s;
 }
 
-/* estilo padrão dos buttons */
+/* estilo padrÃ£o dos buttons */
 .btn {
     border: 1px solid #0d0630;
     background: transparent;
@@ -109,17 +110,17 @@ nav {
     }
 
     .hero {
-        padding: 80px 0;
+        padding: 55px 0;
     }
-    
-    margin: 15px 0;
-    cursor: pointer;
-}
 
-@media (min-width:600px) {
     .btn:hover {
         background: #0d0630;
         color: #fff;
         transition: background-color 0.3s ease;
+    }
+
+    .wrap {
+        width: 50%;
+        margin: 0 auto;
     }
 }
