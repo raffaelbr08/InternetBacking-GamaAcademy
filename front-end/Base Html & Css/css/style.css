@@ -16,6 +16,10 @@ nav {
 .wrap {
     display: flex;
     justify-content:  space-between;
+    width: 85%;
+    display: flex;
+    justify-content:  space-between;
+    margin: 0 auto;
 }
 
 #logo {
@@ -26,6 +30,9 @@ nav {
 
 .title {
     font-size: 1.5em;
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff;
 }
 
 .info {
@@ -44,7 +51,7 @@ nav {
     padding: 30px 30px;
 }
 
-/* estilo padrÃ£o dos inputs + animaÃ§Ã£o */
+/* estilo padrão dos inputs + animação */
 .placeholder-wrap {
     position: relative;
     margin-bottom: 30px;
@@ -105,6 +112,11 @@ nav {
         padding: 80px 0;
     }
     
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+@media (min-width:600px) {
     .btn:hover {
         background: #0d0630;
         color: #fff;
