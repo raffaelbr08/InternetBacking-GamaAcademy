@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { ExtratoComponent } from './pages/extrato/extrato.component';
 
 
 
@@ -17,7 +18,8 @@ import { LogoComponent } from './components/logo/logo.component';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    LogoComponent
+    LogoComponent,
+    ExtratoComponent
     ],
   imports: [
     BrowserModule,
