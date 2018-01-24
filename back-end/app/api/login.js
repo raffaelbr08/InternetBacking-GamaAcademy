@@ -21,10 +21,10 @@ module.exports = function (app) {
 
 		// Verifica se tem um object no body
 		// E depois gera um usuario padrão para logar
-		if (isObjectEmpty(req.body)) {
-			req.body.cpf = 1,
-			req.body.senha = "123"
-		}
+		// if (isObjectEmpty(req.body)) {
+		// 	req.body.cpf = 1,
+		// 	req.body.senha = "123"
+		// }
 
 		// Gera o Hash com a senha passada
 		// Seta o hash do body
