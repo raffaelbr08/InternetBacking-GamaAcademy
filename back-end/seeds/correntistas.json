@@ -4,42 +4,30 @@
             "nome": "Everton Gil",
             "agencia": 1,
             "contaCorrente": 125126,
-            "senha": "teste123",
-            "transferencias": [
-                {
-                    "id": "ObjectId(123456)",
-                    "valor": 123,
-                    "descricao": "Saldo inicial",
-                    "data": "2018-01-20T20:02:10.604Z"
-                }
-            ]
+            "senha": "",
+            "saldo": 123,
+            "transacaoPendente": [],
+            "updated_at": "2018-01-20T20:02:10.604Z",
+            "created_at": "2018-01-20T20:02:10.604Z"
         },
         {
             "cpf": 2,
             "agencia": 466,
             "contaCorrente": 101063599,
-            "senha": "teste123",
-            "transferencias": [
-                {
-                    "id": "ObjectId(12336)",
-                    "valor": 123,
-                    "descricao": "Compra Supermercado Extra",
-                    "data": "2018-01-20T20:02:10.604Z"
-                }
-            ]
+            "senha": "123",
+            "saldo": 123,
+            "transacaoPendente": [],
+            "updated_at": "2018-01-20T20:02:10.604Z",
+            "created_at": "2018-01-20T20:02:10.604Z"
         },
         {
             "cpf": 3,
             "agencia": 466,
             "contaCorrente": 101063599,
             "senha": "teste123",
-            "transferencias": [
-                {
-                    "id": "ObjectId(12f456)",
-                    "valor": 123,
-                    "descricao": "Compra Supermercado Extra",
-                    "data": "2018-01-20T20:02:10.604Z"
-                }
-            ]
+            "saldo": 123,
+            "transacaoPendente": [],
+            "updated_at": "2018-01-20T20:02:10.604Z",
+            "created_at": "2018-01-20T20:02:10.604Z"
         }
     ]
