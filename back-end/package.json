@@ -9,12 +9,13 @@
   "scripts": {
     "start": "node app",
     "test": "node node_modules/mocha/bin/mocha",
-    "build": " concurrently  \"mongod\" \" set NODE_ENV = teste\" \"nodemon app\"",
+    "build": " concurrently  \"mongod\" \" set NODE_ENV = teste\" \"node app\"",
     "watch": "babel public/js/app-es6 -d public/js/app --source-maps --watch"
   },
   "author": "Grupo 2 gamaAcademy",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "consign": "^0.1.6",

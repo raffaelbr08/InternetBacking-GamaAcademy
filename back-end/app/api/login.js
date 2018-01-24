@@ -5,35 +5,42 @@ const isObjectEmpty = require('../services/isObjectEmpty');
 const logger = require('../services/logger');
 const api = {};
 const crypto = require('crypto');
+const hash = require('../services/hash');
 
 
 module.exports = function (app) {
 
-	api.autentica = function (req, res) {
+	api.geraHash = function (req, res) {
 
-		// Gera o Hash com a senha passada
-		const hash = crypto.createHash(app.get('hashType'), app.get('secretHash'))
-			.update(req.body.senha)
-			.digest('base64');
+		console.log("Senha: ", req.body.senha)
+		console.log("Hash: ", hash.gerar(app, req.body.senha))
+		res.status(200).send({"success": "Verificar token no pronpt do server"})
+	}
+
+	api.autentica = function (req, res) {
 
 		// Verifica se tem um object no body
 		// E depois gera um usuario padrão para logar
 		if (isObjectEmpty(req.body)) {
 			req.body.cpf = 1,
-			req.body.senha = "teste123"
+			req.body.senha = "123"
 		}
+
+		// Gera o Hash com a senha passada
 		// Seta o hash do body
-		req.body.senha = hash
+		//console.log("senha sem hash: ", req.body.senha)
+		req.body.senha = hash.gerar(app, req.body.senha)
+		//console.log("senha com hash: ",req.body.senha)
 
 		// Procura pelo usuario no banco
 		// Comparando o CPF e a Senha(hash)
 		// TODO: Remover senha da consulta
 		return model
 			.findOne({ cpf: req.body.cpf, senha: req.body.senha })
-			.then(function (user) {
+			.then(function (correntista) {
 
 				// Checa se realmente trouxe um usuário
-				if (!user) {
+				if (!correntista) {
 					console.log("Login e senha são invalidos");
 
 					// Envia response de não autorizado
@@ -43,20 +50,19 @@ module.exports = function (app) {
 					});
 				}
 				else {
-					console.log("user:", user.admin)
+					console.log("user:", correntista.admin)
 
 					// Gera o token com o jwt e um secret
-					const token = jwt.sign({ Id: user._id, login: user.cpf, admin: user.admin }, app.get('secret'), {
+					const token = jwt.sign({ id: correntista._id, login: correntista.cpf }, app.get('secret'), {
 						expiresIn: 1000
 					});
 
 					//Devolve o token pelo header da resposta e no body
 					res.set('x-access-token', token);
-					res.send({
-						success: true,
-						message: 'Token Criado!',
-						token: token
-					});
+					
+					delete correntista._id;
+
+					res.send({correntista});
 				}
 
 			},
@@ -116,10 +122,7 @@ module.exports = function (app) {
 		if (usuario.admin) {
 
 			// Gera um hash para a senha passada
-			const hash = crypto.createHash(app.get('hashType'), app.get('secretHash'))
-			.update(req.body.senha)
-			.digest('base64');
-			body.senha = hash
+			body.senha = hash.gerar(app, req.body.senha)
 
 			// Gera o usuário no Banco
 			model.create(req.body)
