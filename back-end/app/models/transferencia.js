@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
+    descricao: String,
     origem: String,
     destino: String,
     valor: Number,
