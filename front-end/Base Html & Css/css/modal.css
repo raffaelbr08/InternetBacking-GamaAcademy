@@ -21,13 +21,10 @@
     justify-content: center;
 }
 
-.testao {
-    background-color: #e2e0ee;
-}
 .transfer {
-    margin: 0px;
+    padding: 0;
 }
-.transfer li{
+.transfer li {
     list-style: none;
     text-align: center;
 }
