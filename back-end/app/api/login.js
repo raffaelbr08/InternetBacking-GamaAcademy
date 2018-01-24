@@ -23,7 +23,7 @@ module.exports = function (app) {
 		// E depois gera um usuario padrão para logar
 		if (isObjectEmpty(req.body)) {
 			req.body.cpf = 1,
-			req.body.senha = "maiscaro233"
+			req.body.senha = "123"
 		}
 
 		// Gera o Hash com a senha passada
@@ -37,10 +37,10 @@ module.exports = function (app) {
 		// TODO: Remover senha da consulta
 		return model
 			.findOne({ cpf: req.body.cpf, senha: req.body.senha })
-			.then(function (user) {
+			.then(function (correntista) {
 
 				// Checa se realmente trouxe um usuário
-				if (!user) {
+				if (!correntista) {
 					console.log("Login e senha são invalidos");
 
 					// Envia response de não autorizado
@@ -50,20 +50,19 @@ module.exports = function (app) {
 					});
 				}
 				else {
-					console.log("user:", user.admin)
+					console.log("user:", correntista.admin)
 
 					// Gera o token com o jwt e um secret
-					const token = jwt.sign({ id: user._id, login: user.cpf, admin: user.admin }, app.get('secret'), {
+					const token = jwt.sign({ id: correntista._id, login: correntista.cpf }, app.get('secret'), {
 						expiresIn: 1000
 					});
 
 					//Devolve o token pelo header da resposta e no body
 					res.set('x-access-token', token);
-					res.send({
-						success: true,
-						message: 'Token Criado!',
-						correntista: user
-					});
+					
+					delete correntista._id;
+
+					res.send({correntista});
 				}
 
 			},

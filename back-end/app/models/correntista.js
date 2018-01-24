@@ -1,14 +1,27 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-	cpf: String,
+	
+	cpf: {
+		type: String,
+		required: true
+	},
 	nome: String,
 	agencia: String,
 	contaCorrente:  String,
-	senha: String,
+	senha: {
+		type: String,
+		select: false
+	},
 	saldo: Number,
-	transacaoPendente: [],
+	transacaoPendente: {
+		type: Array,
+		select: false
+	} ,
 	updated_at: Date,
-	created_at: Date
+	created_at: {
+		type: Date,
+		select: false
+	}
 });
 mongoose.model('Correntista', schema, 'correntistas');
 
