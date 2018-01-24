@@ -14,13 +14,11 @@ var schema = mongoose.Schema({
 	},
 	saldo: Number,
 	transacaoPendente: {
-		type: Array,
-		select: false
+		type: Array
 	} ,
 	updated_at: Date,
 	created_at: {
-		type: Date,
-		select: false
+		type: Date
 	}
 });
 mongoose.model('Correntista', schema, 'correntistas');

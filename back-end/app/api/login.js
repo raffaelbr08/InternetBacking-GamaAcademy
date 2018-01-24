@@ -37,10 +37,10 @@ module.exports = function (app) {
 		// TODO: Remover senha da consulta
 		return model
 			.findOne({ cpf: req.body.cpf, senha: req.body.senha })
-			.then(function (correntista) {
+			.then(function (user) {
 
 				// Checa se realmente trouxe um usuário
-				if (!correntista) {
+				if (!user) {
 					console.log("Login e senha são invalidos");
 
 					// Envia response de não autorizado
@@ -50,18 +50,30 @@ module.exports = function (app) {
 					});
 				}
 				else {
-					console.log("user:", correntista.admin)
 
 					// Gera o token com o jwt e um secret
-					const token = jwt.sign({ id: correntista._id, login: correntista.cpf }, app.get('secret'), {
+					const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
 						expiresIn: 1000
 					});
 
 					//Devolve o token pelo header da resposta e no body
 					res.set('x-access-token', token);
 					
-					delete correntista._id;
+					let correntista = {
+						"cpf": user.cpf,
+						"nome": user.name,
+						"agencia": user.agencia,
+						"contaCorrente": user.contaCorrente,
+						"saldo": user.saldo,
+						"updated_at": user.updated_at,
+						"created_at": user.created_at
+					}
+					 
+					// correntista.transacaoPendente = undefined
+					// correntista._id
 
+
+					// console.log(correntista._id.isFrozen())
 					res.send({correntista});
 				}
 
