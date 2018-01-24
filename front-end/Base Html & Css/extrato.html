@@ -23,47 +23,47 @@
             </div>
         </nav>
     </header>
+
+    <!--------- Hero com saldo -->
     <div class="jumbotron hero">
         <h1 class="title">Saldo</h1>
-        <h1 id="saldo">R$ 5200.00</h1>
+        <h1 class="title-extrato">R$ 5.200,00</h1>
         <hr class="divider">
         <p id="conta">Ag 0765 CC 765872-1<br>Felipe Belinassi</p>
     </div>
     <a href="transferencias.html">
-            <button type="submit" class="btn btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
-        </a>
+        <button type="submit" class="btn btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
+    </a>
 
+    <!--------- Tabela de extrato -->
     <div class="container">
-        <div class="tabelaExtrato">
-            <div class="row">
-                <div class="col-12 th">Ultimas transações</div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-2 tab-data">27/01</div>
-                <div class="col-8 col-md-6 tab-transacao">
-                    <span><h6>Transferência</h6>
-                    <h5>0123.12345-6 - Everton G.</h5></span>
-                </div>
-                <div class="col-4 col-md-4 tab-valor"><h5 class="transacao--negativa">R$ - 350,00</h5></div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-2 tab-data">19/01</div>
-                <div class="col-8 col-md-6 tab-transacao">
-                    <span><h6>Pagamento Dívida</h6>
-                    <h5>1245.34256-7 - Fabiano R.</h5></span>
-                </div>
-                <div class="col-4 col-md-4 tab-valor"><h5 class="transacao--positiva">R$ 350,00</h5></div>
-            </div>
-            <div class="row">
-                    <div class="col-12 col-md-2 tab-data">17/01</div>
-                    <div class="col-8 col-md-6 tab-transacao">
-                        <span><h6>Burguer King</h6>
-                        <h5>1245.34256-7 - Anderson S.</h5></span>
-                    </div>
-                    <div class="col-4 col-md-4 tab-valor"><h5 class="transacao--negativa">R$ - 16,00</h5></div>
-                </div>
-        </div>
-    <button type="submit" class="btn btn-submit" style="margin-top: 2rem;">Conferir extrato completo</button>
-</div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Transações</th>
+                    <th scope="col">R$</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>21/01</td>
+                    <td>0123.12345-6 - Everton</td>
+                    <td class="transacao--negativa">R$ -350,00</td>
+                </tr>
+                <tr>
+                    <td>21/01</td>
+                    <td>0123.12345-6 - Vivo</td>
+                    <td class="transacao--positiva">R$ 100,00</td>
+                </tr>
+                <tr>
+                    <td>21/01</td>
+                    <td>033.0123.12345-6 - Fabiano</td>
+                    <td class="transacao--positiva">R$ 150,00</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-submit" style="margin-top: 2rem;">Conferir extrato completo</button>
+    </div>
 </body>
 </html>
