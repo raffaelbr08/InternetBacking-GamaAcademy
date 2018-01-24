@@ -15,16 +15,17 @@ module.exports = function (app) {
 		console.log("Senha: ", req.body.senha)
 		console.log("Hash: ", hash.gerar(app, req.body.senha))
 		res.status(200).send({"success": "Verificar token no pronpt do server"})
+		
 	}
 
 	api.autentica = function (req, res) {
 
 		// Verifica se tem um object no body
 		// E depois gera um usuario padrão para logar
-		if (isObjectEmpty(req.body)) {
-			req.body.cpf = 1,
-			req.body.senha = "123"
-		}
+		// if (isObjectEmpty(req.body)) {
+		// 	req.body.cpf = 1,
+		// 	req.body.senha = "123"
+		// }
 
 		// Gera o Hash com a senha passada
 		// Seta o hash do body
@@ -67,6 +68,7 @@ module.exports = function (app) {
 						"saldo": user.saldo,
 						"updated_at": user.updated_at,
 						"created_at": user.created_at
+
 					}
 					 
 					// correntista.transacaoPendente = undefined
@@ -74,7 +76,7 @@ module.exports = function (app) {
 
 
 					// console.log(correntista._id.isFrozen())
-					res.send({correntista});
+					res.send({correntista: correntista, token: token});
 				}
 
 			},
@@ -88,7 +90,9 @@ module.exports = function (app) {
 					message: 'Usuario e senha são invalidos'
 				})
 			});
+
 	}
+
 	api.verificatoken = function (req, res, next) {
 		const token = req.headers['x-access-token'];
 
