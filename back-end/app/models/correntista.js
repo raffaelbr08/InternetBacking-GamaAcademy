@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-	cpf: Number,
+	cpf: String,
 	nome: String,
-	agencia: Number,
-	contaCorrente:  Number,
+	agencia: String,
+	contaCorrente:  String,
 	senha: String,
 	saldo: Number,
 	transacaoPendente: [],
