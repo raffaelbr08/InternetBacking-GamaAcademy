@@ -1,4 +1,4 @@
-.container {
+.container-fw {
     width: 100vw;
     height: 100vh;
     background-image: url("../../../assets/img/background-login.jpg");   
@@ -10,31 +10,46 @@
 }
 
 .login-box {
-    background: #fff;
+    background: rgb(26, 21, 21);
     width: 85%;
     border-radius: 6px;
+    z-index: 1;
 }
-  
-.login-header {   
+
+.content {
+    padding: 30px 30px;
+}
+
+.login-header {
     color: #ffffff;
     text-align: center;
     background: #0d0630;
     margin: 0;
-    padding: 20px 36px;
+    padding: 20px 40px;
     border-radius: 5px 5px 0 0;
     font-weight: normal;
-    
-    
+}
+  
+/* estilo padrão para todos os buttons */
+.btn {
+    border: 1px solid #0d0630;
+    background: transparent;
+    padding: 12px;
+    width: 100%;
+    font-size: 1em;
+    font-weight: lighter;
+    text-align: center;
+    border-radius: 6px;
+    margin: 15px 0;
+    cursor: pointer;
 }
 
-@media (min-width:600px) {
+@media (min-width:425px) {
     .login-box {
         width: 350px;
     }
 
-    .btn:hover {
-        background: #0d0630;
-        color: #fff;
-        transition: background-color 0.3s ease;
+    .wrap {
+        width: 60%;
     }
 }

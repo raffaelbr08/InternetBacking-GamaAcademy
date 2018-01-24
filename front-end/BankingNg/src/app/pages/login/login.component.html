@@ -1,20 +1,21 @@
-<div class="container">
-  <div class="login-box"> 
-      <form novalidate #formulario="ngForm" (ngSubmit)="enviaFormulario(formulario)" >
-          <div class="login-header">
-             <app-logo></app-logo>
-          </div>
-          <div class="content">
-              <div class="placeholder-wrap">
-                  <input name="cpf" type="number" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel" >
+<div class="container-fw">
+    <div class="login-box"> 
+        <form novalidate #formulario="ngForm" (ngSubmit)="enviaFormulario(formulario)" >
+            <div class="login-header">
+                <app-logo></app-logo>
+            </div>
+            <div class="content">
+                <div class="placeholder-wrap">
+                    <input name="cpf" type="number" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel" >
                     <span class="placeholder-label">cpf</span>
-              </div>
-              <div class="placeholder-wrap">
-                  <input name="password" type="password" class="placeholder-input" id="password" required autocomplete="off"ngModel #inputPassword="ngModel">
-                  <span class="placeholder-label">senha</span>
-              </div>
-              <button type="submit" class="btn btn-submit">entrar</button>
-          </div>
-      </form>
-  </div>
+                </div>
+                <div class="placeholder-wrap">
+                    <input name="password" type="password" class="placeholder-input" id="password" required autocomplete="off"ngModel #inputPassword="ngModel">
+                    <span class="placeholder-label">senha</span>
+                </div>
+                <p class="text-center">Teste</p>
+                <button type="submit" class="btnRoxo btn-submit" style="width: 100%">entrar</button>
+            </div>
+        </form>
+    </div>
 </div>

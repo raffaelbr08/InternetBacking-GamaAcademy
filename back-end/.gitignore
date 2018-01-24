@@ -6,6 +6,8 @@ logs
 
 # dependencies
 /node_modules
+/app/logs
+/logs
 
 # IDEs and editors
 /.idea

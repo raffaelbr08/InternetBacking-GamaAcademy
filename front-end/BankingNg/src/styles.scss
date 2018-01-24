@@ -1,12 +1,12 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
+    font-weight: lighter;
 }
 
-h1{
-    font-size: 20px;
+h1 {
+    font-size: 1.3em;
     font-weight: lighter;
-
 }
 
 nav {
@@ -18,9 +18,13 @@ nav {
     height: 70px;
 }
 
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
 .wrap {
     width: 85%;
-    display: flex;
     margin: 0 auto;
 }
 
@@ -31,9 +35,10 @@ nav {
 }
 
 .title {
-    text-align: center;
     font-size: 1.5em;
+    text-align: center;
     color: #fff;
+    font-weight: bold;
 }
 
 .info {
@@ -42,14 +47,17 @@ nav {
 
 .hero {
     background: url("./assets/img/background-login.jpg");
-    padding: 20px 0;
+    border-radius: 0;
+    padding: 40px 0;
+    color: #fff;
+    text-align: center;
 }
 
 .content {
     padding: 30px 30px;
 }
 
-/* estilo padrão dos inputs + animação */
+/* estilo padrão dos inputs + animaÃ§Ã£o */
 .placeholder-wrap {
     position: relative;
     margin-bottom: 30px;
@@ -62,6 +70,7 @@ nav {
     color: #696869;
     font-weight: lighter;
     font-size: 0.8em;
+    z-index: -1;
 }
   
 .placeholder-input {
@@ -70,6 +79,7 @@ nav {
     font-size: 1em;
     padding: 25px 0 5px;
     border-bottom: 1px solid #e0e0e0;
+    background: transparent;
 }
 
 .placeholder-input:focus {
@@ -86,15 +96,36 @@ nav {
 }
 
 /* estilo padrão dos buttons */
-.btn {
+.btnRoxo {
     border: 1px solid #0d0630;
     background: transparent;
     padding: 12px;
-    width: 100%;
     font-size: 1em;
     font-weight: lighter;
     text-align: center;
     border-radius: 6px;
-    margin: 15px 0;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (min-width:600px) {
+    .title {
+        font-size: 2.2em;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .btn:hover {
+        background: #0d0630;
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    .wrap {
+        width: 50%;
+        margin: 0 auto;
+    }
 }
