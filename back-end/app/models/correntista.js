@@ -1,46 +1,14 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-	cpf: {
-		type: Number,
-		required:true
-	},
-	nome: {
-		type: String,
-		required:true
-	},
-	agencia: {
-		type: Number,
-		required: true
-
-	},
-	contaCorrente: {
-		type: Number,
-		required: true
-	},
-	senha:{
-		type: String,
-		required:true,
-		select: false
-	},
-	transferencias:[{
-		id: String,
-		valor: {
-			type: Number,
-			required: false
-		},
-		debito: {
-			type: Boolean,
-			required: true
-		},
-		descricao: {
-			type: String,
-			required: false
-		},
-		data: {
-			type: Date,
-			required: false
-		}
-	}]
+	cpf: Number,
+	nome: String,
+	agencia: Number,
+	contaCorrente:  Number,
+	senha: String,
+	saldo: Number,
+	transacaoPendente: [],
+	updated_at: Date,
+	created_at: Date
 });
 mongoose.model('Correntista', schema, 'correntistas');
 

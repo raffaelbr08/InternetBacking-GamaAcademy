@@ -1,31 +1,11 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema({
-    valor: {
-        type: Number,
-        required: true
-    },
-    descricao: {
-        type: String,
-        required: true
-    },
-    debito: {
-        type: Boolean,
-        required: true
-    },
-    data: {
-        type: Date,
-        required: true
-    },
-    origem: [{
-        cpf:Number,
-        agencia: Number,
-        contaCorrente: Number
-    }],
-    destino: [{
-        cpf: Number,
-        agencia: Number,
-        contaCorrente: Number
-    }]
+    origem: String,
+    destino: String,
+    valor: Number,
+    situacao: String,
+    updated_at: Date,
+    created_at: Date
 })
 
 mongoose.model('Transferencia', schema, 'transferencias')
