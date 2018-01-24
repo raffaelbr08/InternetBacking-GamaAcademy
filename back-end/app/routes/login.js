@@ -4,5 +4,5 @@ module.exports = function(app){
 	app.post('/v1/login', api.autentica);
 	app.post('/v1/gera-hash', api.geraHash);
 	
-	//app.use('/*', api.verificatoken);
+	app.use('/*', api.verificatoken);
 }

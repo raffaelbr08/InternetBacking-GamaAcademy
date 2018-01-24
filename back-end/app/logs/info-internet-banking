@@ -242,3 +242,20 @@
 {"level":"info","message":"::1 - - [24/Jan/2018:15:51:12 +0000] \"POST /v1/gera-hash HTTP/1.1\" 200 49\n","timestamp":"2018-01-24T15:51:12.255Z"}
 {"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T15:51:42.988Z"}
 {"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T15:53:02.800Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:31:08.504Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:31:12 +0000] \"POST /v1/login HTTP/1.1\" 200 206\n","timestamp":"2018-01-24T16:31:12.030Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:31:38.327Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:32:14.144Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:32:54.222Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:32:58 +0000] \"POST /v1/login HTTP/1.1\" 200 213\n","timestamp":"2018-01-24T16:32:58.426Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:36:01.251Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:36:06 +0000] \"POST /v1/login HTTP/1.1\" 200 150\n","timestamp":"2018-01-24T16:36:06.885Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:38:05.114Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:38:25 +0000] \"POST /v1/login HTTP/1.1\" 200 150\n","timestamp":"2018-01-24T16:38:25.921Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:39:09.904Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:39:31.058Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:39:33 +0000] \"POST /v1/login HTTP/1.1\" 200 150\n","timestamp":"2018-01-24T16:39:33.174Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:40:01.904Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:40:05 +0000] \"POST /v1/login HTTP/1.1\" 200 150\n","timestamp":"2018-01-24T16:40:05.639Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T16:43:02.136Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:16:43:06 +0000] \"POST /v1/login HTTP/1.1\" 200 150\n","timestamp":"2018-01-24T16:43:06.779Z"}
