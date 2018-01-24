@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/transferencias.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
     <header>
@@ -40,9 +41,60 @@
                 <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
                 <span class="placeholder-label">descrição da transação</span>
             </div>
-            <button type="submit" class="btn btn-submit">Realizar transferência</button>
+            <button type="submit" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
         </form>
+        <!-- Button trigger modal -->
+ 
+        <!-- Modal -->
+        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal--header">
+                        <h2>Confirme os dados</h2>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="transfer">
+                            <li>
+                                <span>Felipe Belinassi</span><br>
+                                <span>Ag {{Var}} CC {{Var}</span><br>
+                            </li>
+                            <li>
+                                <img width="50" src="./img/Orion_arrow-down.svg">
+                            </li>
+                            <li>
+                                <span>Fabiano Silva</span><br>
+                                <sapn>Ag {{Var}} CC {{Var}}</span><br>
+                            </li>
+                            <li class="testao">
+                                <span>Descrição de pagamento</span><br>
+                                <span>R${{Var}}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btnRoxo" data-dismiss="modal" data-toggle="modal" data-target="#sucesso">Confirmar transferencia</button>
+                        <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal--body">
+                        <w>Transação realizada com sucesso!</p>
+                        <img width="60" src="./img/Orion_checkbox-confirm-circle (1).svg">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
