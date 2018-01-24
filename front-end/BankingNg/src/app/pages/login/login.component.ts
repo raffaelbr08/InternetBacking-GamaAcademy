@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   public enviaFormulario(formulario){
-    console.log(formulario)
+        
 
   }
 
