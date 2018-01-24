@@ -1,0 +1,28 @@
+hr.divider {
+    border-top: 1px solid #fff;
+    width: 15%; 
+    margin: 20px auto;
+}
+
+.title-extrato{
+    text-align: center;
+    font-size: 3em;
+    font-style: normal;
+}
+
+#conta {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.transacao--negativa {
+    color: red;
+}
+
+.transacao--positiva {
+    color: green;
+}
+
+@media (min-width:426px) {
+
+}
