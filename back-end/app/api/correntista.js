@@ -30,4 +30,21 @@ api.buscaPorCpf = (req, res) => {
 				res.status(500).json(error);
 			});
 }
+api.buscaPorConta = (req, res) => {
+	return model
+			.find({"contaCorrente": req.params.cpf})
+			.then((correntista) => {
+				if(correntista == null) {
+					var msg = `${req._remoteAddress} [${req._startTime}] "${req.method} ${req.url} HTTP/${req.httpVersion}" ${req.statusCode} (erro: Nome == null)`;
+					logger.log('error', msg);
+					res.status(404).json(correntista);
+				}
+				else{
+					res.status(404).json(correntista);
+				}
+			}, (error) => {
+				logger.log('error', error);
+				res.status(500).json(error);
+			});
+}
 module.exports = api;
