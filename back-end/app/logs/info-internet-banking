@@ -228,3 +228,15 @@
 {"level":"info","message":"::1 - - [23/Jan/2018:23:31:03 +0000] \"POST /v1/correntistas/ HTTP/1.1\" 404 117\n","timestamp":"2018-01-23T23:31:03.640Z"}
 {"level":"info","message":"::1 - - [23/Jan/2018:23:31:27 +0000] \"GET /v1/correntistas/ HTTP/1.1\" 200 1273\n","timestamp":"2018-01-23T23:31:27.414Z"}
 {"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T00:48:00.754Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T13:29:57.769Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:46:12 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:46:12.207Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:46:16 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:46:16.378Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:46:20 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:46:20.589Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:47:06 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:47:06.910Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:53:52 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:53:52.395Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:13:53:55 +0000] \"GET /v1/fotos HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T13:53:55.093Z"}
+{"level":"info","message":"conectou no mongodb dev","timestamp":"2018-01-24T14:40:13.806Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:14:40:55 +0000] \"GET / HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T14:40:55.528Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:14:40:55 +0000] \"GET /robots.txt HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T14:40:55.571Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:14:40:55 +0000] \"GET /robots.txt HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T14:40:55.611Z"}
+{"level":"info","message":"::1 - - [24/Jan/2018:14:40:55 +0000] \"GET /favicon.ico HTTP/1.1\" 401 49\n","timestamp":"2018-01-24T14:40:55.766Z"}
