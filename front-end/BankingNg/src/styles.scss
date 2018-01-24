@@ -1,0 +1,100 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: lighter;
+
+}
+
+nav {
+    background: #0d0630;
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    display: flex;
+    height: 70px;
+}
+
+.wrap {
+    width: 85%;
+    display: flex;
+    margin: 0 auto;
+}
+
+#logo {
+    font-size: 1.3em;
+    margin: auto 0;
+    float: left;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.info {
+    margin: auto 0;
+}
+
+.hero {
+    background: url("./assets/img/background-login.jpg");
+    padding: 20px 0;
+}
+
+.content {
+    padding: 30px 30px;
+}
+
+/* estilo padrão dos inputs + animação */
+.placeholder-wrap {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.placeholder-label {
+    position: absolute;
+    top: 50%;
+    margin: -5px 0;
+    color: #696869;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+  
+.placeholder-input {
+    width: 100%;
+    border: 0;
+    font-size: 1em;
+    padding: 25px 0 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.placeholder-input:focus {
+    outline: none;
+    border-bottom: 1px solid #0d0630;
+}
+
+.placeholder-input:valid ~ .placeholder-label, 
+.placeholder-input:focus ~ .placeholder-label {
+    top: 20%;
+    color: #0d0630;
+    transform: translateY(-50%);
+    transition: all 0.3s;
+}
+
+/* estilo padrão dos buttons */
+.btn {
+    border: 1px solid #0d0630;
+    background: transparent;
+    padding: 12px;
+    width: 100%;
+    font-size: 1em;
+    font-weight: lighter;
+    text-align: center;
+    border-radius: 6px;
+    margin: 15px 0;
+    cursor: pointer;
+}
