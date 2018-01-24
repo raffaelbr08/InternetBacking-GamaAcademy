@@ -1,7 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
-<<<<<<< HEAD
 }
 
 nav {
@@ -16,6 +15,7 @@ nav {
 .wrap {
     width: 85%;
     display: flex;
+    justify-content:  space-between;
     margin: 0 auto;
 }
 
@@ -37,7 +37,7 @@ nav {
 
 .hero {
     background: url("../img/background-login.jpg");
-    padding: 20px 0;
+    border-radius: 0;
 }
 
 .content {
@@ -57,6 +57,7 @@ nav {
     color: #696869;
     font-weight: lighter;
     font-size: 0.8em;
+    z-index: -1;
 }
   
 .placeholder-input {
@@ -65,6 +66,7 @@ nav {
     font-size: 1em;
     padding: 25px 0 5px;
     border-bottom: 1px solid #e0e0e0;
+    background: transparent;
 }
 
 .placeholder-input:focus {
@@ -85,13 +87,18 @@ nav {
     border: 1px solid #0d0630;
     background: transparent;
     padding: 12px;
-    width: 100%;
     font-size: 1em;
     font-weight: lighter;
     text-align: center;
     border-radius: 6px;
     margin: 15px 0;
     cursor: pointer;
-=======
->>>>>>> 11215e5eb602fe7bb73789fde8ffd66cd752c179
+}
+
+@media (min-width:600px) {
+    .btn:hover {
+        background: #0d0630;
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
 }

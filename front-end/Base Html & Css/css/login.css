@@ -2,10 +2,7 @@
     width: 100vw;
     height: 100vh;
     background-image: url("../img/background-login.jpg");
-<<<<<<< HEAD
     background-size: cover;
-=======
->>>>>>> 11215e5eb602fe7bb73789fde8ffd66cd752c179
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,14 +13,12 @@
     background: #fff;
     width: 85%;
     border-radius: 6px;
+    z-index: 1;
 }
-<<<<<<< HEAD
-=======
 
 .content {
     padding: 30px 30px;
 }
->>>>>>> 11215e5eb602fe7bb73789fde8ffd66cd752c179
   
 .login-header h2 {
     font-size: 20px;
@@ -34,42 +29,6 @@
     padding: 30px 40px;
     border-radius: 5px 5px 0 0;
     font-weight: normal;
-}
-<<<<<<< HEAD
-=======
-  
-.placeholder-wrap {
-    position: relative;
-    margin-bottom: 30px;
-}
-
-.placeholder-label {
-    position: absolute;
-    top: 50%;
-    margin: -5px 0;
-    color: #696869;
-    font-weight: lighter;
-    font-size: 0.8em;
-}
-  
-.placeholder-input {
-    width: 100%;
-    border: 0;
-    font-size: 1em;
-    padding: 25px 0 5px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.placeholder-input:focus {
-    outline: none;
-    border-bottom: 1px solid #0d0630;
-}
-
-.placeholder-input:valid ~ .placeholder-label, .placeholder-input:focus ~ .placeholder-label {
-    top: 20%;
-    color: #0d0630;
-    transform: translateY(-50%);
-    transition: all 0.3s;
 }
   
 /* estilo padrão para todos os buttons */
@@ -85,16 +44,13 @@
     margin: 15px 0;
     cursor: pointer;
 }
->>>>>>> 11215e5eb602fe7bb73789fde8ffd66cd752c179
 
 @media (min-width:600px) {
     .login-box {
         width: 350px;
     }
 
-    .btn:hover {
-        background: #0d0630;
-        color: #fff;
-        transition: background-color 0.3s ease;
+    .wrap {
+        width: 60%;
     }
 }
