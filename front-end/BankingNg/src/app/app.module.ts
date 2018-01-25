@@ -10,6 +10,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
+import { HttpModule } from '@angular/http';
+import { LoginService } from './services/login.service';
+import { TransfComponent } from './pages/transferencia/transf.component';
 
 
 
@@ -19,14 +22,16 @@ import { ExtratoComponent } from './pages/extrato/extrato.component';
     LoginComponent,
     HeaderComponent,
     LogoComponent,
-    ExtratoComponent
+    ExtratoComponent,
+    TransfComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule 
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

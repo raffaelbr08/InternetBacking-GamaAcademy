@@ -1,14 +1,13 @@
 .container-fw {
     width: 100vw;
     height: 100vh;
-    background-image: url("../../../assets/img/background-login.jpg");
+    background-image: url("../../../assets/img/background-login.jpg");   
     background-size: cover;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-
 
 .login-box {
     background: #fff;
@@ -44,6 +43,16 @@
     margin: 15px 0;
     cursor: pointer;
 }
+
+small.error-text{
+    color:red;
+    float:left;
+}
+
+input.ng-invalid.ng-touched{
+    border-bottom:1px solid red;
+}
+
 
 @media (min-width:425px) {
     .login-box {

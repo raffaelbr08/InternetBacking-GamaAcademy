@@ -10,16 +10,19 @@ const Transferencias = require('../services/transferencias');
 
 const Async = require('async')
 
-api.lista = (req, res) => {
-    console.log(req.usuario.usuarioId)
+api.listaPorUsuario = (req, res) => {
+    
     return model
-        .find({})
+        .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
+        .sort({created_at: -1})
+        // db.transferencias.find().sort({"data": -1}).pretty()
         .then((transferencia) => {
             res.json(transferencia);
         }, (error) => {
             logger.log('error', error);
             res.status(500).json(error);
         });
+
 }
 
 api.adiciona = function (req, res) {
@@ -33,6 +36,7 @@ api.adiciona = function (req, res) {
         origem: 1,
         destino: 2
     }
+    
     console.log("teste")
     Async.series({
         userA: function(callback){
@@ -110,7 +114,8 @@ api.adiciona = function (req, res) {
     //         res.status(500).json(error);
     //     })
 
-
 }
+
+
 
 module.exports = api;

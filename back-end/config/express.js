@@ -39,9 +39,16 @@ module.exports = function(){
 
 	// configura os body parser pra funcionar com json (parseia as respostas)
 	app.use(bodyParser.urlencoded({extended: true}));
-    app.use(bodyParser.json());
+	app.use(bodyParser.json());
 	
-	// Pusha os modulos atraves do consign
+	app.use( function(req, res, next) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
+		next();
+	  });
+	
+
+	// Puxa os modulos atraves do consign
 	// A primeira Rota é a de Login
 	consign({cwd: 'app'})
 		.include('models')

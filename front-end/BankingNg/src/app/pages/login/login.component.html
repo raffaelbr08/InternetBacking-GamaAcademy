@@ -1,18 +1,25 @@
 <div class="container-fw">
     <div class="login-box"> 
-        <form novalidate #formulario="ngForm" (ngSubmit)="enviaFormulario(formulario)" >
+        <form novalidate #formulario="ngForm" (ngSubmit)="enviaFormulario(formulario)">
             <div class="login-header">
                 <app-logo></app-logo>
             </div>
             <div class="content">
                 <div class="placeholder-wrap">
-                    <input name="cpf" type="number" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel" >
+                    <input name="cpf" type="number" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel" 
+                    #inputCpf="ngModel" >
                     <span class="placeholder-label">cpf</span>
+                    <small *ngIf="!inputCpf.valid && inputCpf.touched" class="error-text danger">Campo Obrigatório!</small>
+
                 </div>
                 <div class="placeholder-wrap">
-                    <input name="password" type="password" class="placeholder-input" id="password" required autocomplete="off"ngModel #inputPassword="ngModel">
+                    <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off"ngModel #inputPassword="ngModel"
+                    #inputPassword="ngModel">
                     <span class="placeholder-label">senha</span>
+                    <small *ngIf="!inputPassword.valid && inputPassword.touched" class="error-text danger">Campo Obrigatório!</small>
+
                 </div>
+                <p *ngIf="incorret" class="txt-error btn-danger text-center">{{msgerror.message}}</p>
                 <button type="submit" class="btnRoxo btn-submit" style="width: 100%">entrar</button>
             </div>
         </form>
