@@ -16,7 +16,7 @@ api.lista = (req, res) => {
 
 api.buscaPorCpf = (req, res) => {
 	return model
-			.find({"cpf": req.params.cpf})
+			.findOne({"cpf": req.params.cpf})
 			.then((correntista) => {
 				if(correntista == null) {
 					var msg = `${req._remoteAddress} [${req._startTime}] "${req.method} ${req.url} HTTP/${req.httpVersion}" ${req.statusCode} (erro: Nome == null)`;
@@ -34,7 +34,7 @@ api.buscaPorCpf = (req, res) => {
 
 api.buscaPorConta = (req, res) => {
 	return model
-			.find({"contaCorrente": req.params.conta})
+			.findOne({"contaCorrente": req.params.conta})
 			.then((correntista) => {
 				if(correntista == null) {
 					var msg = `${req._remoteAddress} [${req._startTime}] "${req.method} ${req.url} HTTP/${req.httpVersion}" ${req.statusCode} (erro: Nome == null)`;
