@@ -23,6 +23,14 @@ ul.nav {
     height: 70px;
 }
 
+small.error-text{
+  color:red;
+  float:left;
+}
+
+input.ng-invalid.ng-touched{
+  border-bottom:1px solid red;
+}
 
 
 .wrap {
@@ -75,7 +83,7 @@ ul.nav {
     font-size: 0.8em;
     z-index: -1;
 }
-  
+
 .placeholder-input {
     width: 100%;
     border: 0;
@@ -90,7 +98,7 @@ ul.nav {
     border-bottom: 1px solid #0d0630;
 }
 
-.placeholder-input:valid ~ .placeholder-label, 
+.placeholder-input:valid ~ .placeholder-label,
 .placeholder-input:focus ~ .placeholder-label {
     top: 20%;
     color: #0d0630;

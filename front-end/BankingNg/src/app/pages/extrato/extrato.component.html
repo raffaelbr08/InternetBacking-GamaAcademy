@@ -22,8 +22,13 @@
       <tbody>
           <tr *ngFor="let transfs of transferencias">
               <td>{{transfs.updated_at | date: 'dd/MM/yyyy'}}</td>
+<<<<<<< HEAD
               <td>{{transfs.destino}} - Everton</td>
               <td [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.valor | currency: 'BRL':true}}</td>
+=======
+              <td>{{transfs.destino}} - {{transfs.descricao}}</td>
+              <td class="transacao--negativa">{{transfs.valor | currency: 'BRL':true}}</td>
+>>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
           </tr>         
       </tbody>
   </table>

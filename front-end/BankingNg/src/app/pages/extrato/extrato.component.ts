@@ -21,6 +21,7 @@ export class ExtratoComponent implements OnInit {
     .subscribe(
       dados=>{
         this.dadosExtrato = dados.json();
+        console.log(this.dadosExtrato)
         this.transferencias = this.dadosExtrato.transferencias;     
       },error=>{
         alert(error._body)
