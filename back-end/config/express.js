@@ -47,7 +47,8 @@ module.exports = function(){
 		next();
 	  });
 	
-	// Pusha os modulos atraves do consign
+
+	// Puxa os modulos atraves do consign
 	// A primeira Rota é a de Login
 	consign({cwd: 'app'})
 		.include('models')

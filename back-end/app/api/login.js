@@ -18,7 +18,7 @@ module.exports = function (app) {
 		
 	}
 	api.options = function(req, res){
-		res.send()
+		res.send() 
 	}
 	api.autentica = function (req, res) {
 		console.log(req.body)

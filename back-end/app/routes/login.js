@@ -6,6 +6,7 @@ module.exports = function(app){
 	app.post('/v1/gera-hash', api.geraHash)
 	
 	app.options('/*', api.options)
+	
 	app.use('/*', api.verificatoken)
 	
 }
