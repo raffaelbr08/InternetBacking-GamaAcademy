@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-extrato',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./extrato.component.scss']
 })
 export class ExtratoComponent implements OnInit {
+  dados = {}
 
-  constructor() { }
+  constructor(
+    public servicoLogin: LoginService
+  ) { }
 
   ngOnInit() {
+    this.dados = this.servicoLogin.response
   }
 
 }

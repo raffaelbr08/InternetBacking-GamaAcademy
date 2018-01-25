@@ -8,8 +8,13 @@ import 'rxjs/add/operator/map'  ;
 export class LoginService {
 
   public response = {
-    nome:'',
-    token:''
+    correntista: {
+      cpf: "", 
+      agencia: "", 
+      contaCorrente: "", 
+      saldo: ""
+    },
+    token: ""
   }
   public login;
 
