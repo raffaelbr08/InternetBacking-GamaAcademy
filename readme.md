@@ -3,7 +3,6 @@
 ## Tópicos
 * [Requerimentos](#requerimentos)
 * [Instalação](#instalacao)
-* [Pastas do projeto](#pastas-do-projeto)
 * [Api](#api)
     * [Consultando](#consultando-a-api)
 * [Banco de dados](#banco-de-dados)
@@ -40,14 +39,6 @@
 mongo --version
 
 MongoDB shell version v3.4.9
-git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
-OpenSSL version: OpenSSL 1.0.1u-fips  22 Sep 2016
-allocator: tcmalloc
-modules: none
-build environment:
-    distmod: 2008plus-ssl
-    distarch: x86_64
-    target_arch: x86_64
 ```
 
 ## Instalação
@@ -88,14 +79,6 @@ build environment:
     
     [@angular/cli](https://github.com/angular/angular-cli#installation)
 
-## Pastas do projeto
-
-Cada pasta representa um "módulo" do projeto, onde:
-
-* api, arquivos para a api;
-* <NOMEDAPASTA> projeto em angular.
-
-
 
 ## Api
 ### Consultando a api
@@ -133,10 +116,15 @@ Cada pasta representa um "módulo" do projeto, onde:
    Headers: "content-type" : "application/json"
    ```
     
-    
-      
-    
 ## Banco de dados
-    TODO:
 ### Consultando os dados
-    TODO: //mongod ou postman
+
+   Executar 'mongod' no terminal.
+    
+   Em outro terminal executar 'mongo' para iniciar a pesquisa.
+   
+    use internetbanking
+    db.correntistas.find().pretty() //para ver os dados da collection correntistas
+    
+    db.transferencias.find().pretty() //para ver os dados da collection transferencias
+    
