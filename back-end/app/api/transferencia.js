@@ -19,6 +19,7 @@ api.listaPorUsuario = (req, res) => {
             .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
             .sort({created_at: -1})
             .then((transferencias) => {
+                
                 const retornoTrans = transferencias.map(transferencia =>{
                         let transf = {
                             origem: transferencia.origem,
@@ -31,12 +32,16 @@ api.listaPorUsuario = (req, res) => {
 
                         if(req.body.contacorrente == transferencia.origem){
                             transf.debito = true
+                            transf.descricao = "[Transf para]: c/c" + transferencia.origem
                         }else{
                             transf.debito = false
+                            transf.descricao = "[Transf de]: c/c" + transferencia.origem
+                            
                         }
 
-                        callback(null, transf)
+                        return transf
                     })
+                    callback(null, retornoTrans)
                 //console.log(req.body.contacorrente)
             }, (error) => {
                 logger.log('error', error);
@@ -54,7 +59,7 @@ api.listaPorUsuario = (req, res) => {
                             })
         }
     }, function(err, results){
-        console.log(results.userA, results.userB)
+        //console.log(results.userA, results.userB)
         
         res.send({
             transferencias: results.userA,
