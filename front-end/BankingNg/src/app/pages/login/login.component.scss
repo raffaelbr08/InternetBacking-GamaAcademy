@@ -44,6 +44,16 @@
     cursor: pointer;
 }
 
+small.error-text{
+    color:red;
+    float:left;
+}
+
+input.ng-invalid.ng-touched{
+    border-bottom:1px solid red;
+}
+
+
 @media (min-width:425px) {
     .login-box {
         width: 350px;
