@@ -8,18 +8,22 @@ import { ExtratoService } from '../../services/extrato.service';
   styleUrls: ['./extrato.component.scss']
 })
 export class ExtratoComponent implements OnInit {
-  dados = {}
+  dadosUsuario = {};
+  dadosExtrato;
+
+  transferencias = [];
 
   constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService) { }
 
   ngOnInit() {
-    this.dados = this.servicoLogin.response;
+    this.dadosUsuario = this.servicoLogin.response;
     this.servicoExtrato.getExtrato()
     .subscribe(
       dados=>{
-        console.log("dados", dados)
+        this.dadosExtrato = dados.json();
+        this.transferencias = this.dadosExtrato.transferencias;     
       },error=>{
-
+        alert(error._body)
       }
     )
     
