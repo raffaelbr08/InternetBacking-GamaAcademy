@@ -1,7 +1,7 @@
 <app-header></app-header>
-<div class="jumbotron hero">
-  <h1 class="title">Saldo</h1>
-  <h1 class="title-extrato">{{dados.correntista.saldo | currency: 'BRL':true}}</h1>
+<div class="jumbotron hero saldo">
+  <h1 class="title saldo">Saldo</h1>
+  <h1 class="title-extrato saldo">{{dados.correntista.saldo | currency: 'BRL':true}}</h1>
   <hr class="divider">
   <p id="conta">Ag: {{dados.correntista.agencia}} / CC: {{dados.correntista.contaCorrente}}<br>{{dados.correntista.nome}}</p>
 </div>
@@ -13,7 +13,7 @@
       <button [routerLink]="['/transferencia']" type="button" class="btnRoxo btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
 
   <table class="table">
-      <thead class="thead-dark">
+      <thead class="tabela">
           <tr>
               <th scope="col">Data</th>
               <th scope="col">Ultimas transações</th>
