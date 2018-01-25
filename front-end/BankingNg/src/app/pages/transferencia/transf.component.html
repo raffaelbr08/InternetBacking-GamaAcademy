@@ -1,0 +1,85 @@
+<header>
+    <nav>
+        <div class="container nav-bar">
+            <h2 id="logo">Internet Banking</h2>
+            <div class="info">
+                Olá, Felipe! Sair
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="jumbotron hero">
+    <h1 class="title">Transferência</h1>
+</div>
+<div class="container wrap">
+    <div class="alert alert-danger" role="alert">
+        <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
+    </div>
+
+    <form style="display: inherit">
+        <div class="placeholder-wrap">
+            <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
+            <span class="placeholder-label">seleciona a conta para transferir</span>
+        </div>
+        <div class="placeholder-wrap">
+            <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
+            <span class="placeholder-label">valor a transferir (R$)</span>
+        </div>
+        <div class="placeholder-wrap">
+            <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
+            <span class="placeholder-label">descrição da transação</span>
+        </div>
+        <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
+    </form>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal--header">
+                    <h2>Confirme os dados</h2>
+                </div>
+                <div class="modal-body">
+                    <ul class="transfer">
+                        <li>
+                            <span>Felipe Belinassi</span>
+                            <br>
+                            <span>Ag {{Var}} CC {{Var}</span>
+                            <br>
+                        </li>
+                        <li>
+                            <img width="50" src="../../../assets/img/arrow-down.svg">
+                        </li>
+                        <li>
+                            <span>Fabiano Silva</span>
+                            <br>
+                            <span>Ag {{Var}} CC {{Var}}</span>
+                                <br>
+                        </li>
+                        <li class="jumbotron transf-modal">
+                            <span>Descrição de pagamento</span>
+                            <br>
+                            <span>R${{Var}}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btnRoxo" data-dismiss="modal" data-toggle="modal" data-target="#sucesso">Confirmar transferencia</button>
+                    <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sucesso" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="transf-valid">
+                    <p>Transação realizada com sucesso!</p>
+                        <img width="60" src="../../../assets/img/transf-valid.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
