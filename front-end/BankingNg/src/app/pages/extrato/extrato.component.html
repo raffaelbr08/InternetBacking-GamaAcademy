@@ -1,9 +1,9 @@
 <!--------- Hero com saldo -->
 <div class="jumbotron hero">
   <h1 class="title">Saldo</h1>
-  <h1 class="title-extrato">R$ 5.200,00</h1>
+  <h1 class="title-extrato">{{dados.correntista.saldo | currency: 'BRL':true}}</h1>
   <hr class="divider">
-  <p id="conta">Ag 0765 CC 765872-1<br>Felipe Belinassi</p>
+  <p id="conta">Ag: {{dados.correntista.agencia}} / CC: {{dados.correntista.contaCorrente}}<br>{{dados.correntista.nome}}</p>
 </div>
 
 <!--------- Tabela de extrato -->
