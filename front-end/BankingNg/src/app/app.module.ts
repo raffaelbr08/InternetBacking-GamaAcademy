@@ -13,6 +13,7 @@ import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
 import { TransfComponent } from './pages/transferencia/transf.component';
+import { ExtratoService } from './services/extrato.service';
 
 
 
@@ -31,7 +32,7 @@ import { TransfComponent } from './pages/transferencia/transf.component';
     FormsModule,
     HttpModule 
   ],
-  providers: [LoginService],
+  providers: [LoginService, ExtratoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
