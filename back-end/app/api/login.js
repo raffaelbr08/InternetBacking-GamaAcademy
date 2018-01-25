@@ -14,7 +14,7 @@ module.exports = function (app) {
 
 		console.log("Senha: ", req.body.senha)
 		console.log("Hash: ", hash.gerar(app, req.body.senha))
-		res.status(200).send({ "success": "Verificar token no pronpt do server" })
+		res.status(200).send({ "success": "Verificar token no prompt do server" })
 
 	}
 	api.options = function (req, res) {
@@ -59,7 +59,7 @@ module.exports = function (app) {
 
 						let correntista = {
 							"cpf": user.cpf,
-							"nome": user.name,
+							"nome": user.nome,
 							"agencia": user.agencia,
 							"contaCorrente": user.contaCorrente,
 							"saldo": user.saldo,
