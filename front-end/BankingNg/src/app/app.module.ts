@@ -13,7 +13,7 @@ import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
 import { TransfComponent } from './pages/transferencia/transf.component';
-
+import { TextMaskModule } from 'angular2-text-mask'
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { TransfComponent } from './pages/transferencia/transf.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule 
+    HttpModule,
+    TextMaskModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

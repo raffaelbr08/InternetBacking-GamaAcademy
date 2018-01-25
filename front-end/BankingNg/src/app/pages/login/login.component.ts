@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   msgerror = '';
   public incorret: boolean;
 
+  public mask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+
   constructor(public servicoLogin: LoginService, private navegacao: Router) { }
 
   ngOnInit() {
