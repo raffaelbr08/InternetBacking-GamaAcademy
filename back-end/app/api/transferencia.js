@@ -13,7 +13,7 @@ const Async = require('async')
 api.listaPorUsuario = (req, res) => {
     
     return model
-        .find({$or: [{"req.body.contacorrente": origem}, {"req.body.contacorrente": destino}]})
+        .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
         .sort({created_at: -1})
         // db.transferencias.find().sort({"data": -1}).pretty()
         .then((transferencia) => {
