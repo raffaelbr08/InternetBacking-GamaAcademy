@@ -101,7 +101,11 @@ api.adiciona = function (req, res) {
             );
         }
     }, function (err, results) {
-        console.log("results", results)
+        if(err){
+            console.log(err);
+            logger.log('error', err);
+            res.status(500).json(err);
+        }
         if (results.userA.saldo >= req.body.valor) {
             console.log("passou");
 
@@ -120,9 +124,10 @@ api.adiciona = function (req, res) {
             // adiciona a transação
             //salva no banco de dados
             transferencia.save(function (error) {
-                console.log("Your trasnferencia has been saved.");
                 if (error) {
-                    console.error(error);
+                    console.log(error);
+                    logger.log('error', error);
+                    res.status(500).json(error);
                 } else {
                     //deu certo a transação, atualiza o saldo dos correntistas
                     Async.series({
@@ -152,12 +157,24 @@ api.adiciona = function (req, res) {
                         }
                     }, function (err, results) {
                         console.log(results)
-                        console.log(err)
+                        if(err){
+                            console.log(error);
+                            logger.log('error', error);
+                            res.status(500).json(error);
+                        }
+                        if (results){
+                            res.send({
+                                mensagem: "Transferência concluída com sucesso!"
+                            })
+                        }
                     });
                 }
             });
         } else {
-            console.log("valor da transferencia e maior que o saldo");
+            const error = "valor da transferencia e maior que o saldo";
+            console.log(error);
+            logger.log('error', error);
+            res.status(400).json(error);
         }
     });
 
