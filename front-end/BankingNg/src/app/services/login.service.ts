@@ -13,6 +13,7 @@ export class LoginService {
       agencia:'',
       contaCorrente:'',
       saldo:'',
+      nome:'',
       updated_at:''
     },   
     token: ""
