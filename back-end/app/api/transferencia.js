@@ -32,10 +32,11 @@ api.listaPorUsuario = (req, res) => {
 
                         if(req.body.contacorrente == transferencia.origem){
                             transf.debito = true
-                            transf.descricao = "[Transf para]: c/c" + transferencia.origem
+                            //transf.descricao = "[Transf para]: c/c" + transferencia.destino
                         }else{
                             transf.debito = false
-                            transf.descricao = "[Transf de]: c/c" + transferencia.origem
+                            
+                            //transf.descricao = "[Transf de]: c/c" + transferencia.destino
                             
                         }
 
