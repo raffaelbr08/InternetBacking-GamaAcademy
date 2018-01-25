@@ -19,7 +19,7 @@ module.exports = function (app) {
 	}
 
 	api.autentica = function (req, res) {
-
+		console.log("passou na rota")
 		// Verifica se tem um object no body
 		// E depois gera um usuario padrão para logar
 		// if (isObjectEmpty(req.body)) {
