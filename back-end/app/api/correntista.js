@@ -13,6 +13,7 @@ api.lista = (req, res) => {
 				res.status(500).json(error);
 			});
 }
+
 api.buscaPorCpf = (req, res) => {
 	return model
 			.find({"cpf": req.params.cpf})
@@ -30,6 +31,7 @@ api.buscaPorCpf = (req, res) => {
 				res.status(500).json(error);
 			});
 }
+
 api.buscaPorConta = (req, res) => {
 	return model
 			.find({"contaCorrente": req.params.conta})
@@ -47,4 +49,5 @@ api.buscaPorConta = (req, res) => {
 				res.status(500).json(error);
 			});
 }
+
 module.exports = api;

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const model = mongoose.model('Transferencia');
+
 const modelCorrentista = mongoose.model('Correntista');
 const modelTransferencia = mongoose.model('Transferencia');
 
@@ -12,12 +12,43 @@ const Async = require('async')
 
 api.listaPorUsuario = (req, res) => {
     
-    return model
+    return modelTransferencia
         .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
         .sort({created_at: -1})
-        // db.transferencias.find().sort({"data": -1}).pretty()
-        .then((transferencia) => {
-            res.json(transferencia);
+        .then((transferencias) => {
+
+            const retornoTrans = transferencias.map(transferencia =>{
+                                    let transf = {
+                                        origem: transferencia.origem,
+                                        destino: transferencia.destino,
+                                        descricao: transferencia.descricao,
+                                        valor: transferencia.valor,
+                                        updated_at: transferencia.updated_at,
+                                        created_at: transferencia.created_at
+                                    }
+
+                                    if(req.body.contacorrente == transferencia.origem){
+                                        transf.debito = true
+                                    }else{
+                                        transf.debito = false
+                                    }
+
+                                    return transf
+                                })
+
+            modelCorrentista.findOne({"contaCorrente": req.body.contacorrente})
+                            .then((correntista) => {
+
+                                console.log(correntista.saldo)
+                                res.send({
+                                            transferencias: retornoTrans,
+                                            saldoAtualizado: correntista.saldo
+                                        })
+
+                            }, (error) => {
+                                logger.log('error', error);
+                                res.status(500).json(error);
+                            })
         }, (error) => {
             logger.log('error', error);
             res.status(500).json(error);
