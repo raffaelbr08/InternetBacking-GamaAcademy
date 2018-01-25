@@ -9,19 +9,21 @@ h1 {
     font-weight: lighter;
 }
 
-nav {
-    background: #0d0630;
+nav{
+    background: #E54A21;
+}
+
+ul.nav {
     width: 100%;
     margin: 0;
     color: #fff;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 70px;
 }
 
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .wrap {
     width: 85%;
