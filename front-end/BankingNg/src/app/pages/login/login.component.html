@@ -7,7 +7,7 @@
             <div class="content">
                 <div class="placeholder-wrap">
                        
-                    <input name="cpf" type="text" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel">
+                    <input [textMask]="{mask: mask}" name="cpf" type="text" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel">
                     <span class="placeholder-label">cpf</span>
                     <small *ngIf="!inputCpf.valid && inputCpf.touched" class="error-text danger">Campo Obrigatório!</small>
 

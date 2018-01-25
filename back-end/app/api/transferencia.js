@@ -12,47 +12,55 @@ const Async = require('async')
 
 api.listaPorUsuario = (req, res) => {
     
-    return modelTransferencia
-        .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
-        .sort({created_at: -1})
-        .then((transferencias) => {
+    Async.series({
+        userA: function (callback){
+            
+        modelTransferencia
+            .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
+            .sort({created_at: -1})
+            .then((transferencias) => {
+                const retornoTrans = transferencias.map(transferencia =>{
+                        let transf = {
+                            origem: transferencia.origem,
+                            destino: transferencia.destino,
+                            descricao: transferencia.descricao,
+                            valor: transferencia.valor,
+                            updated_at: transferencia.updated_at,
+                            created_at: transferencia.created_at
+                        }
 
-            const retornoTrans = transferencias.map(transferencia =>{
-                                    let transf = {
-                                        origem: transferencia.origem,
-                                        destino: transferencia.destino,
-                                        descricao: transferencia.descricao,
-                                        valor: transferencia.valor,
-                                        updated_at: transferencia.updated_at,
-                                        created_at: transferencia.created_at
-                                    }
+                        if(req.body.contacorrente == transferencia.origem){
+                            transf.debito = true
+                        }else{
+                            transf.debito = false
+                        }
 
-                                    if(req.body.contacorrente == transferencia.origem){
-                                        transf.debito = true
-                                    }else{
-                                        transf.debito = false
-                                    }
+                        callback(null, transf)
+                    })
+                //console.log(req.body.contacorrente)
+            }, (error) => {
+                logger.log('error', error);
+                res.status(500).json(error);
+            });
 
-                                    return transf
-                                })
-
+        },
+        userB: function (callback){
             modelCorrentista.findOne({"contaCorrente": req.body.contacorrente})
                             .then((correntista) => {
-
-                                console.log(correntista)
-                                res.send({
-                                            transferencias: retornoTrans,
-                                            saldoAtualizado: correntista.saldo
-                                        })
-
+                                callback(null, correntista.saldo)
                             }, (error) => {
                                 logger.log('error', error);
                                 res.status(500).json(error);
                             })
-        }, (error) => {
-            logger.log('error', error);
-            res.status(500).json(error);
-        });
+        }
+    }, function(err, results){
+        console.log(results.userA, results.userB)
+        
+        res.send({
+            transferencias: results.userA,
+            saldoAtualizado: results.userB
+        })
+    })
 
 }
 
