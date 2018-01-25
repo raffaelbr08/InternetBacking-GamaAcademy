@@ -17,10 +17,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public enviaFormulario(formulario: NgForm){
+  public enviaFormulario(formulario: NgForm): void{
 
-    this.servicoLogin.login = formulario.value;
-
+    this.servicoLogin.login = {
+      cpf:'1',
+      senha:'12345'
+    }
+    
     this.servicoLogin.efetuaLogin()
     .subscribe(
       dados => {
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
 
         }else{
           this.incorret = true;
+          console.log(this.servicoLogin.login)
         }
       },error=>{
         this.incorret = true;
