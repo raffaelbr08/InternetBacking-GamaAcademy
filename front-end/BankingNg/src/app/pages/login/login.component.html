@@ -6,8 +6,8 @@
             </div>
             <div class="content">
                 <div class="placeholder-wrap">
-                    <input name="cpf" type="number" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel" 
-                    #inputCpf="ngModel" >
+                       
+                    <input name="cpf" type="text" class="placeholder-input" id="cpf" required autocomplete="off" ngModel #inputCpf="ngModel">
                     <span class="placeholder-label">cpf</span>
                     <small *ngIf="!inputCpf.valid && inputCpf.touched" class="error-text danger">Campo Obrigatório!</small>
 
