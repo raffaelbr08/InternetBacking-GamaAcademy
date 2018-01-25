@@ -9,4 +9,13 @@ var schema = mongoose.Schema({
     created_at: Date
 })
 
+/******************
+    situacao: 
+    - iniciado
+    - pendente
+    - completado
+    - cancelado
+
+*******************/
+
 mongoose.model('Transferencia', schema, 'transferencias')

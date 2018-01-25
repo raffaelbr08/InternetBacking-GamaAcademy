@@ -14,7 +14,8 @@ export class LoginService {
       contaCorrente:'',
       saldo:'',
       updated_at:''
-    }
+    },   
+    token: ""
   }
   public login;
 

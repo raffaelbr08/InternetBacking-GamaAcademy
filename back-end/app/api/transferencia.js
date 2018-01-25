@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const model = mongoose.model('Transferencia');
+
 const modelCorrentista = mongoose.model('Correntista');
 const modelTransferencia = mongoose.model('Transferencia');
 
@@ -12,12 +12,43 @@ const Async = require('async')
 
 api.listaPorUsuario = (req, res) => {
     
-    return model
+    return modelTransferencia
         .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
         .sort({created_at: -1})
-        // db.transferencias.find().sort({"data": -1}).pretty()
-        .then((transferencia) => {
-            res.json(transferencia);
+        .then((transferencias) => {
+
+            const retornoTrans = transferencias.map(transferencia =>{
+                                    let transf = {
+                                        origem: transferencia.origem,
+                                        destino: transferencia.destino,
+                                        descricao: transferencia.descricao,
+                                        valor: transferencia.valor,
+                                        updated_at: transferencia.updated_at,
+                                        created_at: transferencia.created_at
+                                    }
+
+                                    if(req.body.contacorrente == transferencia.origem){
+                                        transf.debito = true
+                                    }else{
+                                        transf.debito = false
+                                    }
+
+                                    return transf
+                                })
+
+            modelCorrentista.findOne({"contaCorrente": req.body.contacorrente})
+                            .then((correntista) => {
+
+                                console.log(correntista)
+                                res.send({
+                                            transferencias: retornoTrans,
+                                            saldoAtualizado: correntista.saldo
+                                        })
+
+                            }, (error) => {
+                                logger.log('error', error);
+                                res.status(500).json(error);
+                            })
         }, (error) => {
             logger.log('error', error);
             res.status(500).json(error);
@@ -27,92 +58,125 @@ api.listaPorUsuario = (req, res) => {
 
 api.adiciona = function (req, res) {
 
-    // const Transferencias = new Bank({
-    //     AccountModel: modelCorrentista,
-    //     TransactionModel: modelTransferencia
-    // });
-
-    transfer = {
-        origem: 1,
-        destino: 2
-    }
-    
-    console.log("teste")
     Async.series({
-        userA: function(callback){
-            modelCorrentista.findOne({ 'contaCorrente' : transfer.origem },null, null, function(err, result){
-                    console.log("userA", result)
-                    console.log("userA", err)
-                        if(err){ callback(err)  }
-                        if(result){ callback(null, result); }
-                    });
-                },
-        userB: function(callback){
-            modelCorrentista.findOne({ 'contaCorrente' : transfer.destino }, function(err, result){
-                console.log("userB", result)
-                
-                        if(err){ callback(err)  }
-                        if(result){ callback(null, result); }
+        userA: function (callback) {
+            modelCorrentista.findOne({ contaCorrente: req.body.origem }).then(
+                correntistaResult => {
+                    if (correntistaResult) {
+                        console.log("pegou o correntista");
+                        correntistaDestino = correntistaResult;
+                        callback(null, correntistaResult);
+                    } else {
+                        const err = "Conta corrente do correntista origem não existe"
+                        console.log(err);
+                        logger.log('error', err);
+                        res.status(400).json(err);
+                    }
+                }, error => {
+                    console.log(error);
+                    logger.log('error', error);
+                    res.status(500).json(error);
+                }
+            );
+        },
+        userB: function (callback) {
+            modelCorrentista.findOne({ contaCorrente: req.body.destino }).then(
+                correntistaResult => {
+                    if (correntistaResult) {
+                        console.log("pegou o correntista");
+                        correntistaDestino = correntistaResult;
+                        callback(null, correntistaResult);
+                    } else {
+                        console.log("Conta corrente não existe");
+                        const err = "Conta corrente do correntista destino não existe"
+                        console.log(err);
+                        logger.log('error', err);
+                        res.status(400).json(err);
+                    }
+                }, error => {
+                    console.log(error);
+                    logger.log('error', error);
+                    res.status(500).json(error);
+                }
+            );
+        }
+    }, function (err, results) {
+        if(err){
+            console.log(err);
+            logger.log('error', err);
+            res.status(500).json(err);
+        }
+        if (results.userA.saldo >= req.body.valor) {
+            console.log("passou");
+
+            //Instancia uma nova classe transferencia
+            var transferencia = new modelTransferencia();
+
+            // preenche os campos
+            transferencia.descricao = req.body.descricao;
+            transferencia.origem = req.body.origem;
+            transferencia.destino = req.body.destino;
+            transferencia.valor = req.body.valor;
+            transferencia.situacao = "completado";
+            transferencia.updated_at = new Date;
+            transferencia.created_at = new Date;
+
+            // adiciona a transação
+            //salva no banco de dados
+            transferencia.save(function (error) {
+                if (error) {
+                    console.log(error);
+                    logger.log('error', error);
+                    res.status(500).json(error);
+                } else {
+                    //deu certo a transação, atualiza o saldo dos correntistas
+                    Async.series({
+                        //atualiza o saldo do usuário de origem
+                        userAA: function (callback) {
+                            modelCorrentista.update(
+                                { contaCorrente: req.body.origem },
+                                { $inc: { saldo: -req.body.valor } },
+                                function (err, rowsAffected) {
+                                    if (err) { console.log('[ERROR] ' + err); }
+                                    if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                    callback(null, "Usuario Origem atualizado");
+                                }
+                            );
+                        },
+                        //atualiza o saldo do usuário de destino
+                        userBB: function (callback) {
+                            modelCorrentista.update(
+                                { contaCorrente: req.body.destino },
+                                { $inc: { saldo: req.body.valor } },
+                                function (err, rowsAffected) {
+                                    if (err) { console.log('[ERROR] ' + err); }
+                                    if (rowsAffected) { console.log('[INFO] user saldo +' + req.body.valor); }
+                                    callback(null, "Usuario destino atualizado");
+                                }
+                            );
+                        }
+                    }, function (err, results) {
+                        console.log(results)
+                        if(err){
+                            console.log(error);
+                            logger.log('error', error);
+                            res.status(500).json(error);
+                        }
+                        if (results){
+                            res.send({
+                                mensagem: "Transferência concluída com sucesso!"
+                            })
+                        }
                     });
                 }
-    },
-        function(err, results) {
-           console.log("results", results) 
-           res.send(200)
+            });
+        } else {
+            const error = "valor da transferencia e maior que o saldo";
+            console.log(error);
+            logger.log('error', error);
+            res.status(400).json(error);
         }
-    );
-    
-
-    // modelCorrentista
-    //     .findById(user.id)
-    //     .then(res => {
-
-    //         },
-    //         error => {
-
-    //     })
-
-    // Transferencias.transfer(userA, userB, valor)
-
-
-
-    // let transacao = req.body;
-    // let Id = req.usuario.usuarioId;
-    // //console.log(req.usuario.usuarioId)
-
-    // modelCorrentista
-    //     .findById(Id)
-    //     .then((user) =>{
-    //         console.log(user);
-
-    //         if (isObjectEmpty(transacao)) {
-    //             res.status(500).send({
-    //                 success: false,
-    //                 message: "O body não pode ser vazio"
-    //             })
-    //         } else {
-    //             transacao.origem = {
-    //                 "cpf": user.cpf,
-    //                 "agencia": user.agencia,
-    //                 "contaCorrente": user.contacorrente
-    //             };
-
-    //             model
-    //                 .create(transacao)
-    //                 .then(function (transferencia) {
-    //                     logger.log('info', `item incluido na collection Fornecedores: `);
-    //                     res.send(transferencia);
-
-    //                 }, function (error) {
-    //                     logger.log('error', error);
-    //                     res.status(500).json(error);
-    //                 }
-    //                 );
-    //         }
-    //     }, (err) =>{
-    //         logger.log('error', error);
-    //         res.status(500).json(error);
-    //     })
+    });
 
 }
 
