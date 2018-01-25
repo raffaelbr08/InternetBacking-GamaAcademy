@@ -12,6 +12,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { HttpModule } from '@angular/http';
 import { LoginService } from './services/login.service';
+import { TransfComponent } from './pages/transferencia/transf.component';
 
 
 
@@ -21,7 +22,8 @@ import { LoginService } from './services/login.service';
     LoginComponent,
     HeaderComponent,
     LogoComponent,
-    ExtratoComponent
+    ExtratoComponent,
+    TransfComponent
     ],
   imports: [
     BrowserModule,

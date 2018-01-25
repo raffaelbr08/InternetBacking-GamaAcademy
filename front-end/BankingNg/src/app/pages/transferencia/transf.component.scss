@@ -1,0 +1,47 @@
+.modal--header h2{
+    background: #0d0630;
+    margin: 0;
+    padding: 30px 40px;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 16px;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.transf-valid {
+    padding: 70px 10px;
+    color: navy;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.transfer {
+    padding: 0px;
+    margin: 0px;
+}
+.transfer li {
+    list-style: none;
+    text-align: center;
+}
+
+.transf-modal {
+    padding: 16px 0px;
+    margin: 16px 0px 0px 0px;
+    line-height: 2.5rem; 
+}
+
+@media (min-width:600px) {
+
+    .btnRoxo:hover {
+        background: #0d0630;
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+}
