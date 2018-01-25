@@ -14,84 +14,85 @@ module.exports = function (app) {
 
 		console.log("Senha: ", req.body.senha)
 		console.log("Hash: ", hash.gerar(app, req.body.senha))
-		res.status(200).send({"success": "Verificar token no pronpt do server"})
-		
+		res.status(200).send({ "success": "Verificar token no pronpt do server" })
+
 	}
-	api.options = function(req, res){
-		res.send() 
+	api.options = function (req, res) {
+		res.send()
 	}
 	api.autentica = function (req, res) {
-		console.log(req.body)
-		// Verifica se tem um object no body
-		// E depois gera um usuario padrão para logar
-		// if (isObjectEmpty(req.body)) {
-		// 	req.body.cpf = 1,
-		// 	req.body.senha = "123"
-		// }
 
-		// Gera o Hash com a senha passada
-		// Seta o hash do body
-		//console.log("senha sem hash: ", req.body.senha)
-		req.body.senha = hash.gerar(app, req.body.senha)
-		//console.log("senha com hash: ",req.body.senha)
+		if (req.is('application/json')) {
 
-		// Procura pelo usuario no banco
-		// Comparando o CPF e a Senha(hash)
-		// TODO: Remover senha da consulta
-		return model
-			.findOne({ cpf: req.body.cpf, senha: req.body.senha })
-			.then(function (user) {
+			// Gera o Hash com a senha passada
+			// Seta o hash do body
+			//console.log("senha sem hash: ", req.body.senha)
+			req.body.senha = hash.gerar(app, req.body.senha)
+			//console.log("senha com hash: ",req.body.senha)
 
-				// Checa se realmente trouxe um usuário
-				if (!user) {
-					console.log("Login e senha são invalidos");
+			// Procura pelo usuario no banco
+			// Comparando o CPF e a Senha(hash)
+			// TODO: Remover senha da consulta
+			return model
+				.findOne({ cpf: req.body.cpf, senha: req.body.senha })
+				.then(function (user) {
 
-					// Envia response de não autorizado
+					// Checa se realmente trouxe um usuário
+					if (!user) {
+						console.log("Login e senha são invalidos");
+
+						// Envia response de não autorizado
+						res.status(401).send({
+							success: false,
+							message: 'Usuario e senha são invalidos'
+						});
+					}
+					else {
+
+						// Gera o token com o jwt e um secret
+						const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
+							expiresIn: 1000
+						});
+
+						//Devolve o token pelo header da resposta e no body
+						res.set('x-access-token', token);
+
+						let correntista = {
+							"cpf": user.cpf,
+							"nome": user.name,
+							"agencia": user.agencia,
+							"contaCorrente": user.contaCorrente,
+							"saldo": user.saldo,
+							"updated_at": user.updated_at,
+							"created_at": user.created_at
+
+						}
+
+						// correntista.transacaoPendente = undefined
+						// correntista._id
+
+						// res.set("Access-Control-Allow-Origin", "*")
+						// console.log(correntista._id.isFrozen())
+						res.send({ correntista: correntista, token: token, tokenObject: jwt.decode(token) });
+					}
+
+				},
+				function (error) {
+
+					console.log(error, "Usuario e senha são invalidos");
+
+					// Em caso de erro devolve uma resposta
 					res.status(401).send({
 						success: false,
 						message: 'Usuario e senha são invalidos'
-					});
-				}
-				else {
-
-					// Gera o token com o jwt e um secret
-					const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
-						expiresIn: 1000
-					});
-
-					//Devolve o token pelo header da resposta e no body
-					res.set('x-access-token', token);
-					
-					let correntista = {
-						"cpf": user.cpf,
-						"nome": user.name,
-						"agencia": user.agencia,
-						"contaCorrente": user.contaCorrente,
-						"saldo": user.saldo,
-						"updated_at": user.updated_at,
-						"created_at": user.created_at
-
-					}
-					 
-					// correntista.transacaoPendente = undefined
-					// correntista._id
-
-					// res.set("Access-Control-Allow-Origin", "*")
-					// console.log(correntista._id.isFrozen())
-					res.send({correntista: correntista, token: token});
-				}
-
-			},
-			function (error) {
-				
-				console.log(error, "Usuario e senha são invalidos");
-
-				// Em caso de erro devolve uma resposta
-				res.status(401).send({
-					success: false,
-					message: 'Usuario e senha são invalidos'
-				})
-			});
+					})
+				});
+		} else {
+			res.send({
+				success: false,
+				message: 'content-type invalido, aceito somente application/json'
+			})
+		}
 
 	}
 
@@ -104,7 +105,7 @@ module.exports = function (app) {
 			// Verifica se o token passo é valido
 			jwt.verify(token, app.get('secret'), function (err, decoded) {
 				if (err) {
-					
+
 					// Em caso de não ser valido devolve uma resposta de não autorizado
 					res.status(401).send({
 						success: false,
@@ -130,12 +131,18 @@ module.exports = function (app) {
 		}
 
 	}
-	
+	api.renovaToken = function (req, res) {
+		const token = req.headers['x-access-token'];
+		console.log(req.usuario, token)
+
+		res.send()
+	}
+
 	api.criaCorrentista = function (req, res) {
 		const usuario = req.usuario
 		const body = req.body
 		console.log("criaCorrentista", usuario)
-		
+
 		//Verifica se usuario é admin
 		if (usuario.admin) {
 
@@ -145,16 +152,16 @@ module.exports = function (app) {
 			// Gera o usuário no Banco
 			model.create(req.body)
 				.then(
-					(correntista) => {
-						res.send(correntista)
-					},
-					(erro) => {
-						res.status(403).send({
-							success: false,
-							message: 'Token não enviado!'
-						})
+				(correntista) => {
+					res.send(correntista)
+				},
+				(erro) => {
+					res.status(403).send({
+						success: false,
+						message: 'Token não enviado!'
+					})
 				})
-		}else{
+		} else {
 			res.status(401).send({
 				success: false,
 				message: 'Usuario não é admin'

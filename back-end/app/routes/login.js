@@ -8,5 +8,7 @@ module.exports = function(app){
 	app.options('/*', api.options)
 	
 	app.use('/*', api.verificatoken)
+	app.use('/renova-token', api.renovaToken)
+	
 	
 }
