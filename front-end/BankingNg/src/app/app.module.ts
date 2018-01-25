@@ -16,6 +16,7 @@ import { TransfComponent } from './pages/transferencia/transf.component';
 import { ExtratoService } from './services/extrato.service';
 
 import { TextMaskModule } from 'angular2-text-mask'
+import { TransferenciaService } from './services/transferencia.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { TextMaskModule } from 'angular2-text-mask'
     HttpModule,
     TextMaskModule
   ],
-  providers: [LoginService, ExtratoService],
+  providers: [LoginService, ExtratoService, TransferenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
