@@ -39,7 +39,7 @@ api.listaPorUsuario = (req, res) => {
             modelCorrentista.findOne({"contaCorrente": req.body.contacorrente})
                             .then((correntista) => {
 
-                                console.log(correntista.saldo)
+                                console.log(correntista)
                                 res.send({
                                             transferencias: retornoTrans,
                                             saldoAtualizado: correntista.saldo
