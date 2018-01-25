@@ -17,9 +17,11 @@ module.exports = function (app) {
 		res.status(200).send({"success": "Verificar token no pronpt do server"})
 		
 	}
-
+	api.options = function(req, res){
+		res.send()
+	}
 	api.autentica = function (req, res) {
-		console.log("passou na rota")
+		console.log(req.body)
 		// Verifica se tem um object no body
 		// E depois gera um usuario padrão para logar
 		// if (isObjectEmpty(req.body)) {
@@ -74,7 +76,7 @@ module.exports = function (app) {
 					// correntista.transacaoPendente = undefined
 					// correntista._id
 
-
+					// res.set("Access-Control-Allow-Origin", "*")
 					// console.log(correntista._id.isFrozen())
 					res.send({correntista: correntista, token: token});
 				}
