@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  msgerror = '';
   public incorret: boolean;
 
   constructor(public servicoLogin: LoginService, private navegacao: Router) { }
@@ -17,22 +18,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  public enviaFormulario(formulario: NgForm){
+  public enviaFormulario(formulario: NgForm): void{
 
     this.servicoLogin.login = formulario.value;
-
+    
     this.servicoLogin.efetuaLogin()
     .subscribe(
       dados => {
-        if(dados.status == 200){
+        
           this.servicoLogin.response = dados.json();
-          this.navegacao.navigate(['/extrato']);
-
-        }else{
-          this.incorret = true;
-        }
+          this.navegacao.navigate(['/extrato']);               
+       
       },error=>{
-        this.incorret = true;
+        this.incorret = true;   
+        this.msgerror = JSON.parse(error._body);
       }
 
     )
