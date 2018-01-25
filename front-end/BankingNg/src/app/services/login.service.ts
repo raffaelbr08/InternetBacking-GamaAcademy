@@ -25,7 +25,7 @@ export class LoginService {
     headers.append('Content-Type', 'application/json');
 
     let options = new RequestOptions({ headers: headers})
-    return this.http.post(this.url,JSON.stringify(this.login),options);
+    return this.http.post(this.url,this.login,options);
   }
 
 }
