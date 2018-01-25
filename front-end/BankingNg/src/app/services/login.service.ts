@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import {Http,Response,RequestOptions,Headers} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'  ;
 
 
 @Injectable()
 export class LoginService {
 
   public login;
-  response: any;
+  public response = {
+    nome:'',
+    token:''
+  }
+  
   url = 'http://localhost:3000/v1/login'
 
   constructor(public http: Http) { 
@@ -15,7 +20,7 @@ export class LoginService {
   }
 
   efetuaLogin():Observable<Response>{
-    let headers = new Headers;
+    let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     let options = new RequestOptions({headers:headers})

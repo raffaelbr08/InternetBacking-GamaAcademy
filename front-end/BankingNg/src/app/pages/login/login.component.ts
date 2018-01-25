@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   public enviaFormulario(formulario: NgForm){
 
-    this.servicoLogin = formulario.value;
+    this.servicoLogin.login = formulario.value;
 
     this.servicoLogin.efetuaLogin()
     .subscribe(
