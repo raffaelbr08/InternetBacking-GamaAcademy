@@ -19,7 +19,6 @@ export class LoginService {
   }
   public login;
 
-
   url = 'http://localhost:3000/v1/login/'
 
   constructor(private http: Http) { 

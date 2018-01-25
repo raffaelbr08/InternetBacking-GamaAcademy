@@ -9,16 +9,22 @@
 
     <form style="display: inherit">
         <div class="placeholder-wrap">
-            <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off">
+            <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off" ngModel #inputConta="ngModel"
+            #inputConta="ngModel">
             <span class="placeholder-label">seleciona a conta para transferir</span>
+            <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <div class="placeholder-wrap">
-            <input name="senha" type="password" class="placeholder-input" id="senha" required autocomplete="off">
+            <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
+            #inputValor="ngModel">
             <span class="placeholder-label">valor a transferir (R$)</span>
+            <small *ngIf="!inputValor.valid && inputValor.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <div class="placeholder-wrap">
-            <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off">
+            <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off" ngModel #inputDescricao="ngModel"
+            #inputDescricao="ngModel">
             <span class="placeholder-label">descrição da transação</span>
+            <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
     </form>
@@ -36,7 +42,7 @@
                         <li>
                             <span>Felipe Belinassi</span>
                             <br>
-                            <span>Ag {{Var}} CC {{Var}</span>
+                            <span>Ag: 123 CC: 123</span>
                             <br>
                         </li>
                         <li>
@@ -45,13 +51,13 @@
                         <li>
                             <span>Fabiano Silva</span>
                             <br>
-                            <span>Ag {{Var}} CC {{Var}}</span>
+                            <span>Ag: 123 CC: 123</span>
                                 <br>
                         </li>
                         <li class="jumbotron transf-modal">
                             <span>Descrição de pagamento</span>
                             <br>
-                            <span>R${{Var}}}</span>
+                            <span>R$500,00</span>
                         </li>
                     </ul>
                 </div>

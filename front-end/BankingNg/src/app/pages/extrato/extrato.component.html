@@ -1,9 +1,9 @@
 <app-header></app-header>
 <div class="jumbotron hero saldo">
   <h1 class="title saldo">Saldo</h1>
-  <h1 class="title-extrato saldo">{{dados.correntista.saldo | currency: 'BRL':true}}</h1>
+  <h1 class="title-extrato saldo">{{dadosUsuario.correntista.saldo | currency: 'BRL':true}}</h1>
   <hr class="divider">
-  <p id="conta">Ag: {{dados.correntista.agencia}} / CC: {{dados.correntista.contaCorrente}}<br>{{dados.correntista.nome}}</p>
+  <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
 </div>
 
 <!--------- Tabela de extrato -->
@@ -20,21 +20,11 @@
           </tr>
       </thead>
       <tbody>
-          <tr>
-              <td>21/01</td>
-              <td>0123.12345-6 - Everton</td>
-              <td class="transacao--negativa">R$ -350,00</td>
-          </tr>
-          <tr>
-              <td>21/01</td>
-              <td>0123.12345-6 - Vivo</td>
-              <td class="transacao--positiva">R$ 100,00</td>
-          </tr>
-          <tr>
-              <td>21/01</td>
-              <td>033.0123.12345-6 - Fabiano</td>
-              <td class="transacao--positiva">R$ 150,00</td>
-          </tr>
+          <tr *ngFor="let transfs of transferencias">
+              <td>{{transfs.updated_at | date: 'dd/MM/yyyy'}}</td>
+              <td>{{transfs.destino}} - {{transfs.descricao}}</td>
+              <td class="transacao--negativa">{{transfs.valor | currency: 'BRL':true}}</td>
+          </tr>         
       </tbody>
   </table>
 </div>
