@@ -12,7 +12,8 @@ import { TransferenciaService } from '../../services/transferencia.service';
 export class TransfComponent implements OnInit {
   dadosTransf = {}
   dadosUsuario = {};
-
+  contaInvalida: Boolean
+  dadosDestino
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -21,9 +22,10 @@ export class TransfComponent implements OnInit {
 
   }
 
-  realizaTrasnf(fomulario: NgForm): void{
-    this.dadosTransf = fomulario.value;
-    this.servicoTransf.dadosTransf = fomulario.value;
+  realizaTrasnf(formulario: NgForm): void{
+    console.log(formulario)
+    this.dadosTransf = formulario.value;
+    this.servicoTransf.dadosTransf = formulario.value;
     this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente;
     this.servicoTransf.postTransf()
     .subscribe(
@@ -31,10 +33,29 @@ export class TransfComponent implements OnInit {
         // $('#sucesso').modal('show')
        
 
-      },error=>{
+      }, error=>{
 
       }
     )
   }
 
+  validaConta($event){
+    console.log($event.target.value)
+    this.servicoTransf.getCorrentista($event.target.value)
+    .subscribe(
+      correntista =>{
+        
+        this.dadosDestino = correntista.json().correntista
+        this.contaInvalida = false
+
+        console.log(this.dadosDestino)
+      }, error =>{
+        console.log(error.json())
+
+        
+        this.contaInvalida = true
+
+      }
+    )
+  }
 }

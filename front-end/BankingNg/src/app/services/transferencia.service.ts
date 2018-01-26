@@ -7,6 +7,7 @@ import { LoginService } from './login.service';
 export class TransferenciaService {
 
   url = 'http://localhost:3000/v1/transferencias/'
+  url2 ='http://localhost:3000/v1/correntistas/'
 
   dadosTransf = {
     origem:''
@@ -24,4 +25,13 @@ export class TransferenciaService {
 
   }
 
+  getCorrentista(contaCorrente):Observable<Response>{
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('x-access-token', this.loginService.response.token)
+    let options = new RequestOptions({ headers: headers})
+    return this.http.get(`${this.url2}${contaCorrente}`,options)
+
+}
+  
 }

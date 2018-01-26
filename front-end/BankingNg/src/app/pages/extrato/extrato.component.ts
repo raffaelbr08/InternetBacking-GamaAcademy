@@ -12,6 +12,7 @@ export class ExtratoComponent implements OnInit {
   dadosExtrato;
 
   transferencias = [];
+  saldo;
 
   constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService) { }
 
@@ -21,8 +22,11 @@ export class ExtratoComponent implements OnInit {
     .subscribe(
       dados=>{
         this.dadosExtrato = dados.json();
+
         console.log(this.dadosExtrato)
-        this.transferencias = this.dadosExtrato.transferencias;     
+
+        this.transferencias = this.dadosExtrato.transferencias; 
+        this.saldo = this.dadosExtrato.saldoAtualizado 
       },error=>{
         alert(error._body)
       }
