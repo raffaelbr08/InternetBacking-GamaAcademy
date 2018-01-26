@@ -39,7 +39,7 @@ api.buscaPorConta = (req, res) => {
 				if(correntista == null) {
 					var msg = `${req._remoteAddress} [${req._startTime}] "${req.method} ${req.url} HTTP/${req.httpVersion}" ${req.statusCode} (erro: Nome == null)`;
 					logger.log('error', msg);
-					res.status(404).send({
+					res.status(400).send({
 						success: false,
 						mensagem: "Número de conta corrente invalido!"
 					});

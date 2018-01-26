@@ -77,3 +77,13 @@
 {"level":"error","message":"::1 [Thu Jan 25 2018 22:29:52 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T00:29:52.310Z"}
 {"level":"error","message":"::1 [Thu Jan 25 2018 22:30:33 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T00:30:33.962Z"}
 {"level":"error","message":"::1 [Thu Jan 25 2018 23:05:23 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/1233123 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T01:05:23.171Z"}
+{"level":"error","message":"::1 [Thu Jan 25 2018 23:55:51 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T01:55:51.225Z"}
+{"level":"error","message":"::1 [Thu Jan 25 2018 23:59:59 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/101063 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T01:59:59.559Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 00:01:57 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:01:57.641Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 00:03:29 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:03:29.455Z"}
+{"level":"error","message":"Conta corrente do correntista destino não existe","timestamp":"2018-01-26T02:16:20.174Z"}
+{"level":"error","message":"Conta corrente do correntista destino não existe","timestamp":"2018-01-26T02:16:20.181Z"}
+{"level":"error","message":"Conta corrente do correntista destino não existe","timestamp":"2018-01-26T02:17:01.296Z"}
+{"level":"error","message":"valor da transferencia e maior que o saldo","timestamp":"2018-01-26T02:27:08.260Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T02:28:50.786Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T02:29:19.296Z"}

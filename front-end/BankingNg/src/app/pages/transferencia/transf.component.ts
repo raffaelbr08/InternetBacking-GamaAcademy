@@ -11,9 +11,13 @@ import { TransferenciaService } from '../../services/transferencia.service';
 })
 export class TransfComponent implements OnInit {
   dadosTransf = {}
-  dadosUsuario = {};
+  dadosUsuario = {
+    contaCorrente: ''
+  };
   contaInvalida: Boolean
   dadosDestino
+  formularioValido = true
+  naoEnviado 
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -23,10 +27,11 @@ export class TransfComponent implements OnInit {
   }
 
   realizaTrasnf(formulario: NgForm): void{
-    console.log(formulario)
+    console.log(formulario.value)
     this.dadosTransf = formulario.value;
     this.servicoTransf.dadosTransf = formulario.value;
     this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente;
+
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
@@ -34,32 +39,45 @@ export class TransfComponent implements OnInit {
        
 
       }, error=>{
+        console.log("erro")
+        this.naoEnviado = false 
 
       }
     )
   }
 
-  validaForm(){
-    
+  validaForm(formulario: NgForm){
+    if(formulario.valid)
+    {
+      this.formularioValido = true
+    }else {
+      this.formularioValido = false
+    }
   }
 
   validaConta($event){
     console.log($event.target.value)
-    this.servicoTransf.getCorrentista($event.target.value)
-    .subscribe(
-      correntista =>{
-        
-        this.dadosDestino = correntista.json().correntista
-        this.contaInvalida = false
+    if($event.target.value == this.dadosUsuario.contaCorrente ){
+      this.contaInvalida = true
+    }else{
 
-        console.log(this.dadosDestino)
-      }, error =>{
-        console.log(error.json())
+      this.servicoTransf.getCorrentista($event.target.value)
+      .subscribe(
+        correntista =>{
+          
+         
+          this.dadosDestino = correntista.json().correntista
+          this.contaInvalida = false
+  
+          console.log(this.dadosDestino)
 
-        
-        this.contaInvalida = true
+        }, error =>{  
+          this.dadosDestino = {}
+          this.contaInvalida = true
+  
+        }
+      )
+    }
 
-      }
-    )
   }
 }

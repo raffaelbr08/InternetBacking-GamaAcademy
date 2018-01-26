@@ -212,10 +212,10 @@ api.adiciona = function (req, res) {
                 }
             });
         } else {
-            const error = "valor da transferencia e maior que o saldo";
+            const error = "Saldo insulficiente!";
             console.log(error);
             logger.log('error', error);
-            res.status(400).json(error);
+            res.status(400).send({mensagem: error});
         }
     });
 
