@@ -35,15 +35,17 @@ export class TransfComponent implements OnInit {
     this.servicoTransf.dadosTransf = formulario.value;
     this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente;
 
+    formulario.reset();
+
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
         this.showModal = false
         this.ShowAlert = true
-        document.querySelector("#destino").value = ""
+        /*document.querySelector("#destino").value = ""
         document.querySelector("#valor").value = ""
-        document.querySelector("#descricao").value = ""
-        
+        document.querySelector("#descricao").value = ""*/
+
 
       }, error=>{
         console.log("erro")
@@ -73,16 +75,16 @@ export class TransfComponent implements OnInit {
       this.servicoTransf.getCorrentista($event.target.value)
       .subscribe(
         correntista =>{
-          
-         
+
+
           this.dadosDestino = correntista.json().correntista
           this.contaInvalida = false
-  
 
-        }, error =>{  
+
+        }, error =>{
           this.dadosDestino = {}
           this.contaInvalida = true
-  
+
         }
       )
     }
