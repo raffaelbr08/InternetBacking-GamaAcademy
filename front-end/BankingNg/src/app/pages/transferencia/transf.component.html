@@ -30,7 +30,7 @@
         <button type="button" (click)="validaForm(formulario)" class="btnLaranja btn-submit" data-toggle="modal" data-target="#modalTransferencia" >Realizar transferência</button>
         
         
-        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid && naoEnviado">
+        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal--header">
@@ -61,8 +61,8 @@
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btnRoxo" data-toggle="modal" data-target="#sucesso" >Confirmar transferencia</button>
-                        <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
+                        <button type="submit" class="btnLaranja confirma" data-toggle="modal" data-target="#sucesso" >Confirmar transferencia</button>
+                        <button type="button" class="btnLaranja cancela" data-dismiss="modal">Cancelar transferencia</button>
                     </div>
                     <!-- Button trigger modal -->
                     <div class="modal fade" id="sucesso" tabindex="-1" role="dialog">
