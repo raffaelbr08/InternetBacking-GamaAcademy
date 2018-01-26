@@ -6,8 +6,10 @@ logs
 
 # dependencies
 /node_modules
+/app/logs/errors-internet-banking
 /app/logs
 /logs
+
 
 # IDEs and editors
 /.idea
