@@ -9,7 +9,7 @@
 <!--------- Tabela de extrato -->
 <div class="container">
     
-    <button [routerLink]="['/transferencia']" type="button" class="btnRoxo btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
+    <button [routerLink]="['/transferencia']" type="button" class="btnLaranja btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
 
     <table class="table">
         <thead class="tabela">
@@ -25,9 +25,10 @@
                     <td> 
                         <p class="info">
                             transferencia
-                            {{transfs.debito? "de:" : "para:"}}
+                            {{transfs.debito? "para:" : "de:"}}
                         </p>
-                        cc: {{transfs.origem.contaCorrente}} - {{transfs.origem.nome}}
+                        cc: {{transfs.debito? transfs.destino.contaCorrente : transfs.origem.contaCorrente }}
+                        - {{transfs.debito? transfs.destino.nome : transfs.origem.nome }}
                     </td>
                     <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | currency: 'BRL':true}}</td>
                 </tr>         
