@@ -28,7 +28,7 @@ export class TransfComponent implements OnInit {
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
-        $('#sucesso').modal('show')
+        alert(dados)
        
 
       },error=>{

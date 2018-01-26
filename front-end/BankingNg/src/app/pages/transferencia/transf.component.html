@@ -9,38 +9,19 @@
 
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
         <div class="placeholder-wrap">
-<<<<<<< HEAD
             <input name="destino" type="text" class="placeholder-input" ngModel id="conta" required autocomplete="off" >
-=======
-            <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off" ngModel #inputConta="ngModel"
-            #inputConta="ngModel">
->>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
             <span class="placeholder-label">seleciona a conta para transferir</span>
-            <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <div class="placeholder-wrap">
-<<<<<<< HEAD
             <input name="valor" type="password" class="placeholder-input" ngModel id="senha" required autocomplete="off">
-=======
-            <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
-            #inputValor="ngModel">
->>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
             <span class="placeholder-label">valor a transferir (R$)</span>
-            <small *ngIf="!inputValor.valid && inputValor.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <div class="placeholder-wrap">
-<<<<<<< HEAD
             <input name="descricao" type="text" class="placeholder-input"  ngModel id="descricao" required autocomplete="off">
-=======
-            <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off" ngModel #inputDescricao="ngModel"
-            #inputDescricao="ngModel">
->>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
             <span class="placeholder-label">descrição da transação</span>
-            <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         
         <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
-<<<<<<< HEAD
         <!-- Modal -->
         <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -76,45 +57,6 @@
                         <button type="submit" class="btnRoxo">Confirmar transferencia</button>
                         <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
                     </div>
-=======
-    </form>
-    <!-- Button trigger modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal--header">
-                    <h2>Confirme os dados</h2>
-                </div>
-                <div class="modal-body">
-                    <ul class="transfer">
-                        <li>
-                            <span>Felipe Belinassi</span>
-                            <br>
-                            <span>Ag: 123 CC: 123</span>
-                            <br>
-                        </li>
-                        <li>
-                            <img width="50" src="../../../assets/img/arrow-down.svg">
-                        </li>
-                        <li>
-                            <span>Fabiano Silva</span>
-                            <br>
-                            <span>Ag: 123 CC: 123</span>
-                                <br>
-                        </li>
-                        <li class="jumbotron transf-modal">
-                            <span>Descrição de pagamento</span>
-                            <br>
-                            <span>R$500,00</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btnRoxo" data-dismiss="modal" data-toggle="modal" data-target="#sucesso">Confirmar transferencia</button>
-                    <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
->>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
                 </div>
             </div>
         </div>    
