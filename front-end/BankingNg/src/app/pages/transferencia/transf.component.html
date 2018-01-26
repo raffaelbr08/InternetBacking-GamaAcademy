@@ -6,6 +6,13 @@
     <div class="alert alert-danger" role="alert" *ngIf="!formularioValido">
         <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
     </div>
+    <div class="alert alert-success text-center" role="alert" *ngIf="ShowAlert">
+            <p>Transação realizada com sucesso!</p>
+            <img width="60" src="../../../assets/img/transf-valid.svg">
+    </div>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="alertErro">
+            <p>Transação não realizada</p>
+    </div>
 
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
         <div class="placeholder-wrap">
@@ -27,10 +34,11 @@
             <span class="placeholder-label">descrição da transação</span>
             <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
-        <button type="button" (click)="validaForm(formulario)" class="btnLaranja btn-submit" data-toggle="modal" data-target="#modalTransferencia" >Realizar transferência</button>
+        <a  (click)="validaForm(formulario)" class="btnLaranja btn-submit" >Realizar transferência</a>
         
         
-        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid">
+        <div class="modal-backdrop " [style.display]="showModal ? 'block' : 'none'"></div>
+        <div class="modal " id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid" [style.display]="showModal ? 'block' : 'none'">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal--header">
@@ -61,11 +69,11 @@
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btnLaranja confirma" data-toggle="modal" data-target="#sucesso" >Confirmar transferencia</button>
-                        <button type="button" class="btnLaranja cancela" data-dismiss="modal">Cancelar transferencia</button>
+                        <button type="submit" class="btnLaranja confirma" >Confirmar transferencia</button>
+                        <button type="button" class="btnLaranja cancela" (click)="showModal = false">Cancelar transferencia</button>
                     </div>
                     <!-- Button trigger modal -->
-                    <div class="modal fade" id="sucesso" tabindex="-1" role="dialog">
+                    <div class="modal" id="sucesso" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="transf-valid">
