@@ -39,6 +39,10 @@ export class TransfComponent implements OnInit {
     )
   }
 
+  validaForm(){
+    
+  }
+
   validaConta($event){
     console.log($event.target.value)
     this.servicoTransf.getCorrentista($event.target.value)

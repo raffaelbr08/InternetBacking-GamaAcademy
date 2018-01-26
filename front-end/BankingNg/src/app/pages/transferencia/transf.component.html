@@ -27,7 +27,7 @@
             <span class="placeholder-label">descrição da transação</span>
             <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
-        <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia" >Realizar transferência</button>
+        <button type="button" (click)="validaForm()" class="btnLaranja btn-submit" data-toggle="modal" data-target="#modalTransferencia" >Realizar transferência</button>
         
         
         <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid">
