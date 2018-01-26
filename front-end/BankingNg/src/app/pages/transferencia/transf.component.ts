@@ -17,7 +17,7 @@ export class TransfComponent implements OnInit {
   contaInvalida: Boolean
   dadosDestino
   formularioValido = true
-  naoEnviado 
+  modalHide = true
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -40,7 +40,6 @@ export class TransfComponent implements OnInit {
 
       }, error=>{
         console.log("erro")
-        this.naoEnviado = false 
 
       }
     )
