@@ -17,7 +17,10 @@ export class TransfComponent implements OnInit {
   contaInvalida: Boolean
   dadosDestino
   formularioValido = true
-  naoEnviado 
+
+  showModal = false
+  ShowAlert = false
+  alertErro = false
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -35,22 +38,28 @@ export class TransfComponent implements OnInit {
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
-        // $('#sucesso').modal('show')
-       
+        this.showModal = false
+        this.ShowAlert = true
+        document.querySelector("#destino").value = ""
+        document.querySelector("#valor").value = ""
+        document.querySelector("#descricao").value = ""
+        
 
       }, error=>{
         console.log("erro")
-        this.naoEnviado = false 
-
+        this.showModal = false
+        this.alertErro = true
       }
     )
   }
 
   validaForm(formulario: NgForm){
-    if(formulario.valid)
+    if(formulario.valid && !!this.dadosDestino)
     {
       this.formularioValido = true
+      this.showModal = true
     }else {
+      this.showModal = false
       this.formularioValido = false
     }
   }
@@ -69,7 +78,6 @@ export class TransfComponent implements OnInit {
           this.dadosDestino = correntista.json().correntista
           this.contaInvalida = false
   
-          console.log(this.dadosDestino)
 
         }, error =>{  
           this.dadosDestino = {}
