@@ -76,3 +76,4 @@
 {"level":"error","message":"::1 [Thu Jan 25 2018 22:25:21 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T00:25:21.382Z"}
 {"level":"error","message":"::1 [Thu Jan 25 2018 22:29:52 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T00:29:52.310Z"}
 {"level":"error","message":"::1 [Thu Jan 25 2018 22:30:33 GMT-0200 (Horário brasileiro de verão)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T00:30:33.962Z"}
+{"level":"error","message":"::1 [Thu Jan 25 2018 23:05:23 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/1233123 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T01:05:23.171Z"}
