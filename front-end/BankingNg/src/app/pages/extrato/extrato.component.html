@@ -25,9 +25,10 @@
                     <td> 
                         <p class="info">
                             transferencia
-                            {{transfs.debito? "de:" : "para:"}}
+                            {{transfs.debito? "para:" : "de:"}}
                         </p>
-                        cc: {{transfs.origem.contaCorrente}} - {{transfs.origem.nome}}
+                        cc: {{transfs.debito? transfs.destino.contaCorrente : transfs.origem.contaCorrente }}
+                        - {{transfs.debito? transfs.destino.nome : transfs.origem.nome }}
                     </td>
                     <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | currency: 'BRL':true}}</td>
                 </tr>         
