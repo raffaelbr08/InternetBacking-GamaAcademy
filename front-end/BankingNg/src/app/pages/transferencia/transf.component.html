@@ -3,16 +3,17 @@
     <h1 class="title">Transferência</h1>
 </div>
 <div class="container wrap">
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger" role="alert" *ngIf="!!dadosDestino && formulario.valid">
         <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
     </div>
 
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
         <div class="placeholder-wrap">
-            <input name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off" ngModel #inputConta="ngModel"
+            <input (change)="validaConta($event)" name="conta" type="text" class="placeholder-input" id="conta" required autocomplete="off" ngModel #inputConta="ngModel"
                 #inputConta="ngModel">
             <span class="placeholder-label">seleciona a conta para transferir</span>
             <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
+            <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
         </div>
         <div class="placeholder-wrap">
             <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
@@ -26,6 +27,7 @@
             <span class="placeholder-label">descrição da transação</span>
             <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
+<<<<<<< HEAD
         <button type="button" class="btnLaranja btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
     </form>
 
@@ -72,10 +74,60 @@
                             <div class="transf-valid">
                                 <p>Transação realizada com sucesso!</p>
                                 <img width="60" src="../../../assets/img/transf-valid.svg">
+=======
+        <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia" >Realizar transferência</button>
+        
+        
+        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal--header">
+                        <h2>Confirme os dados</h2>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="transfer">
+                            <li>
+                                <span>{{dadosUsuario.nome}}</span>
+                                <br>
+                                <span>Ag {{dadosUsuario.agencia}} CC {{dadosUsuario.contaCorrente}}</span>
+                                <br>
+                            </li>
+                            <li>
+                                <img width="50" src="../../../assets/img/arrow-down.svg">
+                            </li>
+                            <li>
+                                <span>{{dadosDestino.nome}}</span>
+                                <br>
+                                <span>Ag {{dadosDestino.agencia}} CC {{dadosDestino.contaCorrente}}</span>
+                                <br>
+                            </li>
+                            <li class="jumbotron transf-modal">
+                                <span>{{formulario.value.descricao}}</span>
+                                <br>
+                                <span>{{formulario.value.valor | currency: 'BRL':true}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btnRoxo" data-toggle="modal" data-target="#sucesso" data-dismiss="modal">Confirmar transferencia</button>
+                        <button type="button" class="btnRoxo" data-dismiss="modal">Cancelar transferencia</button>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <div class="modal fade" id="sucesso" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="transf-valid">
+                                    <p>Transação realizada com sucesso!</p>
+                                    <img width="60" src="../../../assets/img/transf-valid.svg">
+                                </div>
+>>>>>>> 294111514d3ae9dfc28e3d1924fd28859e4783c2
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
+    <!-- Modal -->
+    

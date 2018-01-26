@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="jumbotron hero saldo">
     <h1 class="title saldo">Saldo</h1>
-    <h1 class="title-extrato saldo">{{dadosUsuario.correntista.saldo | currency: 'BRL':true}}</h1>
+    <h1 class="title-extrato saldo">{{saldo | currency: 'BRL':true}}</h1>
     <hr class="divider">
     <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
 </div>
@@ -22,8 +22,14 @@
         <tbody>
                 <tr *ngFor="let transfs of transferencias">
                     <td>{{transfs.created_at | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{transfs.destino}} - Everton</td>
-                    <td [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.valor | currency: 'BRL':true}}</td>
+                    <td> 
+                        <p class="info">
+                            transferencia
+                            {{transfs.debito? "de:" : "para:"}}
+                        </p>
+                        cc: {{transfs.origem.contaCorrente}} - {{transfs.origem.nome}}
+                    </td>
+                    <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | currency: 'BRL':true}}</td>
                 </tr>         
         </tbody>
     </table>
