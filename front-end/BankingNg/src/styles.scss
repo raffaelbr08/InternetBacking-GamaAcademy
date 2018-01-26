@@ -107,8 +107,9 @@ input.ng-invalid.ng-touched{
 }
 
 /* estilo padrão dos buttons */
-.btnRoxo {
-    border: 1px solid #0d0630;
+.btnLaranja {
+    border: 1px solid #E54A21;
+    color: #E54A21;
     background: transparent;
     padding: 12px;
     font-size: 1em;
@@ -129,8 +130,8 @@ input.ng-invalid.ng-touched{
         padding: 55px 0;
     }
 
-    .btnRoxo:hover {
-        background: #0d0630;
+    .btnLaranja:hover {
+        background: #E54A21;
         color: #fff;
         transition: background-color 0.3s ease;
     }
