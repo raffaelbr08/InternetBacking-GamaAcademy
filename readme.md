@@ -57,6 +57,8 @@ MongoDB shell version v3.4.9
    Fazer download
    https://www.mongodb.com/download-center?jmp=nav#community
    
+   - Windows:
+   
    Abrir Painel de controles >> sistema >> Variaveis de ambiente
    Editar a variavel: Path
    Clicar em novo e adicionar o caminho do mongo/bin

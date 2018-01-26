@@ -11,8 +11,16 @@ import { TransferenciaService } from '../../services/transferencia.service';
 })
 export class TransfComponent implements OnInit {
   dadosTransf = {}
-  dadosUsuario = {};
+  dadosUsuario = {
+    contaCorrente: ''
+  };
+  contaInvalida: Boolean
+  dadosDestino
+  formularioValido = true
 
+  showModal = false
+  ShowAlert = false
+  alertErro = false
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -21,20 +29,70 @@ export class TransfComponent implements OnInit {
 
   }
 
-  realizaTrasnf(fomulario: NgForm): void{
-    this.dadosTransf = fomulario.value;
-    this.servicoTransf.dadosTransf = fomulario.value;
+  realizaTrasnf(formulario: NgForm): void{
+    console.log(formulario.value)
+    this.dadosTransf = formulario.value;
+    this.servicoTransf.dadosTransf = formulario.value;
     this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente;
+
+    formulario.reset();
+
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
+<<<<<<< HEAD
         alert(dados)
        
+=======
+        this.showModal = false
+        this.ShowAlert = true
+        /*document.querySelector("#destino").value = ""
+        document.querySelector("#valor").value = ""
+        document.querySelector("#descricao").value = ""*/
+>>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
 
-      },error=>{
 
+      }, error=>{
+        console.log("erro")
+        this.showModal = false
+        this.alertErro = true
       }
     )
   }
 
+  validaForm(formulario: NgForm){
+    if(formulario.valid && !!this.dadosDestino)
+    {
+      this.formularioValido = true
+      this.showModal = true
+    }else {
+      this.showModal = false
+      this.formularioValido = false
+    }
+  }
+
+  validaConta($event){
+    console.log($event.target.value)
+    if($event.target.value == this.dadosUsuario.contaCorrente ){
+      this.contaInvalida = true
+    }else{
+
+      this.servicoTransf.getCorrentista($event.target.value)
+      .subscribe(
+        correntista =>{
+
+
+          this.dadosDestino = correntista.json().correntista
+          this.contaInvalida = false
+
+
+        }, error =>{
+          this.dadosDestino = {}
+          this.contaInvalida = true
+
+        }
+      )
+    }
+
+  }
 }

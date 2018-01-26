@@ -1,35 +1,37 @@
 <app-header></app-header>
 <div class="jumbotron hero saldo">
-  <h1 class="title saldo">Saldo</h1>
-  <h1 class="title-extrato saldo">{{dadosUsuario.correntista.saldo | currency: 'BRL':true}}</h1>
-  <hr class="divider">
-  <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
+    <h1 class="title saldo">Saldo</h1>
+    <h1 class="title-extrato saldo">{{saldo | currency: 'BRL':true}}</h1>
+    <hr class="divider">
+    <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
 </div>
 
 <!--------- Tabela de extrato -->
 <div class="container">
     
-    <button [routerLink]="['/transferencia']" type="button" class="btnRoxo btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
+    <button [routerLink]="['/transferencia']" type="button" class="btnLaranja btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
 
-  <table class="table">
-      <thead class="tabela">
-          <tr>
-              <th scope="col">Data</th>
-              <th scope="col">Ultimas transações</th>
-              <th scope="col">R$</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let transfs of transferencias">
-              <td>{{transfs.updated_at | date: 'dd/MM/yyyy'}}</td>
-<<<<<<< HEAD
-              <td>{{transfs.destino}} - Everton</td>
-              <td [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.valor | currency: 'BRL':true}}</td>
-=======
-              <td>{{transfs.destino}} - {{transfs.descricao}}</td>
-              <td class="transacao--negativa">{{transfs.valor | currency: 'BRL':true}}</td>
->>>>>>> b2751fcb04e2032bac01d842c28db7d72e05a6c1
-          </tr>         
-      </tbody>
-  </table>
+    <table class="table">
+        <thead class="tabela">
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Ultimas transações</th>
+                <th scope="col">R$</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let transfs of transferencias">
+                    <td>{{transfs.created_at | date: 'dd/MM/yyyy'}}</td>
+                    <td> 
+                        <p class="info">
+                            transferencia
+                            {{transfs.debito? "para:" : "de:"}}
+                        </p>
+                        cc: {{transfs.debito? transfs.destino.contaCorrente : transfs.origem.contaCorrente }}
+                        - {{transfs.debito? transfs.destino.nome : transfs.origem.nome }}
+                    </td>
+                    <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | currency: 'BRL':true}}</td>
+                </tr>         
+        </tbody>
+    </table>
 </div>

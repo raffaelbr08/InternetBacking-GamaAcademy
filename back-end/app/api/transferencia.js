@@ -9,59 +9,87 @@ const api = {};
 const Transferencias = require('../services/transferencias');
 
 const Async = require('async')
+//teste 2
 
 api.listaPorUsuario = (req, res) => {
-    
+
     Async.series({
-        userA: function (callback){
-            
-        modelTransferencia
-            .find({$or: [{"origem":  req.body.contacorrente}, {"destino": req.body.contacorrente} ]})
-            .sort({created_at: -1})
-            .then((transferencias) => {
-                
-                const retornoTrans = transferencias.map(transferencia =>{
-                        let transf = {
-                            origem: transferencia.origem,
-                            destino: transferencia.destino,
-                            descricao: transferencia.descricao,
-                            valor: transferencia.valor,
-                            updated_at: transferencia.updated_at,
-                            created_at: transferencia.created_at
-                        }
+        userA: function (callback) {
 
-                        if(req.body.contacorrente == transferencia.origem){
-                            transf.debito = true
-                            //transf.descricao = "[Transf para]: c/c" + transferencia.destino
-                        }else{
-                            transf.debito = false
-                            
-                            //transf.descricao = "[Transf de]: c/c" + transferencia.destino
-                            
-                        }
+            modelTransferencia
+                .find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
+                .sort({ created_at: -1 })
+                .then((transferencias) => {
 
-                        return transf
+                    Async.map(transferencias, function (transferencia, callback2) {
+
+                        Async.series({
+                            origem: function (callback3) {
+                                modelCorrentista.findOne({ "contaCorrente": transferencia.origem })
+                                    .then((correntista) => {
+
+                                        callback3(null, {nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf})
+                                    }, (error) => {
+                                        logger.log('error', error);
+                                        res.status(500).json(error);
+                                    })
+                            },
+                            destino: function (callback3) {
+                                modelCorrentista.findOne({ "contaCorrente": transferencia.destino })
+                                    .then((correntista) => {
+                                        callback3(null, {nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf})
+                                    }, (error) => {
+                                        logger.log('error', error);
+                                        res.status(500).json(error);
+                                    })
+                            }
+                        }, function (err, results) {
+
+                            let transf = {
+                                origem: results.origem,
+                                destino: results.destino,
+                                descricao: transferencia.descricao,
+                                valor: transferencia.valor,
+                                updated_at: transferencia.updated_at,
+                                created_at: transferencia.created_at
+                            }
+                            
+                            if (req.body.contacorrente == transferencia.origem) {
+                                transf.debito = true
+                                //transf.descricao = "[Transf para]: c/c" + transferencia.destino
+                            } else {
+                                transf.debito = false
+
+                                //transf.descricao = "[Transf de]: c/c" + transferencia.destino
+
+                            }
+                            
+                            callback2(null, transf)
+
+                        })
+
+                    }, function (err, results) {
+                        callback(null, results)
                     })
-                    callback(null, retornoTrans)
-                //console.log(req.body.contacorrente)
-            }, (error) => {
-                logger.log('error', error);
-                res.status(500).json(error);
-            });
+
+                }, (error) => {
+                    logger.log('error', error);
+                    res.status(500).json(error);
+                });
 
         },
-        userB: function (callback){
-            modelCorrentista.findOne({"contaCorrente": req.body.contacorrente})
-                            .then((correntista) => {
-                                callback(null, correntista.saldo)
-                            }, (error) => {
-                                logger.log('error', error);
-                                res.status(500).json(error);
-                            })
+        userB: function (callback) {
+            modelCorrentista.findOne({ "contaCorrente": req.body.contacorrente })
+                .then((correntista) => {
+                    callback(null, correntista.saldo)
+                }, (error) => {
+                    logger.log('error', error);
+                    res.status(500).json(error);
+                })
         }
-    }, function(err, results){
+    }, function (err, results) {
         //console.log(results.userA, results.userB)
-        
+
         res.send({
             transferencias: results.userA,
             saldoAtualizado: results.userB
@@ -115,7 +143,7 @@ api.adiciona = function (req, res) {
             );
         }
     }, function (err, results) {
-        if(err){
+        if (err) {
             console.log(err);
             logger.log('error', err);
             res.status(500).json(err);
@@ -171,12 +199,12 @@ api.adiciona = function (req, res) {
                         }
                     }, function (err, results) {
                         console.log(results)
-                        if(err){
+                        if (err) {
                             console.log(error);
                             logger.log('error', error);
                             res.status(500).json(error);
                         }
-                        if (results){
+                        if (results) {
                             res.send({
                                 mensagem: "Transferência concluída com sucesso!"
                             })
@@ -185,10 +213,10 @@ api.adiciona = function (req, res) {
                 }
             });
         } else {
-            const error = "valor da transferencia e maior que o saldo";
+            const error = "Saldo insulficiente!";
             console.log(error);
             logger.log('error', error);
-            res.status(400).json(error);
+            res.status(400).send({mensagem: error});
         }
     });
 

@@ -5,24 +5,29 @@
         <li>
           <app-logo></app-logo>
         </li>
-        <li>Olá Felipe
+        <li>{{dadosUsuario.nome}}
           <i>
             <a class="dropdown-toggle icon-white" data-toggle="dropdown">
+              <b>Menu</b>
               <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-text" [routerLink]="['/extrato']">Extrato</a>
+                </li>
+                <li>
+                  <a class="dropdown-text" [routerLink]="['/transferencia']">Transferência</a>
+                </li>
+                <li>
+                  <a class="dropdown-text" [routerLink]="['/']">Sair</a>
+                </li>
+              </ul>
+
             </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-text" href="#">Extrato</a>
-              </li>
-              <li>
-                <a class="dropdown-text" href="#">Transferência</a>
-              </li>
-              <li>
-                <a class="dropdown-text" href="#">Sair</a>
-              </li>
-            </ul>
+
           </i>
-          <b>Menu</b>
+
         </li>
 
       </ul>
