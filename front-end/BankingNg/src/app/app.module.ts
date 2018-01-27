@@ -17,7 +17,7 @@ import { LoginService } from './services/login.service';
 import { TransfComponent } from './pages/transferencia/transf.component';
 import { ExtratoService } from './services/extrato.service';
 
-import { TextMaskModule } from 'angular2-text-mask'
+import { TextMaskModule } from 'angular2-text-mask';
 import { TransferenciaService } from './services/transferencia.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { SidebarModule } from 'ng-sidebar';

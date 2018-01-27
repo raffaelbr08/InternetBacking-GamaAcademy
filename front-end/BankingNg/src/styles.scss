@@ -142,3 +142,35 @@ input.ng-invalid.ng-touched{
         margin: 0 auto;
     }
 }
+
+.demo-sidebar {
+  background-color: #fff;
+  padding: 2em 1em;
+  margin-top: 70px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.botao-header {
+  background: transparent;
+  border: .15rem solid #fff;
+  border-left: 0;
+  border-right: 0;
+  font-size: 0;
+  cursor: pointer;
+  height: 1.5rem;
+  margin-right: 1rem;
+  position: relative;
+  width: 2rem;
+}
+
+.botao-header:after {
+  background: #fff;
+  content: "";
+  height: .15rem;
+  left: 0;
+  margin-top: -.075rem;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
