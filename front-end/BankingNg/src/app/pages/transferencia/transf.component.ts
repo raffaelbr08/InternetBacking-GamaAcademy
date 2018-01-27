@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { TransferenciaService } from '../../services/transferencia.service';
+import { ModalComponent } from '../../components/modal/modal.component'
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TransfComponent implements OnInit {
   showModal = false
   ShowAlert = false
   alertErro = false
+
 
   constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
 
@@ -44,10 +46,6 @@ export class TransfComponent implements OnInit {
        
         this.showModal = false
         this.ShowAlert = true
-        /*document.querySelector("#destino").value = ""
-        document.querySelector("#valor").value = ""
-        document.querySelector("#descricao").value = ""*/
-
 
       }, error=>{
         console.log("erro")
