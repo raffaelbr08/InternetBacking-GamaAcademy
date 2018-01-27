@@ -40,6 +40,8 @@ export class TransfComponent implements OnInit {
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
+        alert(dados)
+       
         this.showModal = false
         this.ShowAlert = true
         /*document.querySelector("#destino").value = ""
