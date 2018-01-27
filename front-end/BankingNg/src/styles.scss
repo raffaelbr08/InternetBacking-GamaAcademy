@@ -80,7 +80,7 @@ input.ng-invalid.ng-touched{
     color: #696869;
     font-weight: lighter;
     font-size: 0.8em;
-    z-index: -1;
+    z-index: 1;
 }
 
 .placeholder-input {
@@ -90,6 +90,8 @@ input.ng-invalid.ng-touched{
     padding: 25px 0 5px;
     border-bottom: 1px solid #e0e0e0;
     background: transparent;
+    position: relative;
+    z-index: 2;
 }
 
 .placeholder-input:focus {
