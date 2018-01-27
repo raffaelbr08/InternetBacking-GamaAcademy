@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
 import { HttpModule } from '@angular/http';
@@ -19,7 +20,7 @@ import { ExtratoService } from './services/extrato.service';
 import { TextMaskModule } from 'angular2-text-mask'
 import { TransferenciaService } from './services/transferencia.service';
 import { ModalComponent } from './components/modal/modal.component';
-
+import { SidebarModule } from 'ng-sidebar';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ModalComponent } from './components/modal/modal.component';
     LogoComponent,
     ExtratoComponent,
     TransfComponent,
-    ModalComponent
+    ModalComponent,
+    SidebarComponent
     ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { ModalComponent } from './components/modal/modal.component';
     FormsModule,
     HttpModule,
     TextMaskModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    SidebarModule.forRoot()
   ],
   providers: [LoginService, ExtratoService, TransferenciaService],
   bootstrap: [AppComponent]

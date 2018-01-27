@@ -1,0 +1,17 @@
+<ng-sidebar-container style="height: 100vh;" >
+ 
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" mode="push">
+    <p>Sidebar contents</p>
+  </ng-sidebar>
+
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <app-header>   
+      <button (click)="_toggleSidebar()">Toggle sidebar</button>
+    </app-header>
+    <ng-content></ng-content>
+  </div>
+
+</ng-sidebar-container>
+

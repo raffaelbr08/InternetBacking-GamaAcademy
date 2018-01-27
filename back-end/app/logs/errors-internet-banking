@@ -93,4 +93,17 @@
 {"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T02:29:19.296Z"}
 {"level":"error","message":"::1 [Fri Jan 26 2018 00:47:20 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/123 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:47:20.241Z"}
 {"level":"error","message":"::1 [Fri Jan 26 2018 00:47:30 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/10106459 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:47:30.678Z"}
+<<<<<<< HEAD
+{"level":"error","message":"::1 [Fri Jan 26 2018 00:50:54 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/10106398 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:50:54.384Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T02:52:48.185Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 00:54:55 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/1011063598 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T02:54:55.433Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T02:58:49.112Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-26T10:49:08.500Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 09:09:33 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/1 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T11:09:33.240Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 10:11:01 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/1010635 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T12:11:01.722Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 11:29:06 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/10106598 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T13:29:06.685Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 11:29:09 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/10106589 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T13:29:09.914Z"}
+{"level":"error","message":"::1 [Fri Jan 26 2018 11:29:14 GMT-0200 (E. South America Summer Time)] \"GET /v1/correntistas/101065398 HTTP/1.1\" null (erro: Nome == null)","timestamp":"2018-01-26T13:29:14.595Z"}
+=======
 >>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
+>>>>>>> 3a6d847948c5d51a82e6fc48ffe6b7690676c90e
