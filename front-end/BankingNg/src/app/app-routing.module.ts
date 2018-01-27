@@ -14,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'transferencia', component: TransfComponent
+  },
+  {
+    path:'router', component: TransfComponent
   }
 
  
