@@ -16,6 +16,9 @@ var schema = mongoose.Schema({
 	transacaoPendente: {
 		type: Array
 	} ,
+	favorecidos: {
+		type: Array
+	},
 	updated_at: Date,
 	created_at: {
 		type: Date
