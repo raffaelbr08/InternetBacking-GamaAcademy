@@ -12,21 +12,26 @@ export class ModalComponent {
   @Input() hideHeader: Boolean
   @Input() btnClass: String
   @Input() btnText: String = "Abrir modal"
+  @Input() canBeOpen
 
   constructor(private modalService: NgbModal) {
   }
 
   open(content, $event: UIEvent) {
-
     $event.preventDefault()
     
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
+    if(this.canBeOpen == "true"){
 
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+
+    }
+    
+  }
+ 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

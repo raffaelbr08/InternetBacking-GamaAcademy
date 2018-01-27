@@ -27,7 +27,7 @@ api.listaPorUsuario = (req, res) => {
                                 modelCorrentista.findOne({ "contaCorrente": transferencia.origem })
                                     .then((correntista) => {
 
-                                        callback3(null, {nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf})
+                                        callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
                                     }, (error) => {
                                         logger.log('error', error);
                                         res.status(500).json(error);
@@ -36,7 +36,7 @@ api.listaPorUsuario = (req, res) => {
                             destino: function (callback3) {
                                 modelCorrentista.findOne({ "contaCorrente": transferencia.destino })
                                     .then((correntista) => {
-                                        callback3(null, {nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf})
+                                        callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
                                     }, (error) => {
                                         logger.log('error', error);
                                         res.status(500).json(error);
@@ -52,7 +52,7 @@ api.listaPorUsuario = (req, res) => {
                                 updated_at: transferencia.updated_at,
                                 created_at: transferencia.created_at
                             }
-                            
+
                             if (req.body.contacorrente == transferencia.origem) {
                                 transf.debito = true
                                 //transf.descricao = "[Transf para]: c/c" + transferencia.destino
@@ -62,7 +62,7 @@ api.listaPorUsuario = (req, res) => {
                                 //transf.descricao = "[Transf de]: c/c" + transferencia.destino
 
                             }
-                            
+
                             callback2(null, transf)
 
                         })
@@ -111,7 +111,7 @@ api.adiciona = function (req, res) {
                         const err = "Conta corrente do correntista origem não existe"
                         console.log(err);
                         logger.log('error', err);
-                        res.status(400).json(err);
+                        res.status(200).json(err);
                     }
                 }, error => {
                     console.log(error);
@@ -132,7 +132,7 @@ api.adiciona = function (req, res) {
                         const err = "Conta corrente do correntista destino não existe"
                         console.log(err);
                         logger.log('error', err);
-                        res.status(400).json(err);
+                        res.status(200).json(err);
                     }
                 }, error => {
                     console.log(error);
@@ -170,20 +170,70 @@ api.adiciona = function (req, res) {
                     logger.log('error', error);
                     res.status(500).json(error);
                 } else {
+
                     //deu certo a transação, atualiza o saldo dos correntistas
                     Async.series({
                         //atualiza o saldo do usuário de origem
                         userAA: function (callback) {
-                            modelCorrentista.update(
-                                { contaCorrente: req.body.origem },
-                                { $inc: { saldo: -req.body.valor } },
-                                function (err, rowsAffected) {
-                                    if (err) { console.log('[ERROR] ' + err); }
-                                    if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
-                                    callback(null, "Usuario Origem atualizado");
-                                }
-                            );
+                            if (req.body.salvarFavorecido) {
+
+
+                                modelCorrentista.findOne(
+                                    { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } },
+                                    function (err, correntistaResult) {
+
+                                        if (err) {
+                                            console.log('[ERROR] ' + err);
+                                        }
+
+                                        if (correntistaResult) {
+                                            console.log("Existe correntista");
+                                            modelCorrentista.update(
+                                                { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } },
+                                                { $inc: { saldo: -req.body.valor }, $set: { "favorecidos.$.nome": req.body.nomeFavorecido } },
+                                                function (err, rowsAffected) {
+                                                    if (err) { console.log('[ERROR] ' + err); }
+                                                    if (rowsAffected) { console.log('[INFO] user'+ req.body.origem + 'saldo -' + req.body.valor); }
+                                                    callback(null, "Usuario Origem atualizado");
+                                                }
+                                            );
+
+                                        } else {
+
+                                            console.log("Não existe correntista");
+
+                                            const favorecido = {
+                                                nome: req.body.nomeFavorecido,
+                                                contaCorrente: req.body.destino
+                                            }
+
+                                            modelCorrentista.update(
+                                                { contaCorrente: req.body.origem },
+                                                { $inc: { saldo: -req.body.valor }, $push: { favorecidos: favorecido } },
+                                                function (err, rowsAffected) {
+                                                    if (err) { console.log('[ERROR] ' + err); }
+                                                    if (rowsAffected) { console.log('[INFO] '+ req.body.origem + 'saldo -' + req.body.valor); }
+                                                    callback(null, "Usuario Origem atualizado");
+                                                }
+                                            );
+                                        }
+
+                                    });
+
+
+                            } else {
+                                modelCorrentista.update(
+                                    { contaCorrente: req.body.origem },
+                                    { $inc: { saldo: -req.body.valor } },
+                                    function (err, rowsAffected) {
+                                        if (err) { console.log('[ERROR] ' + err); }
+                                        if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                        callback(null, "Usuario Origem atualizado");
+                                    }
+                                );
+                            }
                         },
+
                         //atualiza o saldo do usuário de destino
                         userBB: function (callback) {
                             modelCorrentista.update(
@@ -215,7 +265,7 @@ api.adiciona = function (req, res) {
             const error = "Saldo insulficiente!";
             console.log(error);
             logger.log('error', error);
-            res.status(400).send({mensagem: error});
+            res.status(200).send({ mensagem: error });
         }
     });
 
