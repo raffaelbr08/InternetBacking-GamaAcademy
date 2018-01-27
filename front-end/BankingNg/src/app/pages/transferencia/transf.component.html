@@ -6,6 +6,8 @@
     <div class="alert alert-danger" role="alert" *ngIf="!formularioValido">
         <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
     </div>
+    
+    <!-- msgs de validação apos a submissao do formulario -->
     <div class="alert alert-success text-center" role="alert" *ngIf="ShowAlert">
             <p>Transação realizada com sucesso!</p>
             <img width="60" src="../../../assets/img/transf-valid.svg">
@@ -14,15 +16,9 @@
             <p>Transação não realizada</p>
     </div>
 
+    <!--formulario transferencia-->
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
         <div class="placeholder-wrap">
-<<<<<<< HEAD
-            <input name="destino" type="text" class="placeholder-input" ngModel id="conta" required autocomplete="off" >
-            <span class="placeholder-label">seleciona a conta para transferir</span>
-        </div>
-        <div class="placeholder-wrap">
-            <input name="valor" type="password" class="placeholder-input" ngModel id="senha" required autocomplete="off">
-=======
             <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" ngModel #inputConta="ngModel"
                 #inputConta="ngModel">
             <span class="placeholder-label">seleciona a conta para transferir</span>
@@ -32,29 +28,20 @@
         <div class="placeholder-wrap">
             <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
                 #inputValor="ngModel">
->>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
             <span class="placeholder-label">valor a transferir (R$)</span>
+            <small *ngIf="!inputValor.valid && inputValor.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <div class="placeholder-wrap">
-<<<<<<< HEAD
-            <input name="descricao" type="text" class="placeholder-input"  ngModel id="descricao" required autocomplete="off">
-=======
             <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off" ngModel #inputDescricao="ngModel"
                 #inputDescricao="ngModel">
->>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
             <span class="placeholder-label">descrição da transação</span>
+            <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
         <a  (click)="validaForm(formulario)" class="btnLaranja btn-submit" >Realizar transferência</a>
         
         
-<<<<<<< HEAD
-        <button type="button" class="btnRoxo btn-submit" data-toggle="modal" data-target="#modalTransferencia">Realizar transferência</button>
-        <!-- Modal -->
-        <div class="modal fade" id="modalTransferencia" tabindex="-1" role="dialog">
-=======
         <div class="modal-backdrop " [style.display]="showModal ? 'block' : 'none'"></div>
         <div class="modal " id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid" [style.display]="showModal ? 'block' : 'none'">
->>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal--header">
@@ -82,7 +69,7 @@
                                 <br>
                                 <span>{{formulario.value.valor | currency: 'BRL':true}}</span>
                             </li>
-                        </ul>
+                        </ul>s
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btnLaranja confirma" >Confirmar transferencia</button>
@@ -103,21 +90,3 @@
             </div>
         </div>
     </form>
-
-<<<<<<< HEAD
-    <!-- Button trigger modal -->
-    <div class="modal fade" id="sucesso" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="transf-valid">
-                    <p>Transação realizada com sucesso!</p>
-                        <img width="60" src="../../../assets/img/transf-valid.svg">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-=======
-    <!-- Modal -->
-    
->>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
