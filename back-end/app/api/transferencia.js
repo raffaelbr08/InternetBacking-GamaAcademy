@@ -112,7 +112,7 @@ api.adiciona = function (req, res) {
                         const err = "Conta corrente do correntista origem não existe"
                         console.log(err);
                         logger.log('error', err);
-                        res.status(400).json(err);
+                        res.status(200).json(err);
                     }
                 }, error => {
                     console.log(error);
@@ -133,7 +133,7 @@ api.adiciona = function (req, res) {
                         const err = "Conta corrente do correntista destino não existe"
                         console.log(err);
                         logger.log('error', err);
-                        res.status(400).json(err);
+                        res.status(200).json(err);
                     }
                 }, error => {
                     console.log(error);
@@ -175,15 +175,61 @@ api.adiciona = function (req, res) {
                     Async.series({
                         //atualiza o saldo do usuário de origem
                         userAA: function (callback) {
-                            modelCorrentista.update(
-                                { contaCorrente: req.body.origem },
-                                { $inc: { saldo: -req.body.valor } },
-                                function (err, rowsAffected) {
-                                    if (err) { console.log('[ERROR] ' + err); }
-                                    if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
-                                    callback(null, "Usuario Origem atualizado");
-                                }
-                            );
+                            if (req.body.salvarFavorecido){
+                                
+
+                                modelCorrentista.findOne({ contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } }, function (err, correntistaResult) {
+
+                                    if (err) {
+                                        console.log('[ERROR] ' + err);
+                                    }
+
+                                    if (correntistaResult) {
+                                        console.log("Existe correntista");
+                                        modelCorrentista.update(
+                                            { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } }},
+                                            { $inc: { saldo: -req.body.valor }, $set: { "favorecidos.$.nome": req.body.nomeFavorecido } },
+                                            function (err, rowsAffected) {
+                                                if (err) { console.log('[ERROR] ' + err); }
+                                                if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                                callback(null, "Usuario Origem atualizado");
+                                            }
+                                        );
+
+                                    } else {
+                                        
+                                        console.log("Não existe correntista");
+
+                                        const favorecido = {
+                                            nome: req.body.nomeFavorecido,
+                                            contaCorrente: req.body.destino
+                                        }
+                                        
+                                        modelCorrentista.update(
+                                            { contaCorrente: req.body.origem },
+                                            { $inc: { saldo: -req.body.valor }, $push: { favorecidos: favorecido } },
+                                            function (err, rowsAffected) {
+                                                if (err) { console.log('[ERROR] ' + err); }
+                                                if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                                callback(null, "Usuario Origem atualizado");
+                                            }
+                                        );
+                                    }
+
+                                });
+
+                                
+                            }else{
+                                modelCorrentista.update(
+                                    { contaCorrente: req.body.origem },
+                                    { $inc: { saldo: -req.body.valor }},
+                                    function (err, rowsAffected) {
+                                        if (err) { console.log('[ERROR] ' + err); }
+                                        if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                        callback(null, "Usuario Origem atualizado");
+                                    }
+                                );
+                            }
                         },
                         //atualiza o saldo do usuário de destino
                         userBB: function (callback) {
@@ -216,7 +262,7 @@ api.adiciona = function (req, res) {
             const error = "Saldo insulficiente!";
             console.log(error);
             logger.log('error', error);
-            res.status(400).send({mensagem: error});
+            res.status(200).send({mensagem: error});
         }
     });
 

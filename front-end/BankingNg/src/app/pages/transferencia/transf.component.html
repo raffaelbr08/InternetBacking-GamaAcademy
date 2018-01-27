@@ -6,43 +6,59 @@
     <div class="alert alert-danger" role="alert" *ngIf="!formularioValido">
         <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
     </div>
-    
-    <!-- msgs de validação apos a submissao do formulario -->
     <div class="alert alert-success text-center" role="alert" *ngIf="ShowAlert">
-            <p>Transação realizada com sucesso!</p>
-            <img width="60" src="../../../assets/img/transf-valid.svg">
+        <p>Transação realizada com sucesso!</p>
+        <img width="60" src="../../../assets/img/transf-valid.svg">
     </div>
     <div class="alert alert-danger text-center" role="alert" *ngIf="alertErro">
-            <p>Transação não realizada</p>
+        <p>Transação não realizada</p>
     </div>
 
-    <!--formulario transferencia-->
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
-        <div class="placeholder-wrap">
-            <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" ngModel #inputConta="ngModel"
-                #inputConta="ngModel">
-            <span class="placeholder-label">seleciona a conta para transferir</span>
-            <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
-            <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
+
+        <ngbd-modal hideHeader="false" btnClass="btnLaranja btn-submit" btnText="Selecionar Beneficiario" canBeOpen="!!dadosDestino && formulario.valid">
+            </ngbd-modal>
+        <p>ou</p>
+        <div  class="jumbotron">
+            
+            <div class="placeholder-wrap">
+                <input (change)="validaConta($event)" name="nome" type="text" class="placeholder-input" id="nome" required autocomplete="off"
+                    ngModel #inputConta="ngModel" #inputNome="ngModel">
+                <span class="placeholder-label">Nome</span>
+                <small *ngIf="!inputNome.valid && inputNome.touched" class="error-text danger">Campo Obrigatório!</small>
+                <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
+            </div>
+
+            <div class="placeholder-wrap">
+                <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off"
+                    ngModel #inputConta="ngModel" #inputConta="ngModel">
+                <span class="placeholder-label">Número da Conta</span>
+                <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
+                <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
+            </div>
+    
+
+            <div class="form-check">
+                    <input name="cadastrar" type="checkbox" class="form-check-input" id="cadastrar" required autocomplete="off" ngModel #inputDescricao="ngModel"
+                        #inputDescricao="ngModel">
+                    <label class="form-check-label">
+                        deseja salvar como beneficiario?
+                    </label>
+                </div>
         </div>
+
+
+
+        
+
         <div class="placeholder-wrap">
             <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
                 #inputValor="ngModel">
             <span class="placeholder-label">valor a transferir (R$)</span>
-            <small *ngIf="!inputValor.valid && inputValor.touched" class="error-text danger">Campo Obrigatório!</small>
         </div>
-        <div class="placeholder-wrap">
-            <input name="descricao" type="text" class="placeholder-input" id="descricao" required autocomplete="off" ngModel #inputDescricao="ngModel"
-                #inputDescricao="ngModel">
-            <span class="placeholder-label">descrição da transação</span>
-            <small *ngIf="!inputDescricao.valid && inputDescricao.touched" class="error-text danger">Campo Obrigatório!</small>
-        </div>
-        <a  (click)="validaForm(formulario)" class="btnLaranja btn-submit" >Realizar transferência</a>
-        
-        
-        <div class="modal-backdrop " [style.display]="showModal ? 'block' : 'none'"></div>
-        <div class="modal " id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid" [style.display]="showModal ? 'block' : 'none'">
-            <div class="modal-dialog" role="document">
+
+        <ngbd-modal hideHeader="false" btnClass="btnLaranja btn-submit" btnText="Realizar transferência" canBeOpen="!!dadosDestino && formulario.valid">
+            <div class="modal-dialog" role="document" *ngIf="!!dadosDestino && formulario.valid">
                 <div class="modal-content">
                     <div class="modal--header">
                         <h2>Confirme os dados</h2>
@@ -69,24 +85,33 @@
                                 <br>
                                 <span>{{formulario.value.valor | currency: 'BRL':true}}</span>
                             </li>
-                        </ul>s
+                        </ul>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btnLaranja confirma" >Confirmar transferencia</button>
-                        <button type="button" class="btnLaranja cancela" (click)="showModal = false">Cancelar transferencia</button>
-                    </div>
-                    <!-- Button trigger modal -->
-                    <div class="modal" id="sucesso" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="transf-valid">
-                                    <p>Transação realizada com sucesso!</p>
-                                    <img width="60" src="../../../assets/img/transf-valid.svg">
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </ngbd-modal>
+
+
+        <div class="modal-backdrop " [style.display]="showModal ? 'block' : 'none'"></div>
+        <div class="modal " id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid" [style.display]="showModal ? 'block' : 'none'">
+
+        </div>
+
+
+
+        <!-- Button trigger modal -->
+        <div class="modal" id="sucesso" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="transf-valid">
+                        <p>Transação realizada com sucesso!</p>
+                        <img width="60" src="../../../assets/img/transf-valid.svg">
                     </div>
                 </div>
             </div>
         </div>
+
+
     </form>
+
+    <!-- Modal -->
