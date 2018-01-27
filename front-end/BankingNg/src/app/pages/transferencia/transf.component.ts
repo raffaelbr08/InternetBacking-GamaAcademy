@@ -40,16 +40,13 @@ export class TransfComponent implements OnInit {
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
-<<<<<<< HEAD
         alert(dados)
        
-=======
         this.showModal = false
         this.ShowAlert = true
         /*document.querySelector("#destino").value = ""
         document.querySelector("#valor").value = ""
         document.querySelector("#descricao").value = ""*/
->>>>>>> 23584ce00b00339331ce75b71d8ba6be9e1cd807
 
 
       }, error=>{
