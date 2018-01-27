@@ -16,40 +16,41 @@
 
     <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
 
-        <ngbd-modal hideHeader="false" btnClass="btnLaranja btn-submit" btnText="Selecionar Beneficiario" canBeOpen="!!dadosDestino && formulario.valid">
-            </ngbd-modal>
+        <ngbd-modal hideHeader="false" btnClass="btn-submit" btnText="Selecionar Beneficiario" canBeOpen="!!dadosDestino && formulario.valid">
+        </ngbd-modal>
         <p>ou</p>
-        <div  class="jumbotron">
-            
-            <div class="placeholder-wrap">
-                <input (change)="validaConta($event)" name="nome" type="text" class="placeholder-input" id="nome" required autocomplete="off"
-                    ngModel #inputConta="ngModel" #inputNome="ngModel">
-                <span class="placeholder-label">Nome</span>
-                <small *ngIf="!inputNome.valid && inputNome.touched" class="error-text danger">Campo Obrigatório!</small>
-                <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
-            </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="placeholder-wrap" *ngIf="inputSalvarBeneficiario.value && !!inputSalvarBeneficiario.touched">
+                    <input  name="nome" type="text" class="placeholder-input" id="nome" required autocomplete="off"
+                        ngModel #inputConta="ngModel" #inputNome="ngModel">
+                    <span class="placeholder-label">Nome</span>
+                    <small *ngIf="!inputNome.valid && inputNome.touched" class="error-text danger">Campo Obrigatório!</small>
+                    <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
+                </div>
 
-            <div class="placeholder-wrap">
-                <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off"
-                    ngModel #inputConta="ngModel" #inputConta="ngModel">
-                <span class="placeholder-label">Número da Conta</span>
-                <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
-                <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
-            </div>
-    
+                <div class="placeholder-wrap">
+                    <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off"
+                        ngModel #inputConta="ngModel" #inputConta="ngModel">
+                    <span class="placeholder-label">Número da Conta</span>
+                    <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
+                    <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
+                </div>
 
-            <div class="form-check">
-                    <input name="cadastrar" type="checkbox" class="form-check-input" id="cadastrar" required autocomplete="off" ngModel #inputDescricao="ngModel"
+
+                <div class="form-check">
+                    <input name="cadastrar" type="checkbox" class="form-check-input" id="cadastrar" ngModel #inputSalvarBeneficiario="ngModel"
                         #inputDescricao="ngModel">
-                    <label class="form-check-label">
+                    <label class="form-check-label" for="cadastrar">
                         deseja salvar como beneficiario?
                     </label>
                 </div>
+            </div>
         </div>
 
 
 
-        
+
 
         <div class="placeholder-wrap">
             <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
