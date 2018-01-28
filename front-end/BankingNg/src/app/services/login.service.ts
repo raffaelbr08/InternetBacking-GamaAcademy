@@ -38,7 +38,7 @@ export class LoginService {
     const opcoesHttp = {
       headers: new HttpHeaders(
         {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         }
       )
     }
