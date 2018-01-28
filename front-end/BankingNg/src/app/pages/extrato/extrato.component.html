@@ -3,13 +3,10 @@
         <h1 class="title saldo">Saldo</h1>
         <h1 class="title-extrato saldo">{{saldo | currency: 'BRL':true}}</h1>
         <hr class="divider">
-        <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
     </div>
 
     <!-- Tabela de extrato -->
     <div class="container">
-        <button [routerLink]="['/transferencia']" type="button" class="btnLaranja btn-submit" style="margin-bottom: 2rem;">Realizar transferência</button>
-
         <table class="table">
             <thead class="tabela">
                 <tr>

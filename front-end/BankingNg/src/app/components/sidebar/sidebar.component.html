@@ -29,8 +29,14 @@
           <h3>Saldo</h3>
           <h2>R$6000</h2>
           <hr class="divider">
-          <a [routerLink]="['/extrato']" class="btn btn-primary btn-lg btn-block btn-sidebar">Extrato</a>
-          <a [routerLink]="['/transferencia']" class="btn btn-primary btn-lg btn-block btn-sidebar">Transferência</a>
+          <a [routerLink]="['/extrato']" class="btn btn-primary btn-sidebar">
+            <img width="40" src="../../../assets/img/extrato-icon.svg">
+            <h6>Extrato</h6>
+          </a>
+          <a [routerLink]="['/transferencia']" class="btn btn-primary btn-sidebar">
+            <img width="40" src="../../../assets/img/transferencia-icon.svg">
+            <h6>Transferência</h6>
+          </a>
       </div>
   </ng-sidebar>
 

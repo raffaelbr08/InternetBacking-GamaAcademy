@@ -48,6 +48,25 @@ a {
     margin-top: 30px;
 }
 
+.btn-sidebar {
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #fff;
+}
+
+.btn-sidebar:hover {
+    background: #ab381a;
+}
+
+.btn-sidebar h6 {
+    font-size: 0.8em;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 .profile-usermenu ul li {
     border-bottom: 1px solid #f0f4f7;
 }

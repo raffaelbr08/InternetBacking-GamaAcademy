@@ -10,17 +10,14 @@ hr.divider {
     font-style: normal;
 }
 
-#conta {
-    font-size: 0.9em;
-    margin: 0;
-}
-
 .transacao--negativa {
     color: red;
+    font-weight: 600;
 }
 
 .transacao--positiva {
     color: green;
+    font-weight: 600;
 }
 
 .tabela{
@@ -28,6 +25,11 @@ hr.divider {
     border-color: #E54A21;
     color: #fff;
 }
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
 .info{
     font-size: 0.8rem;
 }
