@@ -1,0 +1,16 @@
+<div class="modal--header">
+    <h2>Token de segurança</h2>
+</div>
+<div class="modal-body">
+    <div class="col">
+        <p> Digite a senha enviada</p>
+        <div class="placeholder-wrap">
+            <input name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" #inputToken="ngModel"
+                [(ngModel)]="servicoTransf.token" value="{{servicoTransf.token}}">
+            <span class="placeholder-label">Token</span>
+            <small *ngIf="!inputToken.valid && inputToken.touched" class="error-text danger">Campo Obrigatório!</small>
+        </div>
+    </div>
+</div>
+<button class="btn btnLaranja btn-submit" (click)="servicoTransf.next()">Avançar</button>
+<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()">Voltar</button>

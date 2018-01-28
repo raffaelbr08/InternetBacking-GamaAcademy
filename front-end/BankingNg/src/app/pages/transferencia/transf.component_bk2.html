@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="jumbotron hero">
+    <h1 class="title">Transferência</h1>
+</div>
+<div class="container wrap">
+    <div class="alert alert-danger" role="alert" *ngIf="!formularioValido">
+        <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
+    </div>
+
+    <div class="row" *ngIf="servicoTransf.fase == 0">
+        <div class="col-sm-5 text-center">
+            <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(1)">Selecione um favorecido</button>
+        </div>
+        <div class="col-2 flexbox">
+            Ou
+        </div>
+        <div class="col-sm-5 text-center">
+            <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(2)">Digite os dados da conta</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" *ngIf="servicoTransf.fase == 1">
+            <app-favorecidos></app-favorecidos>
+        </div>
+        <div class="col-12" *ngIf="servicoTransf.fase == 2">
+            <app-outra-conta></app-outra-conta>
+        </div>
+        <div class="col-12" *ngIf="servicoTransf.fase == 3">
+                <app-valor-transferencia></app-valor-transferencia>
+        </div>
+    </div>
+</div>

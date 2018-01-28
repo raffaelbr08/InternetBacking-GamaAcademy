@@ -7,11 +7,13 @@
     </button>
   </div>
   <div class="modal-body">
-    <ng-content></ng-content>
+    <ng-content select="[modal-position=body]"></ng-content>
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btnLaranja confirma">Confirmar transferencia</button>
-    <button type="button" class="btnLaranja cancela" (click)="c('Close click')">Cancelar transferencia</button>
+    <ng-content select="[modal-position=footer]">
+      
+    </ng-content>
+    <button type="button" class="btnLaranja cancela" (click)="closeModal('Close click')">Cancelar transferencia</button>
   </div>
 </ng-template>
 

@@ -1,118 +1,41 @@
+<app-sidebar>
 
-<div class="jumbotron hero">
-    <h1 class="title">Transferência</h1>
-</div>
-<div class="container wrap">
-    <div class="alert alert-danger" role="alert" *ngIf="!formularioValido">
-        <p>Para realizar uma transferência, preencha os campos abaixo com os dados solicitados.</p>
+    <div class="jumbotron hero">
+        <h1 class="title">Transferência</h1>
     </div>
-    <div class="alert alert-success text-center" role="alert" *ngIf="ShowAlert">
-        <p>Transação realizada com sucesso!</p>
-        <img width="60" src="../../../assets/img/transf-valid.svg">
-    </div>
-    <div class="alert alert-danger text-center" role="alert" *ngIf="alertErro">
-        <p>Transação não realizada</p>
-    </div>
+    <div class="container ">
 
-    <form style="display: inherit" novalidate #formulario="ngForm" (ngSubmit)="realizaTrasnf(formulario)">
-
-        <ngbd-modal hideHeader="false" btnClass="btn-submit" btnText="Selecionar Beneficiario" canBeOpen="!!dadosDestino && formulario.valid">
-        </ngbd-modal>
-        <p>ou</p>
-        <div class="card">
-            <div class="card-body">
-                <div class="placeholder-wrap" *ngIf="inputSalvarBeneficiario.value && !!inputSalvarBeneficiario.touched">
-                    <input  name="nome" type="text" class="placeholder-input" id="nome" required autocomplete="off"
-                        ngModel #inputConta="ngModel" #inputNome="ngModel">
-                    <span class="placeholder-label">Nome</span>
-                    <small *ngIf="!inputNome.valid && inputNome.touched" class="error-text danger">Campo Obrigatório!</small>
-                    <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
-                </div>
-
-                <div class="placeholder-wrap">
-                    <input (change)="validaConta($event)" name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off"
-                        ngModel #inputConta="ngModel" #inputConta="ngModel">
-                    <span class="placeholder-label">Número da Conta</span>
-                    <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
-                    <small *ngIf="contaInvalida" class="error-text danger">Conta invalida!</small>
-                </div>
-
-
-                <div class="form-check">
-                    <input name="cadastrar" type="checkbox" class="form-check-input" id="cadastrar" ngModel #inputSalvarBeneficiario="ngModel"
-                        #inputDescricao="ngModel">
-                    <label class="form-check-label" for="cadastrar">
-                        deseja salvar como beneficiario?
-                    </label>
-                </div>
+        <div class="row" *ngIf="servicoTransf.fase == 0">
+            <div class="col-sm-5 text-center">
+                <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(1)">Selecione um favorecido</button>
+            </div>
+            <div class="col-sm-2 flexbox">
+                Ou
+            </div>
+            <div class="col-sm-5 text-center">
+                <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(2)">Digite os dados da conta</button>
             </div>
         </div>
-
-
-
-
-
-        <div class="placeholder-wrap">
-            <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
-                #inputValor="ngModel">
-            <span class="placeholder-label">valor a transferir (R$)</span>
-        </div>
-
-        <ngbd-modal hideHeader="false" btnClass="btnLaranja btn-submit" btnText="Realizar transferência" canBeOpen="!!dadosDestino && formulario.valid">
-            <div class="modal-dialog" role="document" *ngIf="!!dadosDestino && formulario.valid">
-                <div class="modal-content">
-                    <div class="modal--header">
-                        <h2>Confirme os dados</h2>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="transfer">
-                            <li>
-                                <span>{{dadosUsuario.nome}}</span>
-                                <br>
-                                <span>Ag {{dadosUsuario.agencia}} CC {{dadosUsuario.contaCorrente}}</span>
-                                <br>
-                            </li>
-                            <li>
-                                <img width="50" src="../../../assets/img/arrow-down.svg">
-                            </li>
-                            <li>
-                                <span>{{dadosDestino.nome}}</span>
-                                <br>
-                                <span>Ag {{dadosDestino.agencia}} CC {{dadosDestino.contaCorrente}}</span>
-                                <br>
-                            </li>
-                            <li class="jumbotron transf-modal">
-                                <span>Valor da transferencia:</span>
-                                <br>
-                                <span>{{formulario.value.valor | currency: 'BRL':true}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-12" *ngIf="servicoTransf.fase == 1">
+                <app-favorecidos></app-favorecidos>
             </div>
-        </ngbd-modal>
+            <div class="col-12" *ngIf="servicoTransf.fase == 2">
+                <app-outra-conta></app-outra-conta>
+            </div>
+            <div class="col-12" *ngIf="servicoTransf.fase == 3">
+                <app-token-tranferencia></app-token-tranferencia>
+            </div>
+            <div class="col-12" *ngIf="servicoTransf.fase == 4">
+                <app-confirmacao></app-confirmacao>
+            </div>
 
-
-        <div class="modal-backdrop " [style.display]="showModal ? 'block' : 'none'"></div>
-        <div class="modal " id="modalTransferencia" tabindex="-1" role="dialog" *ngIf="!!dadosDestino && formulario.valid" [style.display]="showModal ? 'block' : 'none'">
-
-        </div>
-
-
-
-        <!-- Button trigger modal -->
-        <div class="modal" id="sucesso" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="transf-valid">
-                        <p>Transação realizada com sucesso!</p>
-                        <img width="60" src="../../../assets/img/transf-valid.svg">
-                    </div>
-                </div>
+            <div class="col-12" *ngIf="servicoTransf.fase == 20">
+                <app-sucesso></app-sucesso>
+            </div>
+            <div class="col-12" *ngIf="servicoTransf.fase == 21">
+                <app-falha-transferencia></app-falha-transferencia>
             </div>
         </div>
-
-
-    </form>
-
-    <!-- Modal -->
+    </div>
+</app-sidebar>

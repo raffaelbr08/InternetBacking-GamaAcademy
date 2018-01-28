@@ -1,0 +1,13 @@
+<app-sidebar>
+    <div class="jumbotron hero saldo">
+        <h1 class="title saldo">Saldo</h1>
+        <h1 class="title-extrato saldo">{{saldo | currency: 'BRL':true}}</h1>
+        <hr class="divider">
+        <p id="conta">Ag: {{dadosUsuario.correntista.agencia}} / CC: {{dadosUsuario.correntista.contaCorrente}}<br>{{dadosUsuario.correntista.nome}}</p>
+    </div>
+
+    <div class="container">
+        
+    </div>
+</app-sidebar>
+

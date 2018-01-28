@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { TransferenciaService } from '../../services/transferencia.service';
 import { ModalComponent } from '../../components/modal/modal.component'
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 @Component({
@@ -12,82 +15,100 @@ import { ModalComponent } from '../../components/modal/modal.component'
 })
 export class TransfComponent implements OnInit {
   dadosTransf = {}
+
+  modalref: NgbModalRef
+
   dadosUsuario = {
     contaCorrente: ''
   };
-  contaInvalida: Boolean
-  dadosDestino
+
+  fase
+
+  transferencia = {
+    nomeFavorecido: "",
+    agenciaFavorecido: "",
+    salvarFavorecido: false,
+    valor: "",
+    destino: "",
+    origem: ""
+  }
+
+  favorecidos = [
+    {agencia: "1", destino: "123", nome: "everton"},
+    {agencia: "2", destino: "3123", nome: "Fabiano"},
+    {agencia: "33", destino: "23123", nome: "Felipe"}
+  ]
+
   formularioValido = true
 
-  showModal = false
-  ShowAlert = false
-  alertErro = false
+  mensagemDeErro = ''
 
 
-  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
+  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private modalService: NgbModal ) { 
+    
+  }
 
   ngOnInit() {
      this.dadosUsuario = this.servicoLogin.response.correntista;
-
   }
 
-  realizaTrasnf(formulario: NgForm): void{
-    console.log(formulario.value)
-    this.dadosTransf = formulario.value;
-    this.servicoTransf.dadosTransf = formulario.value;
-    this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente;
 
-    formulario.reset();
+  openModal(content, $event, canNotBeOpend){
+    $event.preventDefault()
+
+    if(!canNotBeOpend){
+      this.modalref = this.modalService.open(content)
+
+      this.modalref.result.then((result) => {
+        console.log(result)
+      }, (reason) => {
+        console.log(reason)
+      });
+    }
+    
+  }
+
+  closeModal(){
+    this.fase = 1
+    this.modalref.close()
+  }
+
+
+
+  realizaTrasnf(formulario: NgForm): void{
+    this.servicoTransf.dadosTransf = this.transferencia
 
     this.servicoTransf.postTransf()
     .subscribe(
       dados=>{
-        alert(dados)
-       
-        this.showModal = false
-        this.ShowAlert = true
 
+        this.fase++
+
+        this.transferencia = {
+          nomeFavorecido: "",
+          agenciaFavorecido: "",
+          salvarFavorecido: false,
+          valor: "",
+          destino: "",
+          origem: ""
+        }
       }, error=>{
-        console.log("erro")
-        this.showModal = false
-        this.alertErro = true
+
+        this.fase = 9
+        error = error.json()
+        this.mensagemDeErro = error.message
+        console.log(error)
       }
     )
   }
 
   validaForm(formulario: NgForm){
-    if(formulario.valid && !!this.dadosDestino)
+    if(formulario.valid )
     {
       this.formularioValido = true
-      this.showModal = true
     }else {
-      this.showModal = false
       this.formularioValido = false
     }
   }
 
-  validaConta($event){
-    console.log($event.target.value)
-    if($event.target.value == this.dadosUsuario.contaCorrente ){
-      this.contaInvalida = true
-    }else{
-
-      this.servicoTransf.getCorrentista($event.target.value)
-      .subscribe(
-        correntista =>{
-
-
-          this.dadosDestino = correntista.json().correntista
-          this.contaInvalida = false
-
-
-        }, error =>{
-          this.dadosDestino = {}
-          this.contaInvalida = true
-
-        }
-      )
-    }
-
-  }
 }

@@ -1,0 +1,56 @@
+<form style="display: inherit" novalidate #formulario="ngForm">
+
+  <div class="card">
+    <div class="card-body">
+
+      <div class="placeholder-wrap">
+        <input name="agencia" type="text" class="placeholder-input" id="agencia" required autocomplete="off" [(ngModel)]="servicoTransf.dadosTransf.agenciaFavorecido"
+          value="{{servicoTransf.dadosTransf.agenciaFavorecido}}" #inputAgencia="ngModel">
+        <span class="placeholder-label">Agencia</span>
+        <small *ngIf="!inputAgencia.valid && inputAgencia.touched" class="error-text danger">Campo Obrigatório!</small>
+      </div>
+
+      <div class="placeholder-wrap">
+        <input name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" #inputConta="ngModel"
+          [(ngModel)]="servicoTransf.dadosTransf.destino" value="{{servicoTransf.dadosTransf.destino}}">
+        <span class="placeholder-label">Número da Conta</span>
+        <small *ngIf="!inputConta.valid && inputConta.touched" class="error-text danger">Campo Obrigatório!</small>
+      </div>
+
+      <div class="placeholder-wrap">
+        <input name="nome" type="text" class="placeholder-input" id="nome" [required]="inputSalvarBeneficiario.value ? true : false"
+          autocomplete="off" ngModel #inputNome="ngModel" value="{{servicoTransf.dadosTransf.nomeFavorecido}}" [(ngModel)]="servicoTransf.dadosTransf.nomeFavorecido">
+        <span class="placeholder-label">Nome do favorecido</span>
+        <small *ngIf="!inputNome.valid && inputNome.touched" class="error-text danger">Campo Obrigatório!</small>
+      </div>
+
+      <div class="form-check">
+        <input name="cadastrar" type="checkbox" class="form-check-input" id="cadastrar" ngModel #inputSalvarBeneficiario="ngModel"
+          [(ngModel)]="servicoTransf.dadosTransf.salvarFavorecido">
+        <label class="form-check-label" for="cadastrar">
+          Cadastrar favorecido?
+        </label>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="card mt-5 mb-5">
+    <div class="card-body">
+      <div class="placeholder-wrap">
+        <input name="valor" type="number" class="placeholder-input" id="valor" required autocomplete="off" ngModel #inputValor="ngModel"
+          #inputValor="ngModel" [(ngModel)]="servicoTransf.dadosTransf.valor" value="{{servicoTransf.dadosTransf.valor}}">
+        <span class="placeholder-label">valor a transferir (R$)</span>
+        <small *ngIf="!inputValor.valid && inputValor.touched" class="error-text danger">Campo Obrigatório!</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="btn btnLaranja btn-submit float-left" (click)="prev($event, formulario)">Voltar</button>
+
+    <button class="btn btnLaranja btn-submit float-right" (click)="next($event, formulario)">Avançar</button>
+  </div>
+
+</form>

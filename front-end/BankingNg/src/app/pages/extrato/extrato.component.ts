@@ -24,7 +24,7 @@ export class ExtratoComponent implements OnInit {
   constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService) { }
 
   ngOnInit() {
-    this.dadosUsuario = this.servicoLogin.response;
+    this.dadosUsuario = this.servicoLogin.response
     this.servicoExtrato.getExtrato()
     .subscribe(
       dados=>{

@@ -23,6 +23,14 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { TransferenciaService } from './services/transferencia.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { SidebarModule } from 'ng-sidebar';
+import { FavorecidosComponent } from './pages/transferencia/favorecidos/favorecidos.component';
+import { OutraContaComponent } from './pages/transferencia/outra-conta/outra-conta.component';
+import { SucessoComponent } from './pages/transferencia/sucesso/sucesso.component';
+import { ConfirmacaoComponent } from './pages/transferencia/confirmacao/confirmacao.component';
+import { FalhaComponent } from './pages/transferencia/falha/falha.component';
+import { ValorComponent } from './pages/transferencia/valor/valor.component';
+import { MasterComponent } from './pages/master/master.component';
+import { TokenTranferenciaComponent } from './pages/transferencia/token-tranferencia/token-tranferencia.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,15 @@ import { SidebarModule } from 'ng-sidebar';
     ExtratoComponent,
     TransfComponent,
     ModalComponent,
-    SidebarComponent
+    SidebarComponent,
+    FavorecidosComponent,
+    OutraContaComponent,
+    SucessoComponent,
+    FalhaComponent,
+    ValorComponent,
+    MasterComponent,
+    ConfirmacaoComponent,
+    TokenTranferenciaComponent
     ],
   imports: [
     BrowserModule,

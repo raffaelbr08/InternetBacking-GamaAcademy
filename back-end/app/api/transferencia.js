@@ -36,7 +36,9 @@ api.listaPorUsuario = (req, res) => {
                                         callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
                                     }, (error) => {
                                         logger.log('error', error);
-                                        res.status(500).json(error);
+                                        res.status(500).send({
+                                            "success": false
+                                            ,"message": error});
                                     })
                             },
                             destino: function (callback3) {
@@ -45,7 +47,9 @@ api.listaPorUsuario = (req, res) => {
                                         callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
                                     }, (error) => {
                                         logger.log('error', error);
-                                        res.status(500).json(error);
+                                        res.status(500).send({
+                                            "success": false
+                                            ,"message": error});
                                     })
                             }
                         }, function (err, results) {
@@ -79,7 +83,9 @@ api.listaPorUsuario = (req, res) => {
 
                 }, (error) => {
                     logger.log('error', error);
-                    res.status(500).json(error);
+                    res.status(500).send({
+                        "success": false
+                        ,"message": error});
                 });
 
         },
@@ -89,7 +95,9 @@ api.listaPorUsuario = (req, res) => {
                     callback(null, correntista.saldo)
                 }, (error) => {
                     logger.log('error', error);
-                    res.status(500).json(error);
+                    res.status(500).send({
+                        "success": false
+                        ,"message": error});
                 })
         }
     }, function (err, results) {
@@ -98,11 +106,14 @@ api.listaPorUsuario = (req, res) => {
         modelTransferencia.find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
         .count().exec(function (err, count) {
             if (err) {
-                res.status(500).json(err);
+                res.status(500).send({
+                    "success": false
+                    ,"message": err});
             }
             res.send({
                 transferencias: results.userA,
                 saldoAtualizado: results.userB,
+                success: true,
                 current_page: page,
                 total_pages: Math.ceil(count / perPage)
             })
@@ -127,15 +138,19 @@ api.adiciona = function (req, res) {
                         correntistaDestino = correntistaResult;
                         callback(null, correntistaResult);
                     } else {
-                        const err = "Conta corrente do correntista origem não existe"
-                        console.log(err);
+                        const err = `Conta corrente do correntista origem não existe`
+                        console.log(err, req.body.origem);
                         logger.log('error', err);
-                        res.status(200).json(err);
+                        res.status(200).send({
+                            "success": false
+                            ,"message": err});
                     }
                 }, error => {
                     console.log(error);
                     logger.log('error', error);
-                    res.status(500).json(error);
+                    res.status(500).send({
+                        "success": false
+                        ,"message": error});
                 }
             );
         },
@@ -148,15 +163,19 @@ api.adiciona = function (req, res) {
                         callback(null, correntistaResult);
                     } else {
                         console.log("Conta corrente não existe");
-                        const err = "Conta corrente do correntista destino não existe"
-                        console.log(err);
+                        const err = `Conta corrente do correntista destino não existe`
+                        console.log(err, req.body.destino);
                         logger.log('error', err);
-                        res.status(200).json(err);
+                        res.status(200).send({
+                            "success": false
+                            ,"message": err});
                     }
                 }, error => {
                     console.log(error);
                     logger.log('error', error);
-                    res.status(500).json(error);
+                    res.status(500).send({
+                        "success": false
+                        ,"message": error});
                 }
             );
         }
@@ -187,7 +206,9 @@ api.adiciona = function (req, res) {
                 if (error) {
                     console.log(error);
                     logger.log('error', error);
-                    res.status(500).json(error);
+                    res.status(500).send({
+                        "success": false
+                        ,"message": error});
                 } else {
 
                     //deu certo a transação, atualiza o saldo dos correntistas
@@ -209,7 +230,7 @@ api.adiciona = function (req, res) {
                                             console.log("Existe correntista");
                                             modelCorrentista.update(
                                                 { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } },
-                                                { $inc: { saldo: -req.body.valor }, $set: { "favorecidos.$.nome": req.body.nomeFavorecido } },
+                                                { $inc: { saldo: -req.body.valor }, $set: { "favorecidos.$.nome": req.body.nomeFavorecido, "favorecidos.$.agencia": req.body.agenciaFavorecido } },
                                                 function (err, rowsAffected) {
                                                     if (err) { console.log('[ERROR] ' + err); }
                                                     if (rowsAffected) { console.log('[INFO] user'+ req.body.origem + 'saldo -' + req.body.valor); }
@@ -223,7 +244,8 @@ api.adiciona = function (req, res) {
 
                                             const favorecido = {
                                                 nome: req.body.nomeFavorecido,
-                                                contaCorrente: req.body.destino
+                                                contaCorrente: req.body.destino,
+                                                agencia: req.body.agenciaFavorecido
                                             }
 
                                             modelCorrentista.update(
@@ -270,11 +292,14 @@ api.adiciona = function (req, res) {
                         if (err) {
                             console.log(error);
                             logger.log('error', error);
-                            res.status(500).json(error);
+                            res.status(500).send({
+                                "success": false
+                                ,"message": error});
                         }
                         if (results) {
                             res.send({
-                                mensagem: "Transferência concluída com sucesso!"
+                                "success": true,
+                                "message": "Transferência concluída com sucesso!"
                             })
                         }
                     });
@@ -284,7 +309,7 @@ api.adiciona = function (req, res) {
             const error = "Saldo insulficiente!";
             console.log(error);
             logger.log('error', error);
-            res.status(200).send({ mensagem: error });
+            res.status(200).send({"success": false, "message": error });
         }
     });
 

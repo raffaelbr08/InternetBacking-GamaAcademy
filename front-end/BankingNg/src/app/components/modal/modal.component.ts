@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Event } from '@angular/router/src/events';
 
 @Component({
@@ -14,7 +14,7 @@ export class ModalComponent {
   @Input() btnText: String = "Abrir modal"
   @Input() canBeOpen
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,  private modalAtivo: NgbActiveModal) {
   }
 
   open(content, $event: UIEvent) {
@@ -32,6 +32,9 @@ export class ModalComponent {
     
   }
  
+  closeModal(){
+    this.modalAtivo.close()
+  }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

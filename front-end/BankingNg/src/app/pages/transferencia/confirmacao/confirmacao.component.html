@@ -1,0 +1,24 @@
+<ul class="transfer">
+    <li>
+        <span>{{dadosUsuario.nome}}</span>
+        <br>
+        <span>Ag {{dadosUsuario.agencia}} CC {{dadosUsuario.contaCorrente}}</span>
+        <br>
+    </li>
+    <li>
+        <img width="50" src="../../../assets/img/arrow-down.svg">
+    </li>
+    <li>
+        <span>{{servicoTransf.dadosTransf.nomeFavorecido}}</span>
+        <br>
+        <span>Ag {{servicoTransf.dadosTransf.agenciaFavorecido}} CC {{servicoTransf.dadosTransf.destino}}</span>
+        <br>
+    </li>
+    <li class="jumbotron transf-modal">
+        <span>Valor da transferencia:</span>
+        <br>
+        <span>{{servicoTransf.dadosTransf.valor | currency: 'BRL':true}}</span>
+    </li>
+</ul>
+<button class="btn btnLaranja btn-submit" (click)="enviaDados()">Confirmar Transferencia</button>
+<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()">Voltar</button> 
