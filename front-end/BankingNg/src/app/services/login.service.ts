@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 
 
@@ -15,23 +16,44 @@ export class LoginService {
       saldo:'',
       nome:'',
       updated_at:''
-    },   
-    token: ""
+    },
+    token: ''
   }
   public login;
 
   url = 'http://localhost:3000/v1/login/'
 
-  constructor(private http: Http) { 
+  // construtor
+  constructor(private http: Http, private router: Router) { }
 
-  }
-
-  efetuaLogin():Observable<Response>{
-    let headers = new Headers();
+  // faz o login e retorna para o metodo do componente de login
+  efetuaLogin(): Observable<Response> {
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let options = new RequestOptions({ headers: headers})
-    return this.http.post(this.url,this.login,options);
+    const options = new RequestOptions({ headers: headers})
+    return this.http.post(this.url, this.login, options);
+  }
+
+  // metodo para efeturar logout
+  logout(): void {
+    this.response = {
+      correntista: {
+        cpf: '',
+        agencia: '',
+        contaCorrente: '',
+        saldo: '',
+        nome: '',
+        updated_at: ''
+      },
+      token: ''
+    }
+    this.router.navigate(['']);
+  }
+
+  // verifica se o usuario esta logado
+  check(): boolean {
+    return this.response.token !== '' ? true : false;
   }
 
 }

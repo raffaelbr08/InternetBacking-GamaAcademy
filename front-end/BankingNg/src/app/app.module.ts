@@ -6,6 +6,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthGuard } from './guards/auth.guard';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -42,7 +44,7 @@ import { SidebarModule } from 'ng-sidebar';
     NgbModule.forRoot(),
     SidebarModule.forRoot()
   ],
-  providers: [LoginService, ExtratoService, TransferenciaService],
+  providers: [LoginService, ExtratoService, TransferenciaService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
