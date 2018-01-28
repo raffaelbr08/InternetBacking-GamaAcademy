@@ -12,12 +12,18 @@ const Async = require('async')
 
 api.listaPorUsuario = (req, res) => {
 
+    // pagination
+    const perPage = req.body.perPage || 20
+    const page = req.body.page || 1
+
     Async.series({
         userA: function (callback) {
 
             modelTransferencia
                 .find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
                 .sort({ created_at: -1 })
+                .skip((perPage * page) - perPage)
+                .limit(perPage)
                 .then((transferencias) => {
 
                     Async.map(transferencias, function (transferencia, callback2) {
@@ -89,10 +95,23 @@ api.listaPorUsuario = (req, res) => {
     }, function (err, results) {
         //console.log(results.userA, results.userB)
 
-        res.send({
-            transferencias: results.userA,
-            saldoAtualizado: results.userB
+        modelTransferencia.find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
+        .count().exec(function (err, count) {
+            if (err) {
+                res.status(500).json(err);
+            }
+            res.send({
+                transferencias: results.userA,
+                saldoAtualizado: results.userB,
+                current_page: page,
+                total_pages: Math.ceil(count / perPage)
+            })
         })
+
+        // res.send({
+        //     transferencias: results.userA,
+        //     saldoAtualizado: results.userB
+        // })
     })
 
 }
@@ -177,7 +196,7 @@ api.adiciona = function (req, res) {
                         userAA: function (callback) {
                             if (req.body.salvarFavorecido) {
 
-
+                                // verifica se o favorecido já existe pelo numero da conta
                                 modelCorrentista.findOne(
                                     { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } },
                                     function (err, correntistaResult) {
@@ -185,7 +204,7 @@ api.adiciona = function (req, res) {
                                         if (err) {
                                             console.log('[ERROR] ' + err);
                                         }
-
+                                        // caso exista, atualiza o nome da conta corrente
                                         if (correntistaResult) {
                                             console.log("Existe correntista");
                                             modelCorrentista.update(
@@ -197,7 +216,7 @@ api.adiciona = function (req, res) {
                                                     callback(null, "Usuario Origem atualizado");
                                                 }
                                             );
-
+                                        // adiciona o favorecido na conta corrente
                                         } else {
 
                                             console.log("Não existe correntista");
