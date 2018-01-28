@@ -1,0 +1,91 @@
+a {
+    color: #fff;
+}
+  
+/* Profile container */
+.profile {
+    margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #ab381a;
+    color: #fff;
+}
+
+.profile-userpic img {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: 30%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.sidebar-txt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sidebar-txt h2 {
+    font-weight: 600;
+}
+
+.sidebar-txt h3 {
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.infos-usuario h4 {
+    font-size: 0.8em;
+    margin-bottom: 15px;
+}
+    
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}

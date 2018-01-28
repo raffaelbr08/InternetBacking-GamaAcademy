@@ -1,13 +1,37 @@
 <app-header>
   <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
 </app-header>
-<ng-sidebar-container style="height: 88vh;">
+<ng-sidebar-container style="height: 89.5vh;">
   <!-- A sidebar -->
   <ng-sidebar [(opened)]= "_opened"
-        [sidebarClass] = "'demo-sidebar'"
-        [(mode)] = "_mode"
-        (window:resize) = "onResize($event)">
-    <p>Sidebar contents fdjsokslanfkls dakfn dsajfnd skjanfjk sdanfkjds anfkjds nakjfnd sakjfn daskjnf kjdsnafkad</p>
+    [sidebarClass] = "'demo-sidebar'" 
+    [(mode)] = "_mode" 
+    (window:resize) = "onResize($event)">
+
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive"
+            alt="">
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+    
+        <!-- SIDEBAR USER TITLE -->
+        <div class="sidebar-txt">
+          <div class="infos-usuario">
+            <h3> Olá, Felipe Belinassi</h3>
+            <h4>Ag. xxxx / CC. xxxxxxx</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-txt">
+          <h3>Saldo</h3>
+          <h2>R$6000</h2>
+          <hr class="divider">
+          <a [routerLink]="['/extrato']" class="btn btn-primary btn-lg btn-block btn-sidebar">Extrato</a>
+          <a [routerLink]="['/transferencia']" class="btn btn-primary btn-lg btn-block btn-sidebar">Transferência</a>
+      </div>
   </ng-sidebar>
 
   <!-- Page content -->
@@ -17,3 +41,5 @@
   </div>
 
 </ng-sidebar-container>
+
+
