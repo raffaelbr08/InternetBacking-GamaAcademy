@@ -7,8 +7,6 @@ const api = {};
 const crypto = require('crypto');
 const hash = require('../services/hash');
 
-const config = require('../config')
-
 
 module.exports = function (app) {
 
@@ -52,15 +50,9 @@ module.exports = function (app) {
 					else {
 
 						// Gera o token com o jwt e um secret
-						const token = jwt.sign(
-												{ 
-													id: user._id
-													, login: user.cpf 
-												}, 
-												app.get('secret'), {
-													expiresIn: expiresToken()
-												}
-											);
+						const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
+							expiresIn: 100000
+						});
 
 						//Devolve o token pelo header da resposta e no body
 						res.set('x-access-token', token);
