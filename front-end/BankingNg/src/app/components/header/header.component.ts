@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
     this.dadosUsuario = this.servicoLogin.response.correntista;
   }
 
+  logout(e) {
+    e.preventDefault();
+    this.servicoLogin.logout();
+  }
+
 }
 
 
