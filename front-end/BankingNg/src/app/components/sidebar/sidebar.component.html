@@ -1,16 +1,18 @@
+<app-header>
+  <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
+</app-header>
 <ng-sidebar-container style="height: 100vh;">
   <!-- A sidebar -->
-  <ng-sidebar [(opened)]="_opened"
-        [sidebarClass]="'demo-sidebar'"
-        [mode]="over">
+  <ng-sidebar [(opened)]= "_opened"
+        [sidebarClass] = "'demo-sidebar'"
+        [(mode)] = "_mode"
+        (window:resize) = "onResize($event)">
     <p>Sidebar contents fdjsokslanfkls dakfn dsajfnd skjanfjk sdanfkjds anfkjds nakjfnd sakjfn daskjnf kjdsnafkad</p>
   </ng-sidebar>
 
   <!-- Page content -->
   <div ng-sidebar-content>
-    <app-header>
-      <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
-    </app-header>
+
     <ng-content></ng-content>
   </div>
 
