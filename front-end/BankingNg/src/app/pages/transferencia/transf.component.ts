@@ -68,47 +68,4 @@ export class TransfComponent implements OnInit {
     
   }
 
-  closeModal(){
-    this.fase = 1
-    this.modalref.close()
-  }
-
-
-
-  realizaTrasnf(formulario: NgForm): void{
-    this.servicoTransf.dadosTransf = this.transferencia
-
-    this.servicoTransf.postTransf()
-    .subscribe(
-      dados=>{
-
-        this.fase++
-
-        this.transferencia = {
-          nomeFavorecido: "",
-          agenciaFavorecido: "",
-          salvarFavorecido: false,
-          valor: "",
-          destino: "",
-          origem: ""
-        }
-      }, error=>{
-
-        this.fase = 9
-        error = error.json()
-        this.mensagemDeErro = error.message
-        console.log(error)
-      }
-    )
-  }
-
-  validaForm(formulario: NgForm){
-    if(formulario.valid )
-    {
-      this.formularioValido = true
-    }else {
-      this.formularioValido = false
-    }
-  }
-
 }
