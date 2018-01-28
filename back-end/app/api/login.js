@@ -51,7 +51,7 @@ module.exports = function (app) {
 
 						// Gera o token com o jwt e um secret
 						const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
-							expiresIn: 100000
+							expiresIn: 3600
 						});
 
 						//Devolve o token pelo header da resposta e no body
