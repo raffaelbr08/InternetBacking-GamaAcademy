@@ -18,26 +18,40 @@ export class LoginComponent implements OnInit {
   constructor(public servicoLogin: LoginService, private navegacao: Router) { }
 
   ngOnInit() {
+
+    this.servicoLogin.response = {
+      correntista: {
+        cpf: '',
+        agencia: '',
+        contaCorrente: '',
+        saldo: '',
+        nome: '',
+        updated_at: ''
+      },
+      token: ''
+    }
+
+    console.log(this.servicoLogin.response)
   }
 
   public enviaFormulario(formulario: NgForm): void{
 
     this.servicoLogin.login = formulario.value;
-    
+
     this.servicoLogin.efetuaLogin()
     .subscribe(
       dados => {
-        
-          this.servicoLogin.response = dados.json();
-          this.navegacao.navigate(['/extrato']);          
-       
+
+          this.servicoLogin.response = dados;
+          this.navegacao.navigate(['/extrato']);
+
       },error=>{
-        this.incorret = true;   
-        this.msgerror = JSON.parse(error._body);
+        this.incorret = true;
+        this.msgerror = error._body;
       }
 
     )
-        
+
 
   }
 
