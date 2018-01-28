@@ -134,7 +134,7 @@ api.adiciona = function (req, res) {
             modelCorrentista.findOne({ contaCorrente: req.body.origem }).then(
                 correntistaResult => {
                     if (correntistaResult) {
-                        console.log("pegou o correntista");
+                        //console.log("pegou o correntista");
                         correntistaDestino = correntistaResult;
                         callback(null, correntistaResult);
                     } else {
@@ -158,7 +158,7 @@ api.adiciona = function (req, res) {
             modelCorrentista.findOne({ contaCorrente: req.body.destino }).then(
                 correntistaResult => {
                     if (correntistaResult) {
-                        console.log("pegou o correntista");
+                        //console.log("pegou o correntista");
                         correntistaDestino = correntistaResult;
                         callback(null, correntistaResult);
                     } else {
@@ -186,7 +186,7 @@ api.adiciona = function (req, res) {
             res.status(500).json(err);
         }
         if (results.userA.saldo >= req.body.valor) {
-            console.log("passou");
+            //console.log("passou");
 
             //Instancia uma nova classe transferencia
             var transferencia = new modelTransferencia();
@@ -227,13 +227,14 @@ api.adiciona = function (req, res) {
                                         }
                                         // caso exista, atualiza o nome da conta corrente
                                         if (correntistaResult) {
-                                            console.log("Existe correntista");
                                             modelCorrentista.update(
                                                 { contaCorrente: req.body.origem, 'favorecidos': { $elemMatch: { contaCorrente: req.body.destino } } },
                                                 { $inc: { saldo: -req.body.valor }, $set: { "favorecidos.$.nome": req.body.nomeFavorecido, "favorecidos.$.agencia": req.body.agenciaFavorecido } },
                                                 function (err, rowsAffected) {
                                                     if (err) { console.log('[ERROR] ' + err); }
-                                                    if (rowsAffected) { console.log('[INFO] user'+ req.body.origem + 'saldo -' + req.body.valor); }
+                                                    if (rowsAffected) { 
+                                                        //console.log('[INFO] user'+ req.body.origem + 'saldo -' + req.body.valor); 
+                                                    }
                                                     callback(null, "Usuario Origem atualizado");
                                                 }
                                             );
@@ -253,7 +254,9 @@ api.adiciona = function (req, res) {
                                                 { $inc: { saldo: -req.body.valor }, $push: { favorecidos: favorecido } },
                                                 function (err, rowsAffected) {
                                                     if (err) { console.log('[ERROR] ' + err); }
-                                                    if (rowsAffected) { console.log('[INFO] '+ req.body.origem + 'saldo -' + req.body.valor); }
+                                                    if (rowsAffected) { 
+                                                        //console.log('[INFO] '+ req.body.origem + 'saldo -' + req.body.valor); 
+                                                    }
                                                     callback(null, "Usuario Origem atualizado");
                                                 }
                                             );
@@ -268,7 +271,9 @@ api.adiciona = function (req, res) {
                                     { $inc: { saldo: -req.body.valor } },
                                     function (err, rowsAffected) {
                                         if (err) { console.log('[ERROR] ' + err); }
-                                        if (rowsAffected) { console.log('[INFO] user saldo -' + req.body.valor); }
+                                        if (rowsAffected) { 
+                                            //console.log('[INFO] user saldo -' + req.body.valor); 
+                                        }
                                         callback(null, "Usuario Origem atualizado");
                                     }
                                 );
@@ -282,7 +287,9 @@ api.adiciona = function (req, res) {
                                 { $inc: { saldo: req.body.valor } },
                                 function (err, rowsAffected) {
                                     if (err) { console.log('[ERROR] ' + err); }
-                                    if (rowsAffected) { console.log('[INFO] user saldo +' + req.body.valor); }
+                                    if (rowsAffected) { 
+                                        //console.log('[INFO] user saldo +' + req.body.valor); 
+                                    }
                                     callback(null, "Usuario destino atualizado");
                                 }
                             );
