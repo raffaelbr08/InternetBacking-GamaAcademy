@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './guards/auth.guard';
+import { AplicationErrorHandle } from './app.error-handle';
+import { CheckTokenInterceptor } from './interceptors/check-token.interceptors';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -32,6 +35,7 @@ import { ValorComponent } from './pages/transferencia/valor/valor.component';
 import { MasterComponent } from './pages/master/master.component';
 import { TokenTranferenciaComponent } from './pages/transferencia/token-tranferencia/token-tranferencia.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,12 +59,20 @@ import { TokenTranferenciaComponent } from './pages/transferencia/token-tranfere
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     HttpModule,
     TextMaskModule,
     NgbModule.forRoot(),
     SidebarModule.forRoot()
   ],
-  providers: [LoginService, ExtratoService, TransferenciaService, AuthGuard],
+  providers: [
+    LoginService,
+    ExtratoService,
+    TransferenciaService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: CheckTokenInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: AplicationErrorHandle }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

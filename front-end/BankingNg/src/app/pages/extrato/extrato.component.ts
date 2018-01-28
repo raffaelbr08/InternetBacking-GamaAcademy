@@ -17,7 +17,7 @@ export class ExtratoComponent implements OnInit {
   saldo;
 
   private _opened: boolean = false;
-  
+
   private _toggleSidebar() {
     this._opened = !this._opened;
   }
@@ -32,17 +32,17 @@ export class ExtratoComponent implements OnInit {
     this.servicoExtrato.getExtrato()
     .subscribe(
       dados=>{
-        this.dadosExtrato = dados.json();
+        this.dadosExtrato = dados;
 
         console.log(this.dadosExtrato)
 
-        this.transferencias = this.dadosExtrato.transferencias; 
-        this.saldo = this.dadosExtrato.saldoAtualizado 
+        this.transferencias = this.dadosExtrato.transferencias;
+        this.saldo = this.dadosExtrato.saldoAtualizado
       },error=>{
-        alert(error._body)
+        // alert(error._body)
       }
     )
-    
+
   }
 
 }
