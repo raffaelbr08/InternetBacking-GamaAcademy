@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
@@ -24,15 +25,25 @@ export class LoginService {
   url = 'http://localhost:3000/v1/login/'
 
   // construtor
-  constructor(private http: Http, private router: Router) { }
+  // constructor(private http: Http, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // faz o login e retorna para o metodo do componente de login
-  efetuaLogin(): Observable<Response> {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+  efetuaLogin(): Observable<any> {
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
 
-    const options = new RequestOptions({ headers: headers})
-    return this.http.post(this.url, this.login, options);
+    // const options = new RequestOptions({ headers: headers})
+
+    const opcoesHttp = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json'
+        }
+      )
+    }
+
+    return this.http.post(this.url, this.login, opcoesHttp);
   }
 
   // metodo para efeturar logout

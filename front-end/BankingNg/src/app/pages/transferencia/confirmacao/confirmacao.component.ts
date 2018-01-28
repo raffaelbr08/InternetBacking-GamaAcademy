@@ -23,7 +23,7 @@ export class ConfirmacaoComponent implements OnInit {
     let envio = this.servicoTransf.postTransf()
     envio.subscribe(dados => {
 
-      let dadoss = dados.json()
+      let dadoss = dados
 
       if (!!dadoss.success) {
         console.log("sucesso", dadoss.success)
@@ -38,12 +38,11 @@ export class ConfirmacaoComponent implements OnInit {
 
       }
 
-
     }, error => {
 
       this.servicoTransf.resetDados()
       this.servicoTransf.next(21)
-      let erro = error.json()
+      let erro = error
       this.servicoTransf.mensagemErro = erro.message
       console.log(error, erro.message)
 

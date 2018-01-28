@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { LoginService } from './login.service';
 
@@ -22,7 +23,7 @@ export class TransferenciaService {
 
   mensagemErro = ""
 
-  constructor(private http: Http, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
 
   next(number = undefined) {
     if (number != undefined) {
@@ -53,22 +54,34 @@ export class TransferenciaService {
     }
   }
 
-  postTransf(): Observable<Response> {
+  postTransf(): Observable<any> {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', this.loginService.response.token)
-    let options = new RequestOptions({ headers: headers })
-    return this.http.post(this.url, this.dadosTransf, options)
+
+    const opcoesHttp = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'x-access-token': this.loginService.response.token
+        }
+      )
+    }
+    return this.http.post(this.url, this.dadosTransf, opcoesHttp)
 
   }
 
 
-  getFavorecidos(contaCorrente): Observable<Response> {
+  getFavorecidos(contaCorrente): Observable<any> {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('x-access-token', this.loginService.response.token)
-    let options = new RequestOptions({ headers: headers })
-    return this.http.get(`${this.url2}${contaCorrente}`, options)
+    
+    const opcoesHttp = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'x-access-token': this.loginService.response.token
+        }
+      )
+    }
+    return this.http.get(`${this.url2}${contaCorrente}`, opcoesHttp)
 
   }
 
