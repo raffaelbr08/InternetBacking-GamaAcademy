@@ -66,12 +66,12 @@
     <div class="card-body">
       <div class="placeholder-wrap">
         <input  
-        type="number" 
+        type="text" 
         class="placeholder-input" 
         id="valor" 
         required 
         autocomplete="off" 
-         
+        (input) = "mascaraValor($event,'###.###.###,##',true)"
         formControlName="valor"
         [(ngModel)]="servicoTransf.dadosTransf.valor" 
         value="{{servicoTransf.dadosTransf.valor}}">
