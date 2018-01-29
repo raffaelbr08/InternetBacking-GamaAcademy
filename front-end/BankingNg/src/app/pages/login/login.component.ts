@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
       },error=>{
         this.incorret = true;
-        this.msgerror = error._body;
+        this.msgerror = error.error;
       }
 
     )
