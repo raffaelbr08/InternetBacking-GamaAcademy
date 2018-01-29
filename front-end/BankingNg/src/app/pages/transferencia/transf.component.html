@@ -5,35 +5,37 @@
     </div>
     <div class="container">
 
-        <div *ngIf="servicoTransf.fase == 0">
+        <div *ngIf="!pagina">
             <div class="text-center">
-                <button class="btn btn-submit btn--expand btn-lg btnLaranja" (click)="servicoTransf.next(1)">Selecione um favorecido</button>
+                <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'favorecidos']" >Selecione um favorecido</button>
+                <!-- <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'favorecidos']" (click)="servicoTransf.next(1)">Selecione um favorecido</button> -->
             </div>
             <div class="flexbox m-3">
                 ou
             </div>
             <div class="text-center">
-                <button class="btn btn-submit btn--expand btn-lg btnLaranja" (click)="servicoTransf.next(2)">Digite os dados da conta</button>
+                <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'outra-conta']">Digite os dados da conta</button>
+                <!-- <button class="btn btn-submit btn--expand btn-lg btnLaranja" (click)="servicoTransf.next(2)">Digite os dados da conta</button> -->
             </div>
         </div>
         <div class="row">
-            <div class="col-12" *ngIf="servicoTransf.fase == 1">
+            <div class="col-12" *ngIf="pagina == 'favorecidos'">
                 <app-favorecidos></app-favorecidos>
             </div>
-            <div class="col-12" *ngIf="servicoTransf.fase == 2">
+            <div class="col-12" *ngIf="pagina == 'outra-conta'">
                 <app-outra-conta></app-outra-conta>
             </div>
-            <div class="col-12" *ngIf="servicoTransf.fase == 3">
+            <div class="col-12" *ngIf="pagina == 'token'">
                 <app-token-tranferencia></app-token-tranferencia>
             </div>
-            <div class="col-12" *ngIf="servicoTransf.fase == 4">
+            <div class="col-12" *ngIf="pagina == 'confirmacao'">
                 <app-confirmacao></app-confirmacao>
             </div>
 
-            <div class="col-12" *ngIf="servicoTransf.fase == 20">
+            <div class="col-12" *ngIf="pagina == 'sucesso'">
                 <app-sucesso></app-sucesso>
             </div>
-            <div class="col-12" *ngIf="servicoTransf.fase == 21">
+            <div class="col-12" *ngIf="pagina == 'falha'">
                 <app-falha-transferencia></app-falha-transferencia>
             </div>
         </div>

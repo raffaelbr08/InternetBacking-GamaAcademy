@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule,  NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,10 +31,9 @@ import { OutraContaComponent } from './pages/transferencia/outra-conta/outra-con
 import { SucessoComponent } from './pages/transferencia/sucesso/sucesso.component';
 import { ConfirmacaoComponent } from './pages/transferencia/confirmacao/confirmacao.component';
 import { FalhaComponent } from './pages/transferencia/falha/falha.component';
-import { ValorComponent } from './pages/transferencia/valor/valor.component';
-import { MasterComponent } from './pages/master/master.component';
 import { TokenTranferenciaComponent } from './pages/transferencia/token-tranferencia/token-tranferencia.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { ModalLoginExpiradoComponent } from './components/modal-login-expirado/modal-login-expirado.component';
 
 
 @NgModule({
@@ -51,11 +50,10 @@ import { Page404Component } from './pages/page404/page404.component';
     OutraContaComponent,
     SucessoComponent,
     FalhaComponent,
-    ValorComponent,
-    MasterComponent,
     ConfirmacaoComponent,
     TokenTranferenciaComponent,
-    Page404Component    
+    Page404Component,   
+    ModalLoginExpiradoComponent
     ],
   imports: [
     BrowserModule,
@@ -63,6 +61,7 @@ import { Page404Component } from './pages/page404/page404.component';
     FormsModule,
     HttpClientModule,
     HttpModule,
+    ReactiveFormsModule,
     TextMaskModule,
     NgbModule.forRoot(),
     SidebarModule.forRoot()
@@ -71,6 +70,7 @@ import { Page404Component } from './pages/page404/page404.component';
     LoginService,
     ExtratoService,
     TransferenciaService,
+    NgbActiveModal,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: CheckTokenInterceptor, multi: true },
     { provide: ErrorHandler, useClass: AplicationErrorHandle }

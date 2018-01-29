@@ -14,12 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'extrato', component: ExtratoComponent, canActivate: [AuthGuard]
+  }, 
+  {
+    path:'**', component: Page404Component
   },
   {
-    path: 'transferencia', component: TransfComponent, canActivate: [AuthGuard]
-  },
-
-  {path:'**', component: Page404Component}
+    path: 'transferencia/:pagina', component: TransfComponent, canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

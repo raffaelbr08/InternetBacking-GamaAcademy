@@ -20,5 +20,7 @@
         <span>{{servicoTransf.dadosTransf.valor | currency: 'BRL':true}}</span>
     </li>
 </ul>
-<button class="btn btnLaranja btn-submit" (click)="enviaDados()">Confirmar Transferência</button>
-<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()">Voltar</button> 
+<div class="row">
+    <button class="btn btnLaranja btn-submit" (click)="enviaDados()">Confirmar Transferência</button>
+    <button class="btn btnLaranja btn-submit" [routerLink]="['/transferencia/token']">Voltar</button> 
+</div>

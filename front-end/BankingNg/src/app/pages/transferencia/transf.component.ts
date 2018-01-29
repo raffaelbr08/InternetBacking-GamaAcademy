@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router'
+
 import { LoginService } from '../../services/login.service';
 import { TransferenciaService } from '../../services/transferencia.service';
 import { ModalComponent } from '../../components/modal/modal.component'
@@ -33,22 +35,32 @@ export class TransfComponent implements OnInit {
     origem: ""
   }
 
-  favorecidos = [
-    {agencia: "1", destino: "123", nome: "everton"},
-    {agencia: "2", destino: "3123", nome: "Fabiano"},
-    {agencia: "33", destino: "23123", nome: "Felipe"}
-  ]
+  favorecidos = []
 
   formularioValido = true
 
   mensagemDeErro = ''
 
+  pagina = ''
 
-  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private modalService: NgbModal ) { 
-    
+
+  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private modalService: NgbModal, route:ActivatedRoute ) { 
+    route.params.subscribe(
+      (parametro) => {
+        this.servicoTransf.paginaAnterior = this.pagina
+        this.pagina = parametro.pagina
+
+        console.log('pagina anterior:', this.servicoTransf.paginaAnterior, 'pagina nova:', this.pagina)
+        if(!parametro.pagina){
+          
+          this.servicoTransf.resetDados()
+        }
+      }
+    )
   }
 
   ngOnInit() {
+    console.log('init transferencia')
      this.dadosUsuario = this.servicoLogin.response.correntista;
   }
 

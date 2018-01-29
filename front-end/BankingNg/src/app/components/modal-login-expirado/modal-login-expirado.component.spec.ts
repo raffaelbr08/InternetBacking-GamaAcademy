@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ValorComponent } from './valor.component';
+import { ModalLoginExpiradoComponent } from './modal-login-expirado.component';
 
-describe('ValorComponent', () => {
-  let component: ValorComponent;
-  let fixture: ComponentFixture<ValorComponent>;
+describe('ModalLoginExpiradoComponent', () => {
+  let component: ModalLoginExpiradoComponent;
+  let fixture: ComponentFixture<ModalLoginExpiradoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValorComponent ]
+      declarations: [ ModalLoginExpiradoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValorComponent);
+    fixture = TestBed.createComponent(ModalLoginExpiradoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

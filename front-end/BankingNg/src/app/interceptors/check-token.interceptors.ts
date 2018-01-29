@@ -4,11 +4,15 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { LoginService } from '../services/login.service';
+import { NgbModal, NgbModalRef, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
+import { ModalLoginExpiradoComponent } from '../components/modal-login-expirado/modal-login-expirado.component'
 
 @Injectable()
 export class CheckTokenInterceptor implements HttpInterceptor {
 
-  constructor(private injector: Injector, private router: Router) { }
+  modalref: NgbModalRef
+
+  constructor(private injector: Injector, private router: Router, private modalService: NgbModal, public activeModal: NgbActiveModal) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -17,7 +21,12 @@ export class CheckTokenInterceptor implements HttpInterceptor {
       const error = (typeof errorResponse.error !== 'object') ? JSON.parse(errorResponse.error) : errorResponse.error;
 
       if (errorResponse.status === 401 && error.message === 'Falha ao tentar autenticar o token!') {
-        this.router.navigate(['']);
+
+        console.log("interceptor")
+
+        alert(`Login expirado! \n Efetue um novo login.`)
+
+        this.router.navigate([''])
       }
 
       return Observable.throw(errorResponse);

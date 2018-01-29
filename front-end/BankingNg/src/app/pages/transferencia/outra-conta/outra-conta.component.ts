@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TransferenciaService } from '../../../services/transferencia.service';
 import { LoginService } from '../../../services/login.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-outra-conta',
@@ -11,37 +12,43 @@ import { NgForm } from '@angular/forms';
 export class OutraContaComponent implements OnInit {
   dadosUsuario = {}
 
-  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) {
+  formulario: FormGroup
+
+  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private formBuilder: FormBuilder, private router: Router) {
+
+    this.formulario = formBuilder.group({
+      agenciaFavorecido: ['', Validators.required],
+      destino: ['', [Validators.required]],
+      nomeFavorecido: ['', [Validators.required]],
+      salvarFavorecido: ['', [Validators.required]],
+      valor: ['', [Validators.required]]
+    })
   }
 
   ngOnInit() {
   }
 
-  next($event: UIEvent, formulario, number) {
-    $event.preventDefault()
+  next() {
 
-    console.log(formulario)
-
-    if (!!formulario.valid) {
+    if (!!this.formulario.valid) {
       this.servicoTransf.dadosTransf.origem = this.servicoLogin.response.correntista.contaCorrente
-      this.servicoTransf.next()
+      this.router.navigate(['/transferencia/token'])
     } else {
-      formulario.form.controls.agencia.touched = true
-      formulario.form.controls.destino.touched = true
-      formulario.form.controls.nome.touched = true
-      formulario.form.controls.valor.touched = true
-      
-      console.log(formulario)
+      this.formulario.controls.agenciaFavorecido.markAsTouched()
+      this.formulario.controls.destino.markAsTouched()
+      this.formulario.controls.nomeFavorecido.markAsTouched()
+      this.formulario.controls.valor.markAsTouched()
     }
   }
 
-  prev($event: UIEvent, formulario, number) {
-    $event.preventDefault()
+  prev() {
+
     if(this.servicoTransf.isFavorecido){
-      this.servicoTransf.prev(1)
+      this.router.navigate(['/transferencia', 'favorecidos'])
     }else{
-      this.servicoTransf.prev(0)
+      this.router.navigate(['/transferencia'])
     }
+    
   }
 
 
