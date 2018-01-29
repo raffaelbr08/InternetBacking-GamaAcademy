@@ -21,20 +21,17 @@ export class SidebarComponent implements OnInit {
 
   private _toggleSidebar() {
     this._opened = !this._opened;
-    // if (this.window_size < 800) {
-    //   this._opened = !this._opened;
-    // }
   }
 
-  constructor(public servicoLogin: LoginService, public servicoExtrato: ExtratoService) { 
-    this.dadosUsuario = this.servicoLogin.response
+  constructor(public servicoLogin: LoginService, public servicoExtrato: ExtratoService) {
+    this.dadosUsuario = this.servicoLogin.response;
     this.servicoExtrato.getExtrato()
     .subscribe(
-      dados=>{
+      dados => {
         this.dadosExtrato = dados;
-        this.saldo = this.dadosExtrato.saldoAtualizado
+        this.saldo = this.dadosExtrato.saldoAtualizado;
       }
-    )
+    );
   }
 
   ngOnInit() {
