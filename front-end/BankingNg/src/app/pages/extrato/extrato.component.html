@@ -11,12 +11,12 @@
                 <tr>
                     <th scope="col">Data</th>
                     <th scope="col">Ultimas transações</th>
-                    <th scope="col">R$</th>
+                    <th scope="col" class="moeda">R$</th>
                 </tr>
             </thead>
             <tbody>
                     <tr *ngFor="let transfs of transferencias">
-                        <td>{{transfs.created_at | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{transfs.created_at | date: 'dd/MM/yy'}}</td>
                         <td>
                             <p class="info">
                                 transferência
