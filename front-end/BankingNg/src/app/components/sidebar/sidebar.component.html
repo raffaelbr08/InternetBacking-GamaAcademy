@@ -19,15 +19,15 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="sidebar-txt">
           <div class="infos-usuario">
-            <h3> Olá, Felipe Belinassi</h3>
-            <h4>Ag. xxxx / CC. xxxxxxx</h4>
+            <h3> Olá, {{dadosUsuario.correntista.nome}}</h3>
+            <h4>Ag. {{dadosUsuario.correntista.agencia}} / CC. {{dadosUsuario.correntista.contaCorrente}}</h4>
           </div>
         </div>
       </div>
 
       <div class="sidebar-txt">
           <h3>Saldo</h3>
-          <h2>R$6000</h2>
+          <h2>{{saldo | currency: 'BRL':true}}</h2>
           <hr class="divider">
           <a [routerLink]="['/extrato']" class="btn btn-primary btn-sidebar">
             <img width="40" src="../../../assets/img/extrato-icon.svg">

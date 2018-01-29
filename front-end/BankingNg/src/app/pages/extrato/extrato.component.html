@@ -19,7 +19,7 @@
                         <td>{{transfs.created_at | date: 'dd/MM/yyyy'}}</td>
                         <td>
                             <p class="info">
-                                transferencia
+                                transferência
                                 {{transfs.debito? "para:" : "de:"}}
                             </p>
                             cc: {{transfs.debito? transfs.destino.contaCorrente : transfs.origem.contaCorrente }}
