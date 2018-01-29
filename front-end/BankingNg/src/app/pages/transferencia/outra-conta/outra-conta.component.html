@@ -74,7 +74,7 @@
         (input) = "mascaraValor($event,'###.###.###,##',true)"
         formControlName="valor"
         [(ngModel)]="servicoTransf.dadosTransf.valor" 
-        value="{{servicoTransf.dadosTransf.valor}}">
+        value="">
         <span class="placeholder-label">valor a transferir (R$)</span>
         <small *ngIf="formulario.controls.valor.invalid && formulario.controls.valor.touched" class="error-text danger">Campo Obrigatório!</small>
       </div>
