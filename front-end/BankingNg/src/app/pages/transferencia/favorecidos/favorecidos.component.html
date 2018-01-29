@@ -3,11 +3,13 @@
 </div>
 <div class="modal-body">
   <ul class="listaFavorecidos list-group" modal-position="body">
-    <li class="favorecido list-group-item list-group-item-action" [class.active]="favorecido.destino == servicoTransf.dadosTransf.destino"
+    <li class="favorecido list-group-item list-group-item-action" [class.active]="favorecido.contaCorrente == servicoTransf.dadosTransf.destino"
       *ngFor="let favorecido of favorecidos" (click)="selecionaFavorecido(favorecido, $event)">
       <h5>{{favorecido.nome}}</h5>
       <p>Ag: {{favorecido.agencia}} - Conta: {{favorecido.contaCorrente}}</p>
     </li>
   </ul>
 </div>
-<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev(0)">Voltar</button>
+<div class="row">
+  <button class="btn btnLaranja btn-submit" [routerLink]="['/transferencia']">Voltar</button>
+</div>

@@ -26,7 +26,7 @@ export class ExtratoComponent implements OnInit {
 
   ngOnInit() {
     this.servicoTransf.resetDados()
-    this.servicoTransf.prev(0)
+    // this.servicoTransf.prev(0)
 
     this.dadosUsuario = this.servicoLogin.response
     this.servicoExtrato.getExtrato()

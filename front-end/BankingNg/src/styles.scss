@@ -2,6 +2,16 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
     font-weight: lighter;
+    background: #f2f2f2;
+    overflow-y: hidden;
+}
+
+@media (max-width:600px) {
+    body::-webkit-scrollbar {
+        display: none;
+        width: 0px;
+        overflow-y: visible;
+      }
 }
 
 h1 {
@@ -117,7 +127,9 @@ input.ng-invalid.ng-touched{
     margin: 0 auto;
 }
 
+
 @media (min-width:600px) {
+
     .title {
         font-size: 2.2em;
     }
