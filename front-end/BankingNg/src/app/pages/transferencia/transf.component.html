@@ -3,17 +3,17 @@
     <div class="jumbotron hero">
         <h1 class="title">Transferência</h1>
     </div>
-    <div class="container ">
+    <div class="container">
 
-        <div class="row" *ngIf="servicoTransf.fase == 0">
-            <div class="col-sm-5 text-center">
-                <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(1)">Selecione um favorecido</button>
+        <div *ngIf="servicoTransf.fase == 0">
+            <div class="text-center">
+                <button class="btn btn-submit btn--expand btn-lg btnLaranja" (click)="servicoTransf.next(1)">Selecione um favorecido</button>
             </div>
-            <div class="col-sm-2 flexbox">
-                Ou
+            <div class="flexbox m-3">
+                ou
             </div>
-            <div class="col-sm-5 text-center">
-                <button class="btn btn-submit btnLaranja btn--expand" (click)="servicoTransf.next(2)">Digite os dados da conta</button>
+            <div class="text-center">
+                <button class="btn btn-submit btn--expand btn-lg btnLaranja" (click)="servicoTransf.next(2)">Digite os dados da conta</button>
             </div>
         </div>
         <div class="row">

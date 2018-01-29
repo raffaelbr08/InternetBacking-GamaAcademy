@@ -32,11 +32,6 @@ input.ng-invalid.ng-touched{
   border-bottom:1px solid red;
 }
 
-.wrap {
-    width: 85%;
-    margin: 0 auto;
-}
-
 #logo {
     font-size: 1.3em;
     margin: auto 0;
@@ -137,10 +132,6 @@ input.ng-invalid.ng-touched{
         transition: background-color 0.3s ease;
     }
 
-    .wrap {
-        width: 50%;
-        margin: 0 auto;
-    }
 }
 
 .demo-sidebar {
@@ -173,12 +164,13 @@ input.ng-invalid.ng-touched{
   top: 50%;
   width: 100%;
 }
+
 .btn--expand{
-    width: 100%;
-    min-height: 200px;
-    height: 100%;
+    width: 60%;
+    padding: 20px 0;
     white-space: initial;
 }
+
 .flexbox{
     display: flex;
     justify-content: center;
