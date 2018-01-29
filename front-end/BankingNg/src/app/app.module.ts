@@ -14,6 +14,7 @@ import { CheckTokenInterceptor } from './interceptors/check-token.interceptors';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
@@ -36,11 +37,13 @@ import { Page404Component } from './pages/page404/page404.component';
 import { ModalLoginExpiradoComponent } from './components/modal-login-expirado/modal-login-expirado.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
+    FooterComponent,
     LogoComponent,
     ExtratoComponent,
     TransfComponent,
