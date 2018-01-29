@@ -1,53 +1,47 @@
-<app-header>
-  <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
-</app-header>
 <ng-sidebar-container style="height: 100vh;">
+
   <!-- A sidebar -->
-  <ng-sidebar [(opened)]= "_opened"
-    [sidebarClass] = "'demo-sidebar'" 
-    [(mode)] = "_mode" 
-    (window:resize) = "onResize($event)">
+  <ng-sidebar [(opened)]="_opened" [sidebarClass]="'demo-sidebar'" [(mode)]="_mode" (window:resize)="onResize($event)">
 
-      <div class="profile-sidebar">
-        <!-- SIDEBAR USERPIC -->
-        <div class="profile-userpic">
-          <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive"
-            alt="">
-        </div>
-        <!-- END SIDEBAR USERPIC -->
-    
-        <!-- SIDEBAR USER TITLE -->
-        <div class="sidebar-txt">
-          <div class="infos-usuario">
-            <h3> Olá, {{dadosUsuario.correntista.nome}}</h3>
-            <h4>Ag. {{dadosUsuario.correntista.agencia}} / CC. {{dadosUsuario.correntista.contaCorrente}}</h4>
-          </div>
-        </div>
+    <div class="profile-sidebar">
+      <!-- SIDEBAR USERPIC -->
+      <div class="profile-userpic">
+        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive" alt="">
       </div>
+      <!-- END SIDEBAR USERPIC -->
 
+      <!-- SIDEBAR USER TITLE -->
       <div class="sidebar-txt">
-          <h3>Saldo</h3>
-          <h2>{{saldo | currency: 'BRL':true}}</h2>
-          <hr class="divider">
-          <a [routerLink]="['/extrato']" class="btn btn-primary btn-sidebar">
-            <img width="40" src="../../../assets/img/extrato-icon.svg">
-            <h6>Extrato</h6>
-          </a>
-          <a [routerLink]="['/transferencia']" class="btn btn-primary btn-sidebar">
-            <img width="40" src="../../../assets/img/transferencia-icon.svg">
-            <h6>Transferência</h6>
-          </a>
+        <div class="infos-usuario">
+          <h3> Olá, {{dadosUsuario.correntista.nome}}</h3>
+          <h4>Ag. {{dadosUsuario.correntista.agencia}} / CC. {{dadosUsuario.correntista.contaCorrente}}</h4>
+        </div>
       </div>
-      <app-footer></app-footer>
+    </div>
+
+    <div class="sidebar-txt">
+      <h3>Saldo</h3>
+      <h2>{{saldo | currency: 'BRL':true}}</h2>
+      <hr class="divider">
+      <a [routerLink]="['/extrato']" class="btn btn-primary btn-sidebar">
+        <img width="40" src="../../../assets/img/extrato-icon.svg">
+        <h6>Extrato</h6>
+      </a>
+      <a [routerLink]="['/transferencia']" class="btn btn-primary btn-sidebar">
+        <img width="40" src="../../../assets/img/transferencia-icon.svg">
+        <h6>Transferência</h6>
+      </a>
+    </div>
+
   </ng-sidebar>
-  
+
   <!-- Page content -->
   <div ng-sidebar-content>
-    
+    <app-header>
+      <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
+    </app-header>
     <ng-content></ng-content>
+    <app-footer></app-footer>
   </div>
+
 </ng-sidebar-container>
-
-
-
-
