@@ -19,29 +19,11 @@ export class TransferenciaService {
     origem: ""
   }
   isFavorecido = false
-  fase = 0
-
   mensagemErro = ""
+  paginaAnterior = ""
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  next(number = undefined) {
-    if (number != undefined) {
-      this.fase = number
-    } else {
-      this.fase++
-    }
-    console.log("[prev]", number, this.fase)
-  }
-  prev(number = undefined) {
-
-    if (number != undefined) {
-      this.fase = number
-    } else {
-      this.fase = this.fase - 1
-    }
-    console.log("[prev]", number, this.fase)
-  }
 
   resetDados() {
     this.dadosTransf = {
@@ -52,6 +34,8 @@ export class TransferenciaService {
       destino: "",
       origem: ""
     }
+    this.isFavorecido = false,
+    this.paginaAnterior = ''
   }
 
   postTransf(): Observable<any> {

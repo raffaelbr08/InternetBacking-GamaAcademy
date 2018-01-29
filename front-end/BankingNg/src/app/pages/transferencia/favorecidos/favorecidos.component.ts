@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 import { TransferenciaService } from '../../../services/transferencia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorecidos',
@@ -11,13 +12,9 @@ export class FavorecidosComponent implements OnInit {
 
   dadosUsuario
 
-  favorecidos = [
-    { agencia: "1", contaCorrente: "123", nome: "everton" },
-    { agencia: "2", contaCorrente: "3123", nome: "Fabiano" },
-    { agencia: "33", contaCorrente: "23123", nome: "Felipe" }
-  ]
+  favorecidos = []
 
-  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) {
+  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private router: Router) {
     this.dadosUsuario = this.servicoLogin.response.correntista
    }
 
@@ -27,7 +24,7 @@ export class FavorecidosComponent implements OnInit {
 
     this.servicoTransf.getFavorecidos(this.dadosUsuario.contaCorrente)
       .subscribe(res => {
-        const correntista = res.json()
+        const correntista = res
         this.favorecidos = correntista.correntista.favorecidos
 
         console.log(correntista.correntista.favorecidos)
@@ -42,7 +39,7 @@ export class FavorecidosComponent implements OnInit {
     this.servicoTransf.dadosTransf.nomeFavorecido = favorecido.nome
     
     setTimeout(() => {
-      this.servicoTransf.next()
+      this.router.navigate(['/transferencia/outra-conta'])
       this.servicoTransf.isFavorecido = true
     }, 200);
     

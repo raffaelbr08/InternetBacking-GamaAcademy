@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TransferenciaService } from '../../../services/transferencia.service';
 import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'app-confirmacao',
@@ -11,7 +13,7 @@ export class ConfirmacaoComponent implements OnInit {
 
   dadosUsuario = {}
 
-  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService) { }
+  constructor(private servicoLogin: LoginService, private servicoTransf: TransferenciaService, private router: Router) { }
 
   ngOnInit() {
     this.dadosUsuario = this.servicoLogin.response.correntista;
@@ -27,21 +29,22 @@ export class ConfirmacaoComponent implements OnInit {
 
       if (!!dadoss.success) {
         console.log("sucesso", dadoss.success)
-        this.servicoTransf.next(20)
         this.servicoTransf.resetDados()
+        this.router.navigate(['/transferencia/sucesso'])
+        
       }
       else{
         this.servicoTransf.mensagemErro = dadoss.message
         console.log("falha", dadoss.message)
         this.servicoTransf.resetDados()
-        this.servicoTransf.next(21)
+        this.router.navigate(['/transferencia/falha'])
 
       }
 
     }, error => {
 
       this.servicoTransf.resetDados()
-      this.servicoTransf.next(21)
+      // this.servicoTransf.next(21)
       let erro = error
       this.servicoTransf.mensagemErro = erro.message
       console.log(error, erro.message)

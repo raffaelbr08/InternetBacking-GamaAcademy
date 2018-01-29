@@ -16,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'transferencia', component: TransfComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'transferencia/:pagina', component: TransfComponent, canActivate: [AuthGuard]
   }
 ];
 

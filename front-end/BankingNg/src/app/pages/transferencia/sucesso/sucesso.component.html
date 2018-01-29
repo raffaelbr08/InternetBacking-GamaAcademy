@@ -3,5 +3,7 @@
     <img width="60" src="../../../assets/img/transf-valid.svg">
 </div>
 
-<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev(0)">Realizar nova transferencia</button> 
-<a [routerLink]="['/extrato']" class="btn btnLaranja btn-submit">Visualizar extrato</a>
+<div class="row">
+    <button class="btn btnLaranja btn-submit" [routerLink]="['/transferencia']" >Realizar nova transferencia</button>
+    <a [routerLink]="['/extrato']" class="btn btnLaranja btn-submit">Visualizar extrato</a>
+</div>

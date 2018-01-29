@@ -12,5 +12,8 @@
         </div>
     </div>
 </div>
-<button class="btn btnLaranja btn-submit" (click)="servicoTransf.next()">Avançar</button>
-<button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()">Voltar</button>
+<div class="row">
+    <button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()" [routerLink]="['/transferencia/outra-conta']">Voltar</button>
+    
+    <button class="btn btnLaranja btn-submit" (click)="verificaToken()">Avançar</button>
+</div>
