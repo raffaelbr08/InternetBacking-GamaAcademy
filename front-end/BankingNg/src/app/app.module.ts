@@ -34,6 +34,7 @@ import { FalhaComponent } from './pages/transferencia/falha/falha.component';
 import { ValorComponent } from './pages/transferencia/valor/valor.component';
 import { MasterComponent } from './pages/master/master.component';
 import { TokenTranferenciaComponent } from './pages/transferencia/token-tranferencia/token-tranferencia.component';
+import { Page404Component } from './pages/page404/page404.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { TokenTranferenciaComponent } from './pages/transferencia/token-tranfere
     ValorComponent,
     MasterComponent,
     ConfirmacaoComponent,
-    TokenTranferenciaComponent
+    TokenTranferenciaComponent,
+    Page404Component    
     ],
   imports: [
     BrowserModule,
