@@ -13,7 +13,7 @@ nav{
     background: #E54A21;
 }
 
-ul.nav {
+.nav-bar ul {
     width: 100%;
     margin: 0;
     color: #fff;
@@ -30,11 +30,6 @@ small.error-text{
 
 input.ng-invalid.ng-touched{
   border-bottom:1px solid red;
-}
-
-.wrap {
-    width: 85%;
-    margin: 0 auto;
 }
 
 #logo {
@@ -137,15 +132,11 @@ input.ng-invalid.ng-touched{
         transition: background-color 0.3s ease;
     }
 
-    .wrap {
-        width: 50%;
-        margin: 0 auto;
-    }
 }
 
 .demo-sidebar {
-  background-color: #fff;
-  padding: 2em 1em;
+  background-color: #E54A21;
+  color: #fff;
   width: 100%;
   max-width: 350px;
 }
@@ -173,12 +164,13 @@ input.ng-invalid.ng-touched{
   top: 50%;
   width: 100%;
 }
+
 .btn--expand{
-    width: 100%;
-    min-height: 200px;
-    height: 100%;
+    width: 60%;
+    padding: 20px 0;
     white-space: initial;
 }
+
 .flexbox{
     display: flex;
     justify-content: center;

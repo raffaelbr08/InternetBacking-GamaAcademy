@@ -1,35 +1,27 @@
-hr.divider {
-    border-top: 1px solid #fff;
-    width: 15%; 
-    margin: 20px auto;
-}
-
 .title-extrato{
     text-align: center;
     font-size: 3em;
     font-style: normal;
 }
 
-#conta {
-    font-size: 0.9em;
-    margin: 0;
-}
-
 .transacao--negativa {
     color: red;
+    font-weight: 600;
 }
 
 .transacao--positiva {
     color: green;
+    font-weight: 600;
 }
 
-.tabela{
+.tabela {
     background-color: #E54A21;
     border-color: #E54A21;
     color: #fff;
 }
-.info{
-    font-size: 0.8rem;
+
+.table th, .table td {
+    vertical-align: middle;
 }
 
 @media (min-width:426px) {

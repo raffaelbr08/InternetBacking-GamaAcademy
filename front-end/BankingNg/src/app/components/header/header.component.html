@@ -1,37 +1,15 @@
 <header>
-  <nav class="nav-bar">
-    <div class="container">
-      <ul class="nav nav-pills">
-        <li>
-          <ng-content></ng-content>
-          <app-logo></app-logo>
-        </li>
-        <li>{{dadosUsuario.nome}}
-          <i>
-            <a class="dropdown-toggle icon-white" data-toggle="dropdown">
-              <b>Menu</b>
-              <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
-
-
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-text" [routerLink]="['/extrato']">Extrato</a>
-                </li>
-                <li>
-                  <a class="dropdown-text" [routerLink]="['/transferencia']">Transferência</a>
-                </li>
-                <li>
-                  <a class="dropdown-text" href="#" (click)="logout($event)">Sair</a>
-                </li>
-              </ul>
-
-            </a>
-
-          </i>
-
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-</header>
+    <nav class="nav-bar">
+      <div class="container">
+        <ul class="nav">
+          <li>
+            <ng-content></ng-content>
+            <app-logo></app-logo>
+          </li>
+          <li>
+            <a href="#" (click)="logout($event)">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
