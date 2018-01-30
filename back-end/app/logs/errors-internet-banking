@@ -156,3 +156,5 @@
 {"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-29T21:27:30.636Z"}
 {"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-30T11:04:17.646Z"}
 {"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-30T11:04:47.197Z"}
+{"level":"error","message":"Conta corrente do correntista destino não existe","timestamp":"2018-01-30T12:33:26.546Z"}
+{"level":"error","message":"Saldo insulficiente!","timestamp":"2018-01-30T12:34:24.870Z"}
