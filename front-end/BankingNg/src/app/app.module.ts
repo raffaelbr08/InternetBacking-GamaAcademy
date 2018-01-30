@@ -35,6 +35,7 @@ import { FalhaComponent } from './pages/transferencia/falha/falha.component';
 import { TokenTranferenciaComponent } from './pages/transferencia/token-tranferencia/token-tranferencia.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { ModalLoginExpiradoComponent } from './components/modal-login-expirado/modal-login-expirado.component';
+import { DatepickerPopupComponent } from './components/datepicker-popup/datepicker-popup.component';
 
 
 
@@ -56,7 +57,7 @@ import { ModalLoginExpiradoComponent } from './components/modal-login-expirado/m
     ConfirmacaoComponent,
     TokenTranferenciaComponent,
     Page404Component,   
-    ModalLoginExpiradoComponent
+    ModalLoginExpiradoComponent, DatepickerPopupComponent
     ],
   imports: [
     BrowserModule,

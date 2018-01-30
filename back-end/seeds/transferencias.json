@@ -5,8 +5,8 @@
         "destino": "101063599",
         "valor": 386,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:01:10.604Z",
-        "created_at": "2018-01-20T20:01:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:01:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:01:10.604Z"}
     },
     {
         "descricao": "Vivo",
@@ -14,8 +14,98 @@
         "destino": "101063599",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-10T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-10T20:02:10.604Z"}
+    },
+    {
+        "descricao": "Transferência",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 386,
+        "situacao": "done",
+        "updated_at": { "$date": "2018-01-05T20:01:10.604Z"},
+        "created_at": { "$date": "2018-01-05T20:01:10.604Z"}
+    },
+    {
+        "descricao": "Vivo",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 99,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-12-29T20:02:10.604Z"},
+        "created_at": { "$date": "2017-12-29T20:02:10.604Z"}
+    },
+    {
+        "descricao": "Transferência",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 386,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-12-20T20:01:10.604Z"},
+        "created_at": { "$date": "2017-12-20T20:01:10.604Z"}
+    },
+    {
+        "descricao": "Vivo",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 99,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-12-15T20:02:10.604Z"},
+        "created_at": { "$date": "2017-12-15T20:02:10.604Z"}
+    },
+    {
+        "descricao": "Transferência",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 386,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-12-10T20:01:10.604Z"},
+        "created_at": { "$date": "2017-12-10T20:01:10.604Z"}
+    },
+    {
+        "descricao": "Vivo",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 99,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-12-09T20:02:10.604Z"},
+        "created_at": { "$date": "2017-12-09T20:02:10.604Z"}
+    },
+    {
+        "descricao": "Transferência",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 386,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-11-20T20:01:10.604Z"},
+        "created_at": { "$date": "2017-11-20T20:01:10.604Z"}
+    },
+    {
+        "descricao": "Vivo",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 99,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-11-16T20:02:10.604Z"},
+        "created_at": { "$date": "2017-11-16T20:02:10.604Z"}
+    },
+    {
+        "descricao": "Transferência",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 386,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-11-10T20:01:10.604Z"},
+        "created_at": { "$date": "2017-11-10T20:01:10.604Z"}
+    },
+    {
+        "descricao": "Vivo",
+        "origem": "101063598",
+        "destino": "101063599",
+        "valor": 99,
+        "situacao": "done",
+        "updated_at": { "$date": "2017-11-01T20:02:10.604Z"},
+        "created_at": { "$date": "2017-11-01T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -23,8 +113,8 @@
         "destino": "101063599",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Luz",
@@ -32,8 +122,8 @@
         "destino": "101063599",
         "valor": 300,
         "situacao": "done",
-        "updated_at": "2018-01-20T24:05:10.604Z",
-        "created_at": "2018-01-20T24:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T24:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T24:05:10.604Z"}
     },
     {
         "descricao": "Padaria",
@@ -41,8 +131,8 @@
         "destino": "101063598",
         "valor": 21,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:02:10.604Z",
-        "created_at": "2018-01-20T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:02:10.604Z"}
     },
     {
         "descricao": "Compra de presentes",
@@ -50,8 +140,8 @@
         "destino": "101063598",
         "valor": 200,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Roupa",
@@ -59,8 +149,8 @@
         "destino": "101063598",
         "valor": 300,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Luz",
@@ -68,8 +158,8 @@
         "destino": "101063598",
         "valor": 170,
         "situacao": "done",
-        "updated_at": "2018-01-20T24:05:10.604Z",
-        "created_at": "2018-01-20T24:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T24:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T24:05:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -77,8 +167,8 @@
         "destino": "101063597",
         "valor": 333,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:03:10.604Z",
-        "created_at": "2018-01-20T20:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:03:10.604Z"}
     },
     {
         "descricao": "Vivo",
@@ -86,8 +176,8 @@
         "destino": "101063597",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -95,8 +185,8 @@
         "destino": "101063597",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Luz",
@@ -104,8 +194,8 @@
         "destino": "101063597",
         "valor": 300,
         "situacao": "done",
-        "updated_at": "2018-01-20T24:05:10.604Z",
-        "created_at": "2018-01-20T24:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T24:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T24:05:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -113,8 +203,8 @@
         "destino": "101063596",
         "valor": 347,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:04:10.604Z",
-        "created_at": "2018-01-20T20:04:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:04:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:04:10.604Z"}
     },
     {
         "descricao": "Vivo",
@@ -122,8 +212,8 @@
         "destino": "101063596",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -131,8 +221,8 @@
         "destino": "101063596",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Luz",
@@ -140,8 +230,8 @@
         "destino": "101063596",
         "valor": 300,
         "situacao": "done",
-        "updated_at": "2018-01-20T24:05:10.604Z",
-        "created_at": "2018-01-20T24:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T24:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T24:05:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -149,8 +239,8 @@
         "destino": "101063595",
         "valor": 467,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:05:10.604Z",
-        "created_at": "2018-01-20T20:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:05:10.604Z"}
     },
     {
         "descricao": "Vivo",
@@ -158,8 +248,8 @@
         "destino": "101063595",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -167,8 +257,8 @@
         "destino": "101063595",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Luz",
@@ -176,8 +266,8 @@
         "destino": "101063595",
         "valor": 300,
         "situacao": "done",
-        "updated_at": "2018-01-20T24:05:10.604Z",
-        "created_at": "2018-01-20T24:05:10.604Z"
+        "updated_at": { "$date": "2018-01-20T24:05:10.604Z"},
+        "created_at": { "$date": "2018-01-20T24:05:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -185,8 +275,8 @@
         "destino": "101063595",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:06:10.604Z",
-        "created_at": "2018-01-20T20:06:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:06:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:06:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -194,8 +284,8 @@
         "destino": "101063593",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:07:10.604Z",
-        "created_at": "2018-01-20T20:07:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:07:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:07:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -203,8 +293,8 @@
         "destino": "101063592",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:08:10.604Z",
-        "created_at": "2018-01-20T20:08:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:08:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:08:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -212,8 +302,8 @@
         "destino": "101063591",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:09:10.604Z",
-        "created_at": "2018-01-20T20:09:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:09:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:09:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -221,8 +311,8 @@
         "destino": "101063590",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:10:10.604Z",
-        "created_at": "2018-01-20T20:10:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:10:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:10:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -230,8 +320,8 @@
         "destino": "101063589",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:10:10.604Z",
-        "created_at": "2018-01-20T20:10:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:10:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:10:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -239,8 +329,8 @@
         "destino": "101063588",
         "valor": 123,
         "situacao": "done1",
-        "updated_at": "2018-01-20T20:11:10.604Z",
-        "created_at": "2018-01-20T20:11:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:11:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:11:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -248,8 +338,8 @@
         "destino": "101063587",
         "valor": 100,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:12:10.604Z",
-        "created_at": "2018-01-20T20:12:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:12:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:12:10.604Z"}
     },
     {
         "descricao": "Vivo",
@@ -257,8 +347,8 @@
         "destino": "101063595",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -266,8 +356,8 @@
         "destino": "101063597",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     },
     {
         "descricao": "Transferência",
@@ -275,8 +365,8 @@
         "destino": "101063586",
         "valor": 12,
         "situacao": "done",
-        "updated_at": "2018-01-20T20:13:10.604Z",
-        "created_at": "2018-01-20T20:13:10.604Z"
+        "updated_at": { "$date": "2018-01-20T20:13:10.604Z"},
+        "created_at": { "$date": "2018-01-20T20:13:10.604Z"}
     },   
     {
         "descricao": "Vivo",
@@ -284,8 +374,8 @@
         "destino": "101063595",
         "valor": 99,
         "situacao": "done",
-        "updated_at": "2018-01-19T20:02:10.604Z",
-        "created_at": "2018-01-19T20:02:10.604Z"
+        "updated_at": { "$date": "2018-01-19T20:02:10.604Z"},
+        "created_at": { "$date": "2018-01-19T20:02:10.604Z"}
     },
     {
         "descricao": "Net",
@@ -293,7 +383,7 @@
         "destino": "101063597",
         "valor": 150,
         "situacao": "done",
-        "updated_at": "2018-01-20T18:03:10.604Z",
-        "created_at": "2018-01-20T18:03:10.604Z"
+        "updated_at": { "$date": "2018-01-20T18:03:10.604Z"},
+        "created_at": { "$date": "2018-01-20T18:03:10.604Z"}
     }
 ]

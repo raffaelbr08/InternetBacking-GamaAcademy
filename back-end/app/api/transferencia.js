@@ -12,15 +12,30 @@ const Async = require('async')
 
 api.listaPorUsuario = (req, res) => {
 
+    console.log('[req.body]', req.body)
     // pagination
     const perPage = req.body.perPage || 20
     const page = req.body.page || 1
+    let dataInicial = req.body.dataInicial || '1990-01-01';
+    let dataFinal = req.body.dataFinal || '3000-12-31';
+
+    dataInicial = dataInicial + 'T00:00:00.000Z';
+
+    dataFinal = dataFinal + 'T23:59:59.999Z';
+
+    // console.log('[DataInicial] ', dataInicial, '[dataFinal] ', dataFinal)
 
     Async.series({
         userA: function (callback) {
 
             modelTransferencia
-                .find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
+                .find({
+                    $and: [
+                    { $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] },
+                    { "updated_at": {$gte: new Date(dataInicial)}},
+                    { "updated_at": {$lte: new Date(dataFinal)}}
+                    ]
+                })
                 .sort({ created_at: -1 })
                 .skip((perPage * page) - perPage)
                 .limit(perPage)
@@ -32,7 +47,6 @@ api.listaPorUsuario = (req, res) => {
                             origem: function (callback3) {
                                 modelCorrentista.findOne({ "contaCorrente": transferencia.origem })
                                     .then((correntista) => {
-
                                         callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
                                     }, (error) => {
                                         logger.log('error', error);
@@ -92,6 +106,7 @@ api.listaPorUsuario = (req, res) => {
         userB: function (callback) {
             modelCorrentista.findOne({ "contaCorrente": req.body.contacorrente })
                 .then((correntista) => {
+                    console.log('[transferencia.js line:109]',correntista)
                     callback(null, correntista.saldo)
                 }, (error) => {
                     logger.log('error', error);

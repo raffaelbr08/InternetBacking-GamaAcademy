@@ -1,0 +1,28 @@
+<form class="form-inline" (submit)="enviaData($event)">
+    <div class="form-group">
+      <div class="input-group">
+        <label>Data Inicial:</label>
+        <input class="form-control" placeholder="yyyy-mm-dd"
+               name="dataInicial" [(ngModel)]="DdataInicial"  ngbDatepicker #dataInicial="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" (click)="dataInicial.toggle()" type="button">
+            <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+          </button>
+        </div>
+      </div>
+
+      <div class="input-group">
+          <label>Data Final:</label>
+          <input class="form-control" placeholder="yyyy-mm-dd" 
+                 name="dataFinal" [(ngModel)]="DdataFinal" ngbDatepicker #dataFinal="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="dataFinal.toggle()" type="button">
+              <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+            </button>
+          </div>
+        </div>
+    </div>
+    <button class="btn btn-submit">Enviar</button>
+  </form>
+
+  
