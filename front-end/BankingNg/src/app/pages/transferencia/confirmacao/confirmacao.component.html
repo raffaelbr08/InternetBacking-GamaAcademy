@@ -1,15 +1,15 @@
 <ul class="transfer">
     <li>
-        <span>{{dadosUsuario.nome}}</span>
+        <span><b>{{dadosUsuario.nome}}</b></span>
         <br>
         <span>Ag {{dadosUsuario.agencia}} CC {{dadosUsuario.contaCorrente}}</span>
         <br>
     </li>
     <li>
-        <img width="50" src="../../../assets/img/arrow-down.svg">
+        <i class="fa fa-long-arrow-down m-3" aria-hidden="true"></i>
     </li>
     <li>
-        <span>{{servicoTransf.dadosTransf.nomeFavorecido}}</span>
+        <span><b>{{servicoTransf.dadosTransf.nomeFavorecido}}</b></span>
         <br>
         <span>Ag {{servicoTransf.dadosTransf.agenciaFavorecido}} CC {{servicoTransf.dadosTransf.destino}}</span>
         <br>
@@ -17,10 +17,10 @@
     <li class="jumbotron transf-modal">
         <span>Valor da transferência:</span>
         <br>
-        <span>{{servicoTransf.dadosTransf.valor | currency: 'BRL':true}}</span>
+        <h2><b>{{servicoTransf.dadosTransf.valor | currency: 'BRL':true}}</b></h2>
     </li>
 </ul>
-<div class="row">
+<div class="row mt-5">
     <button class="btn btnLaranja btn-submit" [routerLink]="['/transferencia/token']">Voltar</button>
     <button class="btn btnLaranja btn-submit" (click)="enviaDados()">Confirmar Transferência</button>
 </div>
