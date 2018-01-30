@@ -20,7 +20,6 @@ export class ConfirmacaoComponent implements OnInit {
   }
   
   enviaDados() {
-    console.log(this.servicoTransf.dadosTransf)
 
     let envio = this.servicoTransf.postTransf()
     envio.subscribe(dados => {

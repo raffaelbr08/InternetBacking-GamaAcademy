@@ -62,6 +62,7 @@
     </div>
   </div>
 
+  
   <div class="card mt-5 mb-5">
     <div class="card-body">
       <div class="placeholder-wrap">
@@ -71,10 +72,10 @@
         id="valor" 
         required 
         autocomplete="off" 
-        (input) = "mascaraValor($event,'###.###.###,##',true)"
         formControlName="valor"
+        (input) = "mascaraValor($event,'###.###.###,##',true)"
         [(ngModel)]="servicoTransf.dadosTransf.valor" 
-        value="">
+        value="{{servicoTransf.dadosTransf.valor}}"> 
         <span class="placeholder-label">valor a transferir (R$)</span>
         <small *ngIf="formulario.controls.valor.invalid && formulario.controls.valor.touched" class="error-text danger">Campo Obrigatório!</small>
       </div>

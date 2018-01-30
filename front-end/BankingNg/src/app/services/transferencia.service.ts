@@ -15,6 +15,7 @@ export class TransferenciaService {
     agenciaFavorecido: "",
     salvarFavorecido: false,
     valor: "",
+    mascara_valor: "",
     destino: "",
     origem: ""
   }

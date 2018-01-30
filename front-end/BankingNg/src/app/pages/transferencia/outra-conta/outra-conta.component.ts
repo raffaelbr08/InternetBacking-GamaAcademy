@@ -86,8 +86,14 @@ export class OutraContaComponent implements OnInit {
     }
 
     // Retorno da função
-    ret = (!r) ? ret : ret.split('').reverse().join('')  
-    this.servicoTransf.dadosTransf.valor = pre+ret+pos; 
+    ret = (!r) ? ret : ret.split('').reverse().join('') 
+
+    var valor = pre+ret+pos
+
+    this.servicoTransf.dadosTransf.valor = valor
+    //this.servicoTransf.dadosTransf.mascara_valor = valor
+    //this.servicoTransf.dadosTransf.valor = valor.replace(/[^0-9]/g, "")
+    
   }
 
 
