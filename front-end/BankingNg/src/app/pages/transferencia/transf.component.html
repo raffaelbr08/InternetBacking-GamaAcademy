@@ -1,13 +1,12 @@
 <app-sidebar>
-
-    <div class="jumbotron hero">
-        <h1 class="title">Transferência</h1>
+    <div class="title-bar">
+        <h1>Transferência</h1>
     </div>
-    <div class="container">
+    <div class="container wrap">
 
         <div *ngIf="!pagina">
             <div class="text-center">
-                <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'favorecidos']" >Selecione um favorecido</button>
+                <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'favorecidos']">Selecione um favorecido</button>
                 <!-- <button class="btn btn-submit btn--expand btn-lg btnLaranja" [routerLink]="['/transferencia', 'favorecidos']" (click)="servicoTransf.next(1)">Selecione um favorecido</button> -->
             </div>
             <div class="flexbox m-3">
