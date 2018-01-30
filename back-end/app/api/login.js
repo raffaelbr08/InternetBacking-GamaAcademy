@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+
+var nodemailer = require('nodemailer');
+
 const jwt = require('jsonwebtoken');
 const model = mongoose.model('Correntista');
 const isObjectEmpty = require('../services/isObjectEmpty');
@@ -48,6 +51,29 @@ module.exports = function (app) {
 						});
 					}
 					else {
+
+						// var transporter = nodemailer.createTransport({
+						// 	service: 'gmail',
+						// 	auth: {
+						// 	  user: 'grupo2.gama.avanade@gmail.com',
+						// 	  pass: '#goorange'
+						// 	}
+						// });
+						  
+						// var mailOptions = {
+						// 	from: 'grupo2.gama.avanade@gmail.com',
+						// 	to: 'anderfilth@hotmail.com',
+						// 	subject: 'Teste com Node.js',
+						// 	text: 'Login funcionou!'
+						// };
+						  
+						// transporter.sendMail(mailOptions, function(error, info){
+						// 	if (error) {
+						// 	  console.log(error);
+						// 	} else {
+						// 	  console.log('Email sent: ' + info.response);
+						// 	}
+						// });
 
 						// Gera o token com o jwt e um secret
 						const token = jwt.sign({ id: user._id, login: user.cpf }, app.get('secret'), {
