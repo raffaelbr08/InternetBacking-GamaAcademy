@@ -8,20 +8,31 @@ import { LoginService } from './login.service';
 export class ExtratoService {
 
   conrrentista = {
-    contacorrente: this.loginService.response.correntista.contaCorrente
+    contacorrente: this.loginService.response.correntista.contaCorrente,
+    dataInicial: '',
+    dataFinal: ''
   }
+
+  extrato = {
+    transferencias: [],
+    saldoAtualizado: ''
+  } 
 
   url = 'http://localhost:3000/v1/extrato/'
 
   // constructor(public http: Http, private loginService: LoginService) { }
   constructor(public http: HttpClient, private loginService: LoginService) { }
 
-  getExtrato(): Observable<any>{
+  getExtrato(dataInicial = '', dataFinal = ''): Observable<any>{
+
     const opcoesHttp = { headers: new HttpHeaders(
           { 'Content-Type': 'application/json',
         'x-access-token': this.loginService.response.token }
       )
     }
+
+    this.conrrentista.dataInicial = dataInicial
+    this.conrrentista.dataFinal = dataFinal
     // const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     // headers.append('x-access-token', this.loginService.response.token)

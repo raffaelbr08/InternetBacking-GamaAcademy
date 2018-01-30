@@ -13,16 +13,13 @@ const routes: Routes = [
     path: '', component: LoginComponent
   },
   {
-    path: 'extrato', component: ExtratoComponent
-    // , canActivate: [AuthGuard]
+    path: 'extrato', component: ExtratoComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'transferencia', component: TransfComponent
-    // , canActivate: [AuthGuard]
+    path: 'transferencia', component: TransfComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'transferencia/:pagina', component: TransfComponent
-    // , canActivate: [AuthGuard]
+    path: 'transferencia/:pagina', component: TransfComponent, canActivate: [AuthGuard]
   },
   {
     path:'**', component: Page404Component

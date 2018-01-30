@@ -22,9 +22,9 @@ export class ExtratoComponent implements OnInit {
     this._opened = !this._opened;
   }
 
-  constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService, private servicoTransf: TransferenciaService) { }
+  constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService, private servicoTransf: TransferenciaService) {
+    this.dadosExtrato = this.servicoExtrato.extrato
 
-  ngOnInit() {
     this.servicoTransf.resetDados()
     // this.servicoTransf.prev(0)
 
@@ -32,16 +32,18 @@ export class ExtratoComponent implements OnInit {
     this.servicoExtrato.getExtrato()
     .subscribe(
       dados=>{
-        this.dadosExtrato = dados;
+        this.servicoExtrato.extrato = dados;
 
-        console.log(this.dadosExtrato)
-
-        this.transferencias = this.dadosExtrato.transferencias;
-        this.saldo = this.dadosExtrato.saldoAtualizado
+        this.transferencias = this.servicoExtrato.extrato.transferencias
+        this.saldo = this.servicoExtrato.extrato.saldoAtualizado
       },error=>{
-        // alert(error._body)
+        console.log(error)
       }
     )
+   }
+
+  ngOnInit() {
+    
 
   }
 
