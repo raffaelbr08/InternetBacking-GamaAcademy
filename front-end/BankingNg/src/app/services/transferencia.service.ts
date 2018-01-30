@@ -41,6 +41,8 @@ export class TransferenciaService {
   postTransf(): Observable<any> {
     let headers = new Headers();
 
+    console.log(this.dadosTransf.valor.replace(/[^0-9]/g, ""))
+
     const opcoesHttp = {
       headers: new HttpHeaders(
         {
