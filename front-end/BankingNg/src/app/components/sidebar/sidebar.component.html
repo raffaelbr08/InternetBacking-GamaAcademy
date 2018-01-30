@@ -4,44 +4,50 @@
   <ng-sidebar [(opened)]="_opened" [sidebarClass]="'demo-sidebar'" [(mode)]="_mode" (window:resize)="onResize($event)">
 
     <div class="profile-sidebar">
-      <!-- SIDEBAR USERPIC -->
-      <div class="profile-userpic">
-        <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive" alt="">
-      </div>
-      <!-- END SIDEBAR USERPIC -->
-
-      <!-- SIDEBAR USER TITLE -->
-      <div class="sidebar-txt">
-        <div class="infos-usuario">
-          <h3> Olá, {{dadosUsuario.correntista.nome}}</h3>
-          <h4>Ag. {{dadosUsuario.correntista.agencia}} / CC. {{dadosUsuario.correntista.contaCorrente}}</h4>
-        </div>
-      </div>
+      <table style="width:100%; height:100%;">
+        <tr>
+          <td style="vertical-align:middle;">
+            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="profile-userpic img-responsive rounded-circle"
+              alt="">
+          </td>
+          <td class="infos-usuario">
+            <h3> Olá, {{dadosUsuario.correntista.nome}}</h3>
+            <h4>Ag. {{dadosUsuario.correntista.agencia}} / CC. {{dadosUsuario.correntista.contaCorrente}}</h4>
+          </td>
+        </tr>
+      </table>
     </div>
 
-    <div class="sidebar-txt">
+    <div id="saldo">
       <h3>Saldo</h3>
       <h2>{{saldo | currency: 'BRL':true}}</h2>
-      <hr class="divider">
-      <a [routerLink]="['/extrato']" class="btn btn-primary btn-sidebar">
-        <img width="40" src="../../../assets/img/extrato-icon.svg">
-        <h6>Extrato</h6>
-      </a>
-      <a [routerLink]="['/transferencia']" class="btn btn-primary btn-sidebar">
-        <img width="40" src="../../../assets/img/transferencia-icon.svg">
-        <h6>Transferência</h6>
-      </a>
     </div>
+
+    <ul class="list-group">
+        <a [routerLink]="['/extrato']">
+          <li class="list-group-item">
+              <i class="fa fa-exchange mr-2" aria-hidden="true"></i>
+              Extrato
+            </li>
+        </a>
+        <a [routerLink]="['/transferencia']">
+          <li class="list-group-item">
+              <i class="fa fa-usd mr-2" aria-hidden="true"></i>
+              Transferência
+            </li>
+        </a>
+    </ul>
 
   </ng-sidebar>
 
   <!-- Page content -->
   <div ng-sidebar-content>
     <app-header>
-      <button (click)="_toggleSidebar()" class="botao-header">Toggle sidebar</button>
+      <a (click)="_toggleSidebar()">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </a>
     </app-header>
     <ng-content></ng-content>
-    <app-footer></app-footer>
   </div>
 
 </ng-sidebar-container>

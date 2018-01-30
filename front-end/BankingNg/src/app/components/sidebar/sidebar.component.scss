@@ -1,5 +1,6 @@
 a {
-    color: #fff;
+    color: #000;
+    cursor: pointer;
 }
 
 .profile {
@@ -7,56 +8,46 @@ a {
 }
 
 .profile-sidebar {
-    padding: 20px 0 10px 0;
-    background: #ab381a;
-    color: #fff;
+    height: 134px;
+    text-align: center;
+    padding: 0 20px;
+    background: #fafafa;
+    border-bottom: 1px solid #dcdcdc;
 }
 
-.profile-userpic img {
+.profile-userpic {
     display: block;
     margin: 0 auto;
-    width: 30%;
-    height: 30%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
+    width: 80px;
+    float: left;
+    margin-right: 20px;
 }
 
-.sidebar-txt {
-    text-align: center;
-    margin-top: 20px;
+.infos-usuario {
+    vertical-align: middle;
+    text-align: left;
 }
 
-.sidebar-txt h2 {
-    font-weight: 600;
-}
-
-.sidebar-txt h3 {
+.infos-usuario h3 {
     font-size: 1em;
-    font-weight: 400;
-    margin-bottom: 10px;
 }
 
 .infos-usuario h4 {
     font-size: 0.8em;
-    margin-bottom: 15px;
-}
-
-.btn-sidebar {
-    display: block;
-    margin: 20px auto;
-    width: 50%;
-    padding: 10px;
-    background: transparent;
-    border: 1px solid #fff;
-}
-
-.btn-sidebar:hover {
-    background: #ab381a;
-}
-
-.btn-sidebar h6 {
-    font-size: 0.8em;
-    margin-top: 10px;
     margin-bottom: 0;
+}
+
+#saldo {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#saldo h2 {
+    font-weight: 600;
+}
+
+#saldo h3 {
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 10px;
 }
