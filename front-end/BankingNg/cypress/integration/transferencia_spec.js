@@ -15,10 +15,8 @@ describe('Transferencia', function () {
             .should('include', '/extrato')
     })
     it('Executa transferencia', function () {
-        // 1.
 
-        cy.get('#transferencia') // 2.
-            .click()
+        cy.get('#transferencia').click()
 
         cy.url()                   // 8.
             .should('include', '/transferencia')  // 3.

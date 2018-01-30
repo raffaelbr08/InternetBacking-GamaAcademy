@@ -1,17 +1,17 @@
 <app-sidebar>
-    <div class="jumbotron hero saldo">
-        <h1 class="title saldo">Extrato</h1>
+    <div class="title-bar">
+        <h1>Extrato</h1>
     </div>
 
-    <app-datepicker-popup ></app-datepicker-popup>
     <!-- Tabela de extrato -->
-    <div class="container">
+    <div class="container wrap">
+        <app-datepicker-popup></app-datepicker-popup>
         <table class="table">
             <thead class="tabela">
                 <tr>
                     <th scope="col">Data</th>
                     <th scope="col">Ultimas transações</th>
-                    <th scope="col" class="moeda">R$</th>
+                    <th scope="col" class="text-right">R$</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                             cc: {{transfs.debito? transfs.destino.contaCorrente : transfs.origem.contaCorrente }}
                             - {{transfs.debito? transfs.destino.nome : transfs.origem.nome }}
                         </td>
-                        <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | currency: 'BRL':true}}</td>
+                        <td class="text-right" [ngClass]="[transfs.debito ? 'transacao--negativa' : 'transacao--positiva']">{{transfs.debito? "-" : ""}} {{transfs.valor | number:'1.2-2'}}</td>
                     </tr>
             </tbody>
         </table>
