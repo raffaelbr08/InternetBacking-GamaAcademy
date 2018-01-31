@@ -6,7 +6,7 @@
     <li class="favorecido list-group-item list-group-item-action" [class.active]="favorecido.contaCorrente == servicoTransf.dadosTransf.destino"
       *ngFor="let favorecido of favorecidos" (click)="selecionaFavorecido(favorecido, $event)">
       <h5>{{favorecido.nome}}</h5>
-      <p>Ag: {{favorecido.agencia}} - Conta: {{favorecido.contaCorrente}}</p>
+      <p class="mb-0">Ag: {{favorecido.agencia}} - Conta: {{favorecido.contaCorrente}}</p>
     </li>
   </ul>
 </div>

@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
   private _opened = true;
   private window_size = window.innerWidth;
   private _mode = 'over';
+  private _mobile;
 
   dadosUsuario = {};
   dadosExtrato;
@@ -37,9 +38,11 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     if (this.window_size > 800) {
       this._mode = 'push';
+      this._mobile = false;
     } else {
       this._mode = 'over';
       this._opened = false;
+      this._mobile = true;
     }
    }
 
@@ -48,9 +51,11 @@ export class SidebarComponent implements OnInit {
     if (event.target.innerWidth > 800) {
       this._mode = 'push';
       this._opened = true;
+      this._mobile = false;
     } else {
       this._mode = 'over';
       this._opened = false;
+      this._mobile = true;
     }
   }
 

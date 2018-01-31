@@ -1,8 +1,10 @@
 <ng-sidebar-container style="height: 100vh;">
 
   <!-- A sidebar -->
-  <ng-sidebar [(opened)]="_opened" [sidebarClass]="'demo-sidebar'" [(mode)]="_mode" (window:resize)="onResize($event)">
-
+  <ng-sidebar [(opened)]="_opened" [sidebarClass]="'demo-sidebar'" [(mode)]="_mode" (window:resize)="onResize($event)" #sidebar>
+    <button type="button" class="close" (click)="sidebar.close()" *ngIf="_mobile">
+      <span>&times;</span>
+    </button>
     <div class="profile-sidebar">
       <table style="width:100%; height:100%;">
         <tr>
