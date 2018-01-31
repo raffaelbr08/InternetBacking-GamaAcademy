@@ -3,10 +3,9 @@
 ## Tópicos
 * [Requerimentos](#requerimentos)
 * [Instalação](#instalacao)
-* [Api](#api)
-    * [Consultando](#consultando-a-api)
 * [Banco de dados](#banco-de-dados)
     * [Consultando](#consultando-os-dados)
+* [Executando a aplicação](#executando-a-aplicacao)
 
 ## Requerimentos
 * node (versão >= 8.9.4)
@@ -83,9 +82,6 @@ MongoDB shell version v3.4.9
 
 
 ## Api
-### Consultando a api
-   Para iniciar a api no Pompt rodar dentro da pasta Node: npm run build
-   Usar Postman para testar a aplicação
    
 ### Rotas:
 
@@ -130,3 +126,22 @@ MongoDB shell version v3.4.9
     
     db.transferencias.find().pretty() //para ver os dados da collection transferencias
     
+
+## Executando a aplicação
+
+### Back-end
+   - Na pasta 'back-end' executar o comando 
+   ```
+   npm install
+   
+   node app
+   
+   ```
+   
+   - Na pasta 'front-end' executar o comando
+   ```
+   npm install
+   
+   ng serve --open
+   
+   ``` 
