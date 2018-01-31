@@ -8,6 +8,7 @@ var schema = mongoose.Schema({
 	nome: String,
 	agencia: String,
 	contaCorrente:  String,
+	email: String,
 	senha: {
 		type: String,
 		select: false
@@ -16,6 +17,9 @@ var schema = mongoose.Schema({
 	transacaoPendente: {
 		type: Array
 	} ,
+	tokenTransacao: {
+		type: Array
+	},
 	favorecidos: {
 		type: Array
 	},

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+var crypto = require('crypto');
+var nodemailer = require('nodemailer');
+
 const modelCorrentista = mongoose.model('Correntista');
 const modelTransferencia = mongoose.model('Transferencia');
 
@@ -11,6 +14,145 @@ var moment = require('moment');
 
 
 const Async = require('async')
+
+function randomValueHex(len) {
+    return crypto.randomBytes(Math.ceil(len / 2))
+        .toString('hex') // convert to hexadecimal format
+        .slice(0, len);   // return required number of characters
+}
+
+api.makeToken = function (req, res) {
+    // verifica se o correntista existe
+
+    modelCorrentista.findOne({ contaCorrente: req.body.contacorrente }).then(
+        correntistaResult => {
+            if (correntistaResult) {
+                const random = randomValueHex(8)
+
+                if (correntistaResult.email != null && correntistaResult.email != '' ){
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                        user: 'grupo2.gama.avanade@gmail.com',
+                        pass: '#goorange'
+                        }
+                    });
+
+                    var mailOptions = {
+                        from: 'grupo2.gama.avanade@gmail.com',
+                        to: correntistaResult.email,
+                        subject: 'AVANADE BANKING - Autorizar transação',
+                        text: 'Uma tentativa de transferência a partir do internet banking gerou acabou gerando um token: ' + random
+                    };
+
+                    transporter.sendMail(mailOptions, function(err, info){
+                        if (err) {
+                            logger.log('error', err);
+                            res.status(200).send({
+                                "success": false
+                                , "message": "Houve um erro na tentativa de envio de e-mail: " + err
+                            });
+                        } else {
+                            
+                            console.log('Email sent: ' + info.response);
+
+                            const tokenTransacao = {
+                                token: random
+                            }
+
+                            modelCorrentista.update(
+                                { contaCorrente: req.body.contacorrente },
+                                { $set: { tokenTransacao: tokenTransacao } },
+                                function (err, rowsAffected) {
+                                    if (err) {
+                                        console.log('[ERROR] ' + err);
+                                        res.status(500).send({
+                                            "success": false
+                                            , "message": "Não foi possível realizar operação de segurança: " + err
+                                        });
+                                    }
+                                    if (rowsAffected) {
+                                        res.send({
+                                            "success": true,
+                                            "message": "Operação de segurança concluída com sucesso!"
+                                        })
+                                    }
+
+                                }
+                            );
+                        }
+                    });
+                }
+                
+                
+            } else {
+                const err = `Conta corrente do correntista não existe`
+                console.log(err, req.body.contaCorrente);
+                logger.log('error', err);
+                res.status(200).send({
+                    "success": false
+                    , "message": err
+                });
+            }
+        }, error => {
+            console.log(error);
+            logger.log('error', error);
+            res.status(500).send({
+                "success": false
+                , "message": error
+            });
+        }
+    );
+}
+
+api.checkToken = function (req, res) {
+    // verifica se o token existe para o correntista
+
+    modelCorrentista.findOne({ contaCorrente: req.body.contacorrente, 'tokenTransacao': { $elemMatch: { token: req.body.token } }  }).then(
+        correntistaResult => {
+            if (correntistaResult) {
+                
+                const tokenTransacao = { }
+
+                modelCorrentista.update(
+                    { contaCorrente: req.body.contacorrente },
+                    { $set: { tokenTransacao: tokenTransacao } },
+                    function (err, rowsAffected) {
+                        if (err) {
+                            console.log('[ERROR] ' + err);
+                            res.status(500).send({
+                                "success": false
+                                , "message": "Houve um erro durante a verificação da transação: " + err
+                            });
+                        }
+                        if (rowsAffected) {
+                            res.send({
+                                "success": true,
+                                "message": "Operação de segurança concluída com sucesso!"
+                            })
+                        }
+
+                    }
+                );
+
+            } else {
+                const err = `Token não encontrado`
+                logger.log('error', err);
+                res.status(200).send({
+                    "success": false
+                    , "message": err
+                });
+            }
+        }, error => {
+            console.log(error);
+            logger.log('error', error);
+            res.status(500).send({
+                "success": false
+                , "message": error
+            });
+        }
+    );
+}
 
 api.adiciona = function (req, res) {
 
