@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { ExtratoService } from '../../services/extrato.service';
 import { TransferenciaService } from '../../services/transferencia.service';
+import * as pubSub from 'pubsub-js'
 
 @Component({
   selector: 'app-extrato',
@@ -11,39 +12,30 @@ import { TransferenciaService } from '../../services/transferencia.service';
 
 export class ExtratoComponent implements OnInit {
   dadosUsuario = {};
+  transferencias = []
   dadosExtrato;
 
-  transferencias = [];
-  saldo;
-
-  private _opened: boolean = false;
-
-  private _toggleSidebar() {
-    this._opened = !this._opened;
-  }
-
   constructor( public servicoLogin: LoginService, public servicoExtrato: ExtratoService, private servicoTransf: TransferenciaService) {
-    this.dadosExtrato = this.servicoExtrato.extrato
-
-    this.servicoTransf.resetDados()
-    // this.servicoTransf.prev(0)
-
     this.dadosUsuario = this.servicoLogin.response
-    this.servicoExtrato.getExtrato()
-    .subscribe(
-      dados=>{
-        this.servicoExtrato.extrato = dados;
+    
+    pubSub.subscribe('NOVO_EXTRATO', (msg, dados) =>{
+      this.transferencias = dados
+    })
 
-        this.transferencias = this.servicoExtrato.extrato.transferencias
-        this.saldo = this.servicoExtrato.extrato.saldoAtualizado
-      },error=>{
-        console.log(error)
-      }
-    )
    }
 
   ngOnInit() {
-    
+
+    this.servicoExtrato.getExtrato()
+    .subscribe(
+      dados=>{
+        this.transferencias = dados.transferencias;
+        this.servicoExtrato.extrato.saldoAtualizado = dados.saldoAtualizado
+      },error=>{
+        
+        console.log(error)
+      }
+    )
 
   }
 

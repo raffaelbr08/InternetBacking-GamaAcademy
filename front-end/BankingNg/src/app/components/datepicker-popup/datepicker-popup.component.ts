@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import * as moment from 'moment';
-import { TransferenciaService } from '../../services/transferencia.service';
+import { Component, OnInit, Input } from '@angular/core'
+import * as moment from 'moment'
+import * as pubSub from 'pubsub-js'
 import { ExtratoService } from '../../services/extrato.service';
-import { ExtratoComponent } from '../../pages/extrato/extrato.component'
+
+
 
 @Component({
   selector: 'app-datepicker-popup',
@@ -25,20 +26,11 @@ export class DatepickerPopupComponent implements OnInit {
   enviaData($event){
     $event.preventDefault()
 
-    this.DdataFinal.month =  this.DdataFinal.month -1
-    this.DdataInicial.month = this.DdataInicial.month -1
-
-    let inicial = moment(this.DdataInicial)
-    let final = moment(this.DdataFinal)
-    
-    console.log(this.DdataInicial, this.DdataFinal)
-
-    this.extratoService.getExtrato(inicial.format('YYYY-MM-DD'), final.format('YYYY-MM-DD'))
+    this.extratoService.getExtrato(this.DdataInicial, this.DdataFinal)
                         .subscribe(
                           res=>{
-                            this.extratoService.extrato.transferencias = [].concat(res.transferencias)
-
-                            console.log(this.extratoService.extrato)
+                            pubSub.publish('NOVO_EXTRATO', res.transferencias)
+                            
                           }, error => {
                             console.log(error)
                         })

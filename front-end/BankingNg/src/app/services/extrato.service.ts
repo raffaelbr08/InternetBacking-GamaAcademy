@@ -7,23 +7,29 @@ import { LoginService } from './login.service';
 @Injectable()
 export class ExtratoService {
 
+  
   conrrentista = {
-    contacorrente: this.loginService.response.correntista.contaCorrente,
+    contacorrente: '',
     dataInicial: '',
     dataFinal: ''
   }
-
+  
   extrato = {
     transferencias: [],
     saldoAtualizado: ''
   } 
-
+  
   url = 'http://localhost:3000/v1/extrato/'
-
+  
   // constructor(public http: Http, private loginService: LoginService) { }
-  constructor(public http: HttpClient, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService) {
+    
 
+  }
+  
   getExtrato(dataInicial = '', dataFinal = ''): Observable<any>{
+
+    this.conrrentista.contacorrente = this.loginService.response.correntista.contaCorrente
 
     const opcoesHttp = { headers: new HttpHeaders(
           { 'Content-Type': 'application/json',
@@ -33,12 +39,7 @@ export class ExtratoService {
 
     this.conrrentista.dataInicial = dataInicial
     this.conrrentista.dataFinal = dataFinal
-    // const headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
-    // headers.append('x-access-token', this.loginService.response.token)
-
-    // const options = new RequestOptions({ headers: headers})
-    // return this.http.post(this.url, this.conrrentista, options);
+    
     return this.http.post(this.url, this.conrrentista, opcoesHttp);
   }
 

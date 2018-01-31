@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+var crypto = require('crypto');
+var nodemailer = require('nodemailer');
+
 const modelCorrentista = mongoose.model('Correntista');
 const modelTransferencia = mongoose.model('Transferencia');
 
@@ -7,139 +10,148 @@ const logger = require('../services/logger');
 const isObjectEmpty = require('../services/isObjectEmpty');
 const api = {};
 const Transferencias = require('../services/transferencias');
+var moment = require('moment');
+
 
 const Async = require('async')
 
-api.listaPorUsuario = (req, res) => {
+function randomValueHex(len) {
+    return crypto.randomBytes(Math.ceil(len / 2))
+        .toString('hex') // convert to hexadecimal format
+        .slice(0, len);   // return required number of characters
+}
 
-    console.log('[req.body]', req.body)
-    // pagination
-    const perPage = req.body.perPage || 20
-    const page = req.body.page || 1
-    let dataInicial = req.body.dataInicial || '1990-01-01';
-    let dataFinal = req.body.dataFinal || '3000-12-31';
+api.makeToken = function (req, res) {
+    // verifica se o correntista existe
 
-    dataInicial = dataInicial + 'T00:00:00.000Z';
+    modelCorrentista.findOne({ contaCorrente: req.body.contacorrente }).then(
+        correntistaResult => {
+            if (correntistaResult) {
+                const random = randomValueHex(8)
 
-    dataFinal = dataFinal + 'T23:59:59.999Z';
+                if (correntistaResult.email != null && correntistaResult.email != '' ){
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                        user: 'grupo2.gama.avanade@gmail.com',
+                        pass: '#goorange'
+                        }
+                    });
 
-    // console.log('[DataInicial] ', dataInicial, '[dataFinal] ', dataFinal)
+                    var mailOptions = {
+                        from: 'grupo2.gama.avanade@gmail.com',
+                        to: correntistaResult.email,
+                        subject: 'AVANADE BANKING - Autorizar transação',
+                        text: 'Uma tentativa de transferência a partir do internet banking gerou acabou gerando um token: ' + random
+                    };
 
-    Async.series({
-        userA: function (callback) {
+                    transporter.sendMail(mailOptions, function(err, info){
+                        if (err) {
+                            logger.log('error', err);
+                            res.status(200).send({
+                                "success": false
+                                , "message": "Houve um erro na tentativa de envio de e-mail: " + err
+                            });
+                        } else {
+                            
+                            console.log('Email sent: ' + info.response);
 
-            modelTransferencia
-                .find({
-                    $and: [
-                    { $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] },
-                    { "updated_at": {$gte: new Date(dataInicial)}},
-                    { "updated_at": {$lte: new Date(dataFinal)}}
-                    ]
-                })
-                .sort({ created_at: -1 })
-                .skip((perPage * page) - perPage)
-                .limit(perPage)
-                .then((transferencias) => {
+                            const tokenTransacao = {
+                                token: random
+                            }
 
-                    Async.map(transferencias, function (transferencia, callback2) {
-
-                        Async.series({
-                            origem: function (callback3) {
-                                modelCorrentista.findOne({ "contaCorrente": transferencia.origem })
-                                    .then((correntista) => {
-                                        callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
-                                    }, (error) => {
-                                        logger.log('error', error);
+                            modelCorrentista.update(
+                                { contaCorrente: req.body.contacorrente },
+                                { $set: { tokenTransacao: tokenTransacao } },
+                                function (err, rowsAffected) {
+                                    if (err) {
+                                        console.log('[ERROR] ' + err);
                                         res.status(500).send({
                                             "success": false
-                                            ,"message": error});
-                                    })
-                            },
-                            destino: function (callback3) {
-                                modelCorrentista.findOne({ "contaCorrente": transferencia.destino })
-                                    .then((correntista) => {
-                                        callback3(null, { nome: correntista.nome, contaCorrente: correntista.contaCorrente, cpf: correntista.cpf })
-                                    }, (error) => {
-                                        logger.log('error', error);
-                                        res.status(500).send({
-                                            "success": false
-                                            ,"message": error});
-                                    })
-                            }
-                        }, function (err, results) {
+                                            , "message": "Não foi possível realizar operação de segurança: " + err
+                                        });
+                                    }
+                                    if (rowsAffected) {
+                                        res.send({
+                                            "success": true,
+                                            "message": "Operação de segurança concluída com sucesso!"
+                                        })
+                                    }
 
-                            let transf = {
-                                origem: results.origem,
-                                destino: results.destino,
-                                descricao: transferencia.descricao,
-                                valor: transferencia.valor,
-                                updated_at: transferencia.updated_at,
-                                created_at: transferencia.created_at
-                            }
-
-                            if (req.body.contacorrente == transferencia.origem) {
-                                transf.debito = true
-                                //transf.descricao = "[Transf para]: c/c" + transferencia.destino
-                            } else {
-                                transf.debito = false
-
-                                //transf.descricao = "[Transf de]: c/c" + transferencia.destino
-
-                            }
-
-                            callback2(null, transf)
-
-                        })
-
-                    }, function (err, results) {
-                        callback(null, results)
-                    })
-
-                }, (error) => {
-                    logger.log('error', error);
-                    res.status(500).send({
-                        "success": false
-                        ,"message": error});
-                });
-
-        },
-        userB: function (callback) {
-            modelCorrentista.findOne({ "contaCorrente": req.body.contacorrente })
-                .then((correntista) => {
-                    console.log('[transferencia.js line:109]',correntista)
-                    callback(null, correntista.saldo)
-                }, (error) => {
-                    logger.log('error', error);
-                    res.status(500).send({
-                        "success": false
-                        ,"message": error});
-                })
-        }
-    }, function (err, results) {
-        //console.log(results.userA, results.userB)
-
-        modelTransferencia.find({ $or: [{ "origem": req.body.contacorrente }, { "destino": req.body.contacorrente }] })
-        .count().exec(function (err, count) {
-            if (err) {
-                res.status(500).send({
+                                }
+                            );
+                        }
+                    });
+                }
+                
+                
+            } else {
+                const err = `Conta corrente do correntista não existe`
+                console.log(err, req.body.contaCorrente);
+                logger.log('error', err);
+                res.status(200).send({
                     "success": false
-                    ,"message": err});
+                    , "message": err
+                });
             }
-            res.send({
-                transferencias: results.userA,
-                saldoAtualizado: results.userB,
-                success: true,
-                current_page: page,
-                total_pages: Math.ceil(count / perPage)
-            })
-        })
+        }, error => {
+            console.log(error);
+            logger.log('error', error);
+            res.status(500).send({
+                "success": false
+                , "message": error
+            });
+        }
+    );
+}
 
-        // res.send({
-        //     transferencias: results.userA,
-        //     saldoAtualizado: results.userB
-        // })
-    })
+api.checkToken = function (req, res) {
+    // verifica se o token existe para o correntista
 
+    modelCorrentista.findOne({ contaCorrente: req.body.contacorrente, 'tokenTransacao': { $elemMatch: { token: req.body.token } }  }).then(
+        correntistaResult => {
+            if (correntistaResult) {
+                
+                const tokenTransacao = { }
+
+                modelCorrentista.update(
+                    { contaCorrente: req.body.contacorrente },
+                    { $set: { tokenTransacao: tokenTransacao } },
+                    function (err, rowsAffected) {
+                        if (err) {
+                            console.log('[ERROR] ' + err);
+                            res.status(500).send({
+                                "success": false
+                                , "message": "Houve um erro durante a verificação da transação: " + err
+                            });
+                        }
+                        if (rowsAffected) {
+                            res.send({
+                                "success": true,
+                                "message": "Operação de segurança concluída com sucesso!"
+                            })
+                        }
+
+                    }
+                );
+
+            } else {
+                const err = `Token não encontrado`
+                logger.log('error', err);
+                res.status(200).send({
+                    "success": false
+                    , "message": err
+                });
+            }
+        }, error => {
+            console.log(error);
+            logger.log('error', error);
+            res.status(500).send({
+                "success": false
+                , "message": error
+            });
+        }
+    );
 }
 
 api.adiciona = function (req, res) {

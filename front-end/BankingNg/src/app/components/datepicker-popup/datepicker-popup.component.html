@@ -1,4 +1,5 @@
 <form class="form-inline" (submit)="enviaData($event)">
+<<<<<<< HEAD
     <div class="form-group">
       <div class="input-group">
         <label>Data Inicial:</label>
@@ -19,7 +20,31 @@
             </button>
           </div>
         </div>
+=======
+  <div class="form-group">
+    <div class="input-group">
+      <label>Data Inicial:</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dataInicial" [(ngModel)]="DdataInicial" ngbDatepicker #dataInicial="ngbDatepicker">
+      <div class="input-group-append">
+        <a class="btn btn-outline-secondary" (click)="dataInicial.toggle()" type="button">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </a>
+      </div>
+>>>>>>> ca8d00279e65dd7286f69615bdc5e8cd468e069d
     </div>
-    <button class="btn btn-submit">Enviar</button>
-  </form>
 
+<<<<<<< HEAD
+=======
+    <div class="input-group">
+      <label>Data Final:</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dataFinal" [(ngModel)]="DdataFinal" ngbDatepicker #dataFinal="ngbDatepicker">
+      <div class="input-group-append">
+        <a class="btn btn-outline-secondary" (click)="dataFinal.toggle()" type="button">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-submit">Enviar</button>
+</form>
+>>>>>>> ca8d00279e65dd7286f69615bdc5e8cd468e069d
