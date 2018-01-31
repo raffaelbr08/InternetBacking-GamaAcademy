@@ -24,6 +24,7 @@ function randomValueHex(len) {
 api.makeToken = function (req, res) {
     // verifica se o correntista existe
 
+    console.log ('[body]', req.body)
     modelCorrentista.findOne({ contaCorrente: req.body.contacorrente }).then(
         correntistaResult => {
             if (correntistaResult) {
@@ -83,11 +84,20 @@ api.makeToken = function (req, res) {
                         }
                     });
                 }
+                else{
+                    const err = `[Correntista: ${correntistaResult.nome}] sem Email cadastrado`
+                    console.log(err, req.body);
+                    logger.log('error', err);
+                    res.status(200).send({
+                        "success": false
+                        , "message": err
+                    });
+                }
                 
                 
             } else {
                 const err = `Conta corrente do correntista não existe`
-                console.log(err, req.body.contaCorrente);
+                console.log(err, req.body.contacorrente);
                 logger.log('error', err);
                 res.status(200).send({
                     "success": false
@@ -108,8 +118,11 @@ api.makeToken = function (req, res) {
 api.checkToken = function (req, res) {
     // verifica se o token existe para o correntista
 
-    modelCorrentista.findOne({ contaCorrente: req.body.contacorrente, 'tokenTransacao': { $elemMatch: { token: req.body.token } }  }).then(
+    console.log('[token enviado]:', req.body.token)
+
+    modelCorrentista.findOne({ 'contaCorrente': req.body.contacorrente, 'tokenTransacao.token': req.body.token }).then(
         correntistaResult => {
+            console.log('[token encontrado]:', req.body.token)
             if (correntistaResult) {
                 
                 const tokenTransacao = { }

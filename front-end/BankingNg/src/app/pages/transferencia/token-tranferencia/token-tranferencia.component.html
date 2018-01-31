@@ -1,19 +1,59 @@
 <div class="modal--header">
     <h2>Token de segurança</h2>
 </div>
-<div class="modal-body">
-    <div class="col">
-        <p> Digite a senha enviada</p>
-        <div class="placeholder-wrap">
-            <input name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" #inputToken="ngModel"
-                [(ngModel)]="servicoTransf.token" value="{{servicoTransf.token}}">
-            <span class="placeholder-label">Token</span>
-            <small *ngIf="!inputToken.valid && inputToken.touched" class="error-text danger">Campo Obrigatório!</small>
+
+<div class="loading" *ngIf="loading">
+        <div class="loader loader--style2" title="1">
+                <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+                  <animateTransform attributeType="xml"
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 25 25"
+                    to="360 25 25"
+                    dur="0.6s"
+                    repeatCount="indefinite"/>
+                  </path>
+                </svg>
+              </div>
+</div>
+
+<div class="col" *ngIf="msg.conteudo">
+    <p class="alert {{msg.class}}">
+        {{msg.conteudo}}
+    </p>
+</div>
+
+<div class="modal-body" [formGroup]="formulario" *ngIf="tokenEnviado">
+    <div class="card">
+        <div class="card-body">
+            <p> Digite o token enviado no seu e-mail</p>
+            <div class="placeholder-wrap">
+                <input name="destino" type="text" class="placeholder-input" id="destino" required autocomplete="off" 
+                    value="" formControlName="token" >
+                <span class="placeholder-label">Token</span>
+                <small *ngIf="formulario.controls.token.invalid && formulario.controls.token.touched" class="error-text danger">Campo Obrigatório!</small>
+            </div>
+        </div>
+        <div class="highlight p-4">
+            <p>
+                Caso não tenha recebido o email com o token:
+            </p>
+            <ul>
+                <li>
+                    Verifique em sua caixa de Spam, e certifique-se de colocar nosso dominio de email na lista de email's seguros
+                </li>
+                <li>
+                    <a (click)="geraToken(true)" class="badge badge-success">clique aqui</a> para re-enviar
+                </li>
+            </ul>
         </div>
     </div>
 </div>
+
 <div class="row">
     <button class="btn btnLaranja btn-submit" (click)="servicoTransf.prev()" [routerLink]="['/transferencia/outra-conta']">Voltar</button>
-    
-    <button class="btn btnLaranja btn-submit" (click)="verificaToken()">Avançar</button>
+
+    <button class="btn btnLaranja btn-submit" (click)="verificaToken()" [disabled]="">Avançar</button>
 </div>

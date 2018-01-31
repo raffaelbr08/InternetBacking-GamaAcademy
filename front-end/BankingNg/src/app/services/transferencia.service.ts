@@ -10,6 +10,9 @@ export class TransferenciaService {
   url = 'http://localhost:3000/v1/transferencias/'
   url2 = 'http://localhost:3000/v1/correntistas/'
 
+  urlMakeToken = 'http://localhost:3000/v1/makeTransacao'
+  urlCheckTransacao = 'http://localhost:3000/v1/checkTransacao'
+
   dadosTransf = {
     nomeFavorecido: "",
     agenciaFavorecido: "",
@@ -69,6 +72,41 @@ export class TransferenciaService {
     }
     return this.http.get(`${this.url2}${contaCorrente}`, opcoesHttp)
 
+  }
+  
+  geraToken(contaCorrente): Observable<any>{
+    let headers = new Headers();
+
+    let dados = {"contacorrente": contaCorrente }
+
+    const opcoesHttp = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'x-access-token': this.loginService.response.token
+        }
+      )
+    }
+    return this.http.post(this.urlMakeToken, JSON.stringify(dados) , opcoesHttp)
+  }
+
+  verificaToken(contaCorrente, token): Observable<any>{
+    let headers = new Headers();
+
+    let dados = {
+      "contacorrente": contaCorrente,
+      "token": token
+    }
+
+    const opcoesHttp = {
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'x-access-token': this.loginService.response.token
+        }
+      )
+    }
+    return this.http.post(this.urlCheckTransacao, JSON.stringify(dados) , opcoesHttp)
   }
 
 }
