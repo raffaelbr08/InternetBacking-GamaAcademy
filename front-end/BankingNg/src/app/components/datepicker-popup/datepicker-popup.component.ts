@@ -15,17 +15,23 @@ export class DatepickerPopupComponent implements OnInit {
   DdataInicial
   DdataFinal
 
-
-  constructor( private extratoService: ExtratoService) { }
+  dataF
+  dataI
+  
+  constructor( private extratoService: ExtratoService) {
+   }
 
   ngOnInit() {
     this.extratoService.conrrentista.dataInicial = ''
     this.extratoService.conrrentista.dataFinal = ''
   }
+  mudou(){
+    console.log("mudou!")
+  }
 
   enviaData($event){
     $event.preventDefault()
-
+    console.log(this.DdataInicial, this.DdataFinal)
     this.extratoService.getExtrato(this.DdataInicial, this.DdataFinal)
                         .subscribe(
                           res=>{

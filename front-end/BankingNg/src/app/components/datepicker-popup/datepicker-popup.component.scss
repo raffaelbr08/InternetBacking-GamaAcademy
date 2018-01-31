@@ -1,0 +1,25 @@
+.label-data{
+    font-size: 0.85em;
+}
+
+.btn-outline-secondary{
+    padding: 12px 15px;
+    background: #e54a21;
+    color: #fff !important;
+}
+
+@media (max-width: 600px){
+    .input-group-append{
+        margin: 10px;
+        width: 100%;
+    }
+    .btn-outline-secondary{
+        width: 100%;
+        margin: 0px;
+    }
+    .fomulario-filtro{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}

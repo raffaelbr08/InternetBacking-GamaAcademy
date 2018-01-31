@@ -1,24 +1,26 @@
-<form class="form-inline" (submit)="enviaData($event)">
+<form class="form-inline float-right mb-4 fomulario-filtro" (submit)="enviaData($event)">
   <div class="form-group">
-    <div class="input-group">
-      <label>Data Inicial:</label>
-      <input class="form-control" placeholder="yyyy-mm-dd" name="dataInicial" [(ngModel)]="DdataInicial" ngbDatepicker #dataInicial="ngbDatepicker">
+    <div class="input-group mx-2">
+      <input class="form-control d-none" placeholder="yyyy-mm-dd" name="dataInicial" [(ngModel)]="DdataInicial" ngbDatepicker #dataInicial="ngbDatepicker">
       <div class="input-group-append">
         <a class="btn btn-outline-secondary" (click)="dataInicial.toggle()" type="button">
           <i class="fa fa-calendar" aria-hidden="true"></i>
+          <span class="label-data">Data Inicial</span>
         </a>
       </div>
     </div>
 
-    <div class="input-group">
-      <label>Data Final:</label>
-      <input class="form-control" placeholder="yyyy-mm-dd" name="dataFinal" [(ngModel)]="DdataFinal" ngbDatepicker #dataFinal="ngbDatepicker">
+    <div class="input-group mx-2">
+      <input class="form-control d-none" placeholder="yyyy-mm-dd" name="dataFinal" [(ngModel)]="DdataFinal" ngbDatepicker #dataFinal="ngbDatepicker"
+        value="">
+
       <div class="input-group-append">
         <a class="btn btn-outline-secondary" (click)="dataFinal.toggle()" type="button">
           <i class="fa fa-calendar" aria-hidden="true"></i>
+          <span class="label-data">Data Final</span>
         </a>
       </div>
     </div>
   </div>
-  <button class="btn btn-submit">Enviar</button>
+  <button class="btn btn-submit btnLaranja">Enviar</button>
 </form>
